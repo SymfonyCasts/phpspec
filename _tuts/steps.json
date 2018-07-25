@@ -1,0 +1,25 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "installation",
+            "name": "Installation",
+            "description": null
+        },
+        {
+            "id": "configure-phpspec",
+            "name": "Configure PhpSpec",
+            "description": null
+        },
+        {
+            "id": "first-specification",
+            "name": "First specification",
+            "description": null
+        }
+    ],
+    "sha": "5db4b80aa052600dc8a3699fab1eadc39a96b2c9"
+}

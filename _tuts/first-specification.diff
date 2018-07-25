@@ -1,0 +1,34 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+new file mode 100644
+index 0000000..ee713a5
+--- /dev/null
++++ b/spec/Entity/DinosaurSpec.php
+@@ -0,0 +1,15 @@
++<?php
++
++namespace spec\App\Entity;
++
++use App\Entity\Dinosaur;
++use PhpSpec\ObjectBehavior;
++use Prophecy\Argument;
++
++class DinosaurSpec extends ObjectBehavior
++{
++    function it_is_initializable()
++    {
++        $this->shouldHaveType(Dinosaur::class);
++    }
++}
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+new file mode 100644
+index 0000000..65259f8
+--- /dev/null
++++ b/src/Entity/Dinosaur.php
+@@ -0,0 +1,7 @@
++<?php
++
++namespace App\Entity;
++
++class Dinosaur
++{
++}
