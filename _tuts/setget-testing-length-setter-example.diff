@@ -1,0 +1,30 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index b052725..f3fb6e0 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -17,4 +17,11 @@ class DinosaurSpec extends ObjectBehavior
+     {
+         $this->getLength()->shouldReturn(0);
+     }
++
++    function it_should_allow_to_set_length()
++    {
++        $this->setLength(9);
++
++        $this->getLength()->shouldReturn(9);
++    }
+ }
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index f15c879..d284b6c 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -10,4 +10,9 @@ class Dinosaur
+     {
+         return $this->length;
+     }
++
++    public function setLength($argument1)
++    {
++        // TODO: write logic here
++    }
+ }

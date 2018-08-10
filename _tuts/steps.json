@@ -19,7 +19,42 @@
             "id": "first-specification",
             "name": "First specification",
             "description": null
+        },
+        {
+            "id": "setget-testing-initial-length-test",
+            "name": "SetGet testing: initial length test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-entity-method",
+            "name": "SetGet testing: add entity method",
+            "description": null
+        },
+        {
+            "id": "setget-testing-length-setter-example",
+            "name": "SetGet testing: length setter example",
+            "description": null
+        },
+        {
+            "id": "setget-testing-length-setter-code",
+            "name": "SetGet testing: length setter code ",
+            "description": null
+        },
+        {
+            "id": "setget-testing-inline-matcher",
+            "name": "SetGet testing: inline matcher",
+            "description": null
+        },
+        {
+            "id": "setget-testing-inline-matcher-with-custom-message",
+            "name": "SetGet testing: inline matcher with custom message",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-custom-matcher",
+            "name": "SetGet testing: add custom matcher",
+            "description": null
         }
     ],
-    "sha": "5db4b80aa052600dc8a3699fab1eadc39a96b2c9"
+    "sha": "13b84edf201fb90bf985284ca469a78a404a83a2"
 }

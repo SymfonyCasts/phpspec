@@ -1,0 +1,15 @@
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index d284b6c..2afc1cb 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -11,8 +11,8 @@ class Dinosaur
+         return $this->length;
+     }
+ 
+-    public function setLength($argument1)
++    public function setLength(int $length)
+     {
+-        // TODO: write logic here
++        $this->length = $length;
+     }
+ }

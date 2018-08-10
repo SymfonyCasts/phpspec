@@ -1,0 +1,14 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index ee713a5..b052725 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -12,4 +12,9 @@ class DinosaurSpec extends ObjectBehavior
+     {
+         $this->shouldHaveType(Dinosaur::class);
+     }
++
++    function it_should_default_to_zero_length()
++    {
++        $this->getLength()->shouldReturn(0);
++    }
+ }

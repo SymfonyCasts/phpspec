@@ -1,0 +1,41 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index b0956f2..b30d11f 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -3,6 +3,7 @@
+ namespace spec\App\Entity;
+ 
+ use App\Entity\Dinosaur;
++use PhpSpec\Exception\Example\FailureException;
+ use PhpSpec\ObjectBehavior;
+ use Prophecy\Argument;
+ 
+@@ -12,7 +13,14 @@ class DinosaurSpec extends ObjectBehavior
+     {
+         return [
+             'returnZero' => function ($subject) {
+-                return $subject === 0;
++                if ($subject !== 0) {
++                    throw new FailureException(sprintf(
++                        'Returned value should be zero, got "%s"',
++                        $subject
++                    ));
++                }
++
++                return true;
+             },
+         ];
+     }
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index cd8386f..2afc1cb 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -4,7 +4,7 @@ namespace App\Entity;
+ 
+ class Dinosaur
+ {
+-    private $length = 30;
++    private $length = 0;
+ 
+     public function getLength(): int
+     {
