@@ -54,7 +54,42 @@
             "id": "setget-testing-add-custom-matcher",
             "name": "SetGet testing: add custom matcher",
             "description": null
+        },
+        {
+            "id": "explaining-object-behavior-class",
+            "name": "Explaining object behavior class",
+            "description": null
+        },
+        {
+            "id": "explaining-object-behavior-class-code-removal",
+            "name": "Explaining object behavior class code removal",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-specification-example",
+            "name": "SetGet testing: add specification example",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-hard-coded-specification-code",
+            "name": "SetGet testing: add hard coded specification code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-additional-specification-example",
+            "name": "SetGet testing: add additional specification example",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-specification-code",
+            "name": "SetGet testing: add specification code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-example",
+            "name": "SetGet testing: indirect - add factory example",
+            "description": null
         }
     ],
-    "sha": "13b84edf201fb90bf985284ca469a78a404a83a2"
+    "sha": "6d9c26f0af4587e7d0f8df55562a20d15c454997"
 }

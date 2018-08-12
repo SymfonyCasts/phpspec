@@ -1,0 +1,28 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index 74877b2..2de9004 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -53,4 +53,9 @@ class DinosaurSpec extends ObjectBehavior
+ 
+         $this->getLength()->shouldBeGreaterThan(12);
+     }
++
++    function it_should_return_full_specification()
++    {
++        $this->getSpecification()->shouldReturn('The Unknown non-carnivorous dinosaur is 0 meters long');
++    }
+ }
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index 2afc1cb..5f34069 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -15,4 +15,9 @@ class Dinosaur
+     {
+         $this->length = $length;
+     }
++
++    public function getSpecification()
++    {
++        // TODO: write logic here
++    }
+ }

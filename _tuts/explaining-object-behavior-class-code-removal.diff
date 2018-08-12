@@ -1,0 +1,15 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index 88f2d80..74877b2 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -52,10 +52,5 @@ class DinosaurSpec extends ObjectBehavior
+         $this->setLength(15);
+ 
+         $this->getLength()->shouldBeGreaterThan(12);
+-
+-        var_dump($this);
+-        var_dump($this->getWrappedObject());
+-        $this->shouldHandle(2);
+-        $this->callOnWrappedObject('shouldHandle', [2]);
+     }
+ }
