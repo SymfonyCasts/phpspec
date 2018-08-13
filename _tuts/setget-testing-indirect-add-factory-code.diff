@@ -1,0 +1,36 @@
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index 06715ea..c251ed1 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -42,4 +42,9 @@ class Dinosaur
+             $this->length
+         );
+     }
++
++    public function getGenus(): string
++    {
++        return $this->genus;
++    }
+ }
+diff --git a/src/Factory/DinosaurFactory.php b/src/Factory/DinosaurFactory.php
+index c125d1c..3fb0f35 100644
+--- a/src/Factory/DinosaurFactory.php
++++ b/src/Factory/DinosaurFactory.php
+@@ -2,10 +2,15 @@
+ 
+ namespace App\Factory;
+ 
++use App\Entity\Dinosaur;
++
+ class DinosaurFactory
+ {
+-    public function growVelociraptor($argument1)
++    public function growVelociraptor(int $length): Dinosaur
+     {
+-        // TODO: write logic here
++        $dinosaur = new Dinosaur('Velociraptor', true);
++        $dinosaur->setLength($length);
++
++        return $dinosaur;
+     }
+ }

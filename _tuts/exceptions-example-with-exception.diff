@@ -1,0 +1,40 @@
+diff --git a/spec/Entity/EnclosureSpec.php b/spec/Entity/EnclosureSpec.php
+index 5fb69ca..1deba25 100644
+--- a/spec/Entity/EnclosureSpec.php
++++ b/spec/Entity/EnclosureSpec.php
+@@ -4,6 +4,7 @@ namespace spec\App\Entity;
+ 
+ use App\Entity\Dinosaur;
+ use App\Entity\Enclosure;
++use App\Exception\NotABuffetException;
+ use PhpSpec\ObjectBehavior;
+ use Prophecy\Argument;
+ 
+@@ -26,4 +27,13 @@ class EnclosureSpec extends ObjectBehavior
+ 
+         $this->getDinosaurs()->shouldHaveCount(2);
+     }
++
++    function it_should_not_allow_to_add_carnivorous_dinosaurs_to_non_carnivorous_enclosure()
++    {
++        $this->addDinosaur(new Dinosaur());
++
++        $this
++            ->shouldThrow(NotABuffetException::class)
++            ->during('addDinosaur', [new Dinosaur('Velociraptor', true)]);
++    }
+ }
+diff --git a/src/Exception/NotABuffetException.php b/src/Exception/NotABuffetException.php
+new file mode 100644
+index 0000000..4d9c734
+--- /dev/null
++++ b/src/Exception/NotABuffetException.php
+@@ -0,0 +1,8 @@
++<?php
++
++namespace App\Exception;
++
++class NotABuffetException extends \Exception
++{
++    protected $message = 'Please do not mix the carnivorous and non-carnivorous dinosaurs. It will be a massacre!';
++}

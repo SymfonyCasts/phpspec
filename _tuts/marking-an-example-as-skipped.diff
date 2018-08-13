@@ -1,0 +1,26 @@
+diff --git a/spec/Factory/DinosaurFactorySpec.php b/spec/Factory/DinosaurFactorySpec.php
+index e9bcd24..a324444 100644
+--- a/spec/Factory/DinosaurFactorySpec.php
++++ b/spec/Factory/DinosaurFactorySpec.php
+@@ -4,6 +4,7 @@ namespace spec\App\Factory;
+ 
+ use App\Entity\Dinosaur;
+ use App\Factory\DinosaurFactory;
++use PhpSpec\Exception\Example\SkippingException;
+ use PhpSpec\ObjectBehavior;
+ use Prophecy\Argument;
+ 
+@@ -27,4 +28,13 @@ class DinosaurFactorySpec extends ObjectBehavior
+     function it_grows_a_triceraptors()
+     {
+     }
++
++    function it_grows_a_small_velociraptor()
++    {
++        if (!class_exists('Nanny')) {
++            throw new SkippingException('Someone needs to look over dino puppies');
++        }
++
++        $this->growVelociraptor(1)->shouldBeAnInstanceOf(Dinosaur::class);
++    }
+ }

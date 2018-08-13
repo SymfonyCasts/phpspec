@@ -1,0 +1,39 @@
+diff --git a/spec/Entity/EnclosureSpec.php b/spec/Entity/EnclosureSpec.php
+index c9d980b..5fb69ca 100644
+--- a/spec/Entity/EnclosureSpec.php
++++ b/spec/Entity/EnclosureSpec.php
+@@ -2,6 +2,7 @@
+ 
+ namespace spec\App\Entity;
+ 
++use App\Entity\Dinosaur;
+ use App\Entity\Enclosure;
+ use PhpSpec\ObjectBehavior;
+ use Prophecy\Argument;
+@@ -17,4 +18,12 @@ class EnclosureSpec extends ObjectBehavior
+     {
+         $this->getDinosaurs()->shouldHaveCount(0);
+     }
++
++    function it_should_be_able_to_add_dinosaurs()
++    {
++        $this->addDinosaur(new Dinosaur());
++        $this->addDinosaur(new Dinosaur());
++
++        $this->getDinosaurs()->shouldHaveCount(2);
++    }
+ }
+diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
+index a6b7f40..11e6cd0 100644
+--- a/src/Entity/Enclosure.php
++++ b/src/Entity/Enclosure.php
+@@ -11,4 +11,9 @@ class Enclosure
+     {
+         return $this->dinosaurs;
+     }
++
++    public function addDinosaur(Dinosaur $dinosaur)
++    {
++        $this->dinosaurs[] = $dinosaur;
++    }
+ }

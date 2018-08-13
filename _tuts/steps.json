@@ -89,7 +89,52 @@
             "id": "setget-testing-indirect-add-factory-example",
             "name": "SetGet testing: indirect - add factory example",
             "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-code",
+            "name": "SetGet testing: indirect - add factory code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-refactoring",
+            "name": "SetGet testing: refactoring",
+            "description": null
+        },
+        {
+            "id": "setget-testing-fixing-failed-refactoring",
+            "name": "SetGet testing: fixing failed refactoring",
+            "description": null
+        },
+        {
+            "id": "marking-an-example-as-pending",
+            "name": "Marking an example as pending",
+            "description": null
+        },
+        {
+            "id": "marking-an-example-as-skipped",
+            "name": "Marking an example as skipped",
+            "description": null
+        },
+        {
+            "id": "enclosure-empty-by-default-example",
+            "name": "Enclosure: empty by default example",
+            "description": null
+        },
+        {
+            "id": "enclosure-empty-by-default-code",
+            "name": "Enclosure: empty by default code",
+            "description": null
+        },
+        {
+            "id": "enclosure-testing-with-dependencies-on-other-objects",
+            "name": "Enclosure: testing with dependencies on other objects",
+            "description": null
+        },
+        {
+            "id": "exceptions-example-with-exception",
+            "name": "Exceptions: example with exception",
+            "description": null
         }
     ],
-    "sha": "6d9c26f0af4587e7d0f8df55562a20d15c454997"
+    "sha": "36c96378b5018e9a8609de66657268ac513c1b39"
 }

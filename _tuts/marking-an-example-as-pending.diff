@@ -1,0 +1,13 @@
+diff --git a/spec/Factory/DinosaurFactorySpec.php b/spec/Factory/DinosaurFactorySpec.php
+index 2314c58..e9bcd24 100644
+--- a/spec/Factory/DinosaurFactorySpec.php
++++ b/spec/Factory/DinosaurFactorySpec.php
+@@ -23,4 +23,8 @@ class DinosaurFactorySpec extends ObjectBehavior
+         $dinosaur->getGenus()->shouldBe('Velociraptor');
+         $dinosaur->getLength()->shouldBe(5);
+     }
++
++    function it_grows_a_triceraptors()
++    {
++    }
+ }
