@@ -1,0 +1,35 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index dc5a76c..e1ea532 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -66,4 +66,14 @@ class DinosaurSpec extends ObjectBehavior
+ 
+         $this->getSpecification()->shouldReturn('The Tyrannosaurus carnivorous dinosaur is 12 meters long');
+     }
++
++    function it_should_grow_a_large_velociraptor()
++    {
++        $this->beConstructedThrough('growVelociraptor', [5]);
++
++        $this->shouldBeAnInstanceOf(Dinosaur::class);
++        $this->getGenus()->shouldBeString();
++        $this->getGenus()->shouldBe('Velociraptor');
++        $this->getLength()->shouldBe(5);
++    }
+ }
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index 06715ea..f679e53 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -23,6 +23,11 @@ class Dinosaur
+         $this->isCarnivorous = $isCarnivorous;
+     }
+ 
++    public static function growVelociraptor($argument1)
++    {
++        throw new \BadMethodCallException("Mismatch between the number of arguments of the factory method and constructor");
++    }
++
+     public function getLength(): int
+     {
+         return $this->length;

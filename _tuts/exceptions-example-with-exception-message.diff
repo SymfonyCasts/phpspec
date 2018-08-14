@@ -1,0 +1,37 @@
+diff --git a/spec/Entity/EnclosureSpec.php b/spec/Entity/EnclosureSpec.php
+index 1deba25..733d674 100644
+--- a/spec/Entity/EnclosureSpec.php
++++ b/spec/Entity/EnclosureSpec.php
+@@ -4,6 +4,7 @@ namespace spec\App\Entity;
+ 
+ use App\Entity\Dinosaur;
+ use App\Entity\Enclosure;
++use App\Exception\DinosaursAreRunningRampantException;
+ use App\Exception\NotABuffetException;
+ use PhpSpec\ObjectBehavior;
+ use Prophecy\Argument;
+@@ -36,4 +37,11 @@ class EnclosureSpec extends ObjectBehavior
+             ->shouldThrow(NotABuffetException::class)
+             ->during('addDinosaur', [new Dinosaur('Velociraptor', true)]);
+     }
++
++    function it_should_not_allow_to_add_dinosaurs_to_unsecure_enclosures()
++    {
++        $this
++            ->shouldThrow(new DinosaursAreRunningRampantException('Are you craaazy?!?'))
++            ->duringAddDinosaur(new Dinosaur('Velociraptor', true));
++    }
+ }
+diff --git a/src/Exception/DinosaursAreRunningRampantException.php b/src/Exception/DinosaursAreRunningRampantException.php
+new file mode 100644
+index 0000000..eaf6a0c
+--- /dev/null
++++ b/src/Exception/DinosaursAreRunningRampantException.php
+@@ -0,0 +1,7 @@
++<?php
++
++namespace App\Exception;
++
++final class DinosaursAreRunningRampantException extends \Exception
++{
++}

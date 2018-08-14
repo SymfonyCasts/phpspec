@@ -1,0 +1,29 @@
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index f679e53..a863148 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -23,9 +23,12 @@ class Dinosaur
+         $this->isCarnivorous = $isCarnivorous;
+     }
+ 
+-    public static function growVelociraptor($argument1)
++    public static function growVelociraptor(int $length): self
+     {
+-        throw new \BadMethodCallException("Mismatch between the number of arguments of the factory method and constructor");
++        $dinosaur = new static('Velociraptor', true);
++        $dinosaur->setLength($length);
++
++        return $dinosaur;
+     }
+ 
+     public function getLength(): int
+@@ -47,4 +50,9 @@ class Dinosaur
+             $this->length
+         );
+     }
++
++    public function getGenus(): string
++    {
++        return $this->genus;
++    }
+ }

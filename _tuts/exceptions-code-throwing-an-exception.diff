@@ -1,0 +1,43 @@
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index a863148..5eafcfb 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -55,4 +55,9 @@ class Dinosaur
+     {
+         return $this->genus;
+     }
++
++    public function hasSameDietAs(Dinosaur $dinosaur): bool
++    {
++        return $this->isCarnivorous === $dinosaur->isCarnivorous;
++    }
+ }
+diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
+index 11e6cd0..2264baa 100644
+--- a/src/Entity/Enclosure.php
++++ b/src/Entity/Enclosure.php
+@@ -2,6 +2,8 @@
+ 
+ namespace App\Entity;
+ 
++use App\Exception\NotABuffetException;
++
+ class Enclosure
+ {
+     /** @var Dinosaur[]|iterable */
+@@ -14,6 +16,15 @@ class Enclosure
+ 
+     public function addDinosaur(Dinosaur $dinosaur)
+     {
++        if (!$this->canAddDinosaur($dinosaur)) {
++            throw new NotABuffetException();
++        }
++
+         $this->dinosaurs[] = $dinosaur;
+     }
++
++    private function canAddDinosaur(Dinosaur $dinosaur): bool
++    {
++        return \count($this->dinosaurs) === 0 || $this->dinosaurs[0]->hasSameDietAs($dinosaur);
++    }
+ }

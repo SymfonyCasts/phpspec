@@ -86,6 +86,16 @@
             "description": null
         },
         {
+            "id": "setget-testing-indirect-add-factory-method-example",
+            "name": "SetGet testing: indirect - add factory method example",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-method-code",
+            "name": "SetGet testing: indirect - add factory method code",
+            "description": null
+        },
+        {
             "id": "setget-testing-indirect-add-factory-example",
             "name": "SetGet testing: indirect - add factory example",
             "description": null
@@ -134,7 +144,27 @@
             "id": "exceptions-example-with-exception",
             "name": "Exceptions: example with exception",
             "description": null
+        },
+        {
+            "id": "exceptions-code-throwing-an-exception",
+            "name": "Exceptions: code throwing an exception",
+            "description": null
+        },
+        {
+            "id": "exceptions-example-with-exception-message",
+            "name": "Exceptions: example with exception message",
+            "description": null
+        },
+        {
+            "id": "exceptions-throw-exception-with-message",
+            "name": "Exceptions: throw exception with message",
+            "description": null
+        },
+        {
+            "id": "exceptions-fix-broken-examples",
+            "name": "Exceptions: fix broken examples",
+            "description": null
         }
     ],
-    "sha": "36c96378b5018e9a8609de66657268ac513c1b39"
+    "sha": "bc88166a14fc32d53d057d8686f4bd4cbae00a8b"
 }
