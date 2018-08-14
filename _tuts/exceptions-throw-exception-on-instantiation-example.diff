@@ -1,0 +1,18 @@
+diff --git a/spec/Entity/EnclosureSpec.php b/spec/Entity/EnclosureSpec.php
+index ba22f22..dba8163 100644
+--- a/spec/Entity/EnclosureSpec.php
++++ b/spec/Entity/EnclosureSpec.php
+@@ -50,4 +50,13 @@ class EnclosureSpec extends ObjectBehavior
+             ->shouldThrow(new DinosaursAreRunningRampantException('Are you craaazy?!?'))
+             ->duringAddDinosaur(new Dinosaur('Velociraptor', true));
+     }
++
++    function it_should_fail_if_providing_initial_dinosaurs_without_security()
++    {
++        $this->beConstructedWith(false, [new Dinosaur()]);
++
++        $this
++            ->shouldThrow(\RuntimeException::class)
++            ->duringInstantiation();
++    }
+ }

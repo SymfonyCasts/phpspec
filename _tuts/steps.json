@@ -164,7 +164,17 @@
             "id": "exceptions-fix-broken-examples",
             "name": "Exceptions: fix broken examples",
             "description": null
+        },
+        {
+            "id": "exceptions-throw-exception-on-instantiation-example",
+            "name": "Exceptions: throw exception on instantiation example",
+            "description": null
+        },
+        {
+            "id": "exceptions-throw-exception-on-instantiation-code",
+            "name": "Exceptions: throw exception on instantiation code",
+            "description": null
         }
     ],
-    "sha": "bc88166a14fc32d53d057d8686f4bd4cbae00a8b"
+    "sha": "eed77bcd0e5341e4e43bf8fa67b12bf55040b959"
 }
