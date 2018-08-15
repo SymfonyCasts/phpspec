@@ -174,7 +174,22 @@
             "id": "exceptions-throw-exception-on-instantiation-code",
             "name": "Exceptions: throw exception on instantiation code",
             "description": null
+        },
+        {
+            "id": "test-doubles-stub-example",
+            "name": "Test doubles: stub example",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mocks-and-spies-example",
+            "name": "Test doubles: mocks and spies example",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mocks-and-spies-code",
+            "name": "Test doubles: mocks and spies code",
+            "description": null
         }
     ],
-    "sha": "eed77bcd0e5341e4e43bf8fa67b12bf55040b959"
+    "sha": "20e09f33aea8f1ec0362b49a28d9e535f81117c1"
 }
