@@ -1,0 +1,10 @@
+diff --git a/phpspec.yml b/phpspec.yml
+index 36dd76f..c96890c 100644
+--- a/phpspec.yml
++++ b/phpspec.yml
+@@ -5,3 +5,5 @@ suites:
+ 
+ matchers:
+     - spec\Matchers\BeGreaterMatcher
++
++formatter.name: pretty

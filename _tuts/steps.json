@@ -189,7 +189,27 @@
             "id": "test-doubles-mocks-and-spies-code",
             "name": "Test doubles: mocks and spies code",
             "description": null
+        },
+        {
+            "id": "configuration",
+            "name": "Configuration",
+            "description": null
+        },
+        {
+            "id": "extensions-nyan-formatter",
+            "name": "Extensions: nyan formatter",
+            "description": null
+        },
+        {
+            "id": "ci-initial-config",
+            "name": "CI: initial config",
+            "description": null
+        },
+        {
+            "id": "ci-running-examples",
+            "name": "CI: running examples",
+            "description": null
         }
     ],
-    "sha": "20e09f33aea8f1ec0362b49a28d9e535f81117c1"
+    "sha": "c5405721ab18aea4e18b3c4543bde0c025e73a62"
 }
