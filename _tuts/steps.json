@@ -111,23 +111,23 @@
             "description": null
         },
         {
-            "id": "setget-testing-add-specification-example",
-            "name": "SetGet testing: add specification example",
+            "id": "setget-testing-add-description-example",
+            "name": "SetGet testing: add description example",
             "description": null
         },
         {
-            "id": "setget-testing-add-hard-coded-specification-code",
-            "name": "SetGet testing: add hard coded specification code",
+            "id": "setget-testing-add-hard-coded-description-code",
+            "name": "SetGet testing: add hard coded description code",
             "description": null
         },
         {
-            "id": "setget-testing-add-additional-specification-example",
-            "name": "SetGet testing: add additional specification example",
+            "id": "setget-testing-add-additional-description-example",
+            "name": "SetGet testing: add additional description example",
             "description": null
         },
         {
-            "id": "setget-testing-add-specification-code",
-            "name": "SetGet testing: add specification code",
+            "id": "setget-testing-add-description-code",
+            "name": "SetGet testing: add description code",
             "description": null
         },
         {
@@ -256,5 +256,5 @@
             "description": null
         }
     ],
-    "sha": "7a29d25a1bbe2fee8879e759318736eef7dfba5a"
+    "sha": "45c5179076598f8c09ef9b11c337f74a2d9e5f37"
 }
