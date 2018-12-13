@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 6c645fd..b76d3b8 100644
+index 35d3cc6..8b33151 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -4,5 +4,15 @@
+@@ -3,5 +3,10 @@
      "type": "project",
      "require-dev": {
          "phpspec/phpspec": "^5.0"
@@ -10,11 +10,6 @@ index 6c645fd..b76d3b8 100644
 +    "autoload": {
 +        "psr-4": {
 +            "App\\": "src/"
-+        }
-+    },
-+    "autoload-dev": {
-+        "psr-4": {
-+            "spec\\": "spec/"
 +        }
      }
  }

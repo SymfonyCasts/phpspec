@@ -31,6 +31,11 @@
             "description": null
         },
         {
+            "id": "setget-testing-finish-logic",
+            "name": "SetGet testing: Finish logic",
+            "description": null
+        },
+        {
             "id": "setget-testing-length-setter-example",
             "name": "SetGet testing: length setter example",
             "description": null
@@ -56,8 +61,48 @@
             "description": null
         },
         {
-            "id": "explaining-object-behavior-class",
-            "name": "Explaining object behavior class",
+            "id": "setget-testing-add-autoload-dev",
+            "name": "SetGet testing: add autoload-dev",
+            "description": null
+        },
+        {
+            "id": "setget-testing-matcher-basic-set-up",
+            "name": "SetGet testing: matcher basic set up",
+            "description": null
+        },
+        {
+            "id": "setget-testing-matcher-dump",
+            "name": "SetGet testing: matcher dump",
+            "description": null
+        },
+        {
+            "id": "setget-testing-matcher-complete-supports",
+            "name": "SetGet testing: matcher complete supports()",
+            "description": null
+        },
+        {
+            "id": "setget-testing-complete-matcher",
+            "name": "SetGet testing: complete matcher",
+            "description": null
+        },
+        {
+            "id": "explaining-object-behavior-dump-this",
+            "name": "Explaining object behavior: dump $this",
+            "description": null
+        },
+        {
+            "id": "explaining-object-behavior-dump-wrapped-object",
+            "name": "Explaining object behavior: dump wrapped object",
+            "description": null
+        },
+        {
+            "id": "explaining-object-behavior-shouldhandle",
+            "name": "Explaining object behavior: shouldHandle()",
+            "description": null
+        },
+        {
+            "id": "explaining-object-behavior-callonwrappedobject",
+            "name": "Explaining object behavior: callOnWrappedObject",
             "description": null
         },
         {
@@ -211,5 +256,5 @@
             "description": null
         }
     ],
-    "sha": "c5405721ab18aea4e18b3c4543bde0c025e73a62"
+    "sha": "7a29d25a1bbe2fee8879e759318736eef7dfba5a"
 }

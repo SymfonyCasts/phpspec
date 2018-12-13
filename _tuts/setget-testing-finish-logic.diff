@@ -1,0 +1,17 @@
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index d7ea7c1..f15c879 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -4,8 +4,10 @@ namespace App\Entity;
+ 
+ class Dinosaur
+ {
+-    public function getLength()
++    private $length = 0;
++
++    public function getLength(): int
+     {
+-        // TODO: write logic here
++        return $this->length;
+     }
+ }

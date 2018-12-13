@@ -1,0 +1,12 @@
+diff --git a/spec/Matcher/BeGreaterMatcher.php b/spec/Matcher/BeGreaterMatcher.php
+index 9c9a479..ec19c02 100644
+--- a/spec/Matcher/BeGreaterMatcher.php
++++ b/spec/Matcher/BeGreaterMatcher.php
+@@ -24,6 +24,6 @@ final class BeGreaterMatcher extends BasicMatcher
+ 
+     public function supports(string $name, $subject, array $arguments): bool
+     {
+-        // TODO: Implement supports() method.
++        var_dump($name, $subject, $arguments);
+     }
+ }

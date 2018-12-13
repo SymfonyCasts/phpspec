@@ -1,5 +1,5 @@
 diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
-index 8aa3ee1..7138674 100644
+index 99a7e22..d796f0d 100644
 --- a/spec/Entity/DinosaurSpec.php
 +++ b/spec/Entity/DinosaurSpec.php
 @@ -93,4 +93,11 @@ class DinosaurSpec extends ObjectBehavior

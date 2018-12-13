@@ -1,0 +1,24 @@
+diff --git a/spec/Matcher/BeGreaterMatcher.php b/spec/Matcher/BeGreaterMatcher.php
+index ec19c02..5bbebb4 100644
+--- a/spec/Matcher/BeGreaterMatcher.php
++++ b/spec/Matcher/BeGreaterMatcher.php
+@@ -9,7 +9,7 @@ final class BeGreaterMatcher extends BasicMatcher
+ {
+     protected function matches($subject, array $arguments): bool
+     {
+-        // TODO: Implement matches() method.
++        var_dump($subject, $arguments);die;
+     }
+ 
+     protected function getFailureException(string $name, $subject, array $arguments): FailureException
+@@ -24,6 +24,9 @@ final class BeGreaterMatcher extends BasicMatcher
+ 
+     public function supports(string $name, $subject, array $arguments): bool
+     {
+-        var_dump($name, $subject, $arguments);
++        return in_array($name, ['beGreater', 'beGreaterThan'])
++            && is_numeric($subject)
++            && count($arguments) === 1
++            && is_numeric($arguments[0]);
+     }
+ }

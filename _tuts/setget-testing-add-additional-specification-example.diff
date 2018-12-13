@@ -1,22 +1,22 @@
 diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
-index 2de9004..dc5a76c 100644
+index eebb44f..56e0eab 100644
 --- a/spec/Entity/DinosaurSpec.php
 +++ b/spec/Entity/DinosaurSpec.php
 @@ -58,4 +58,12 @@ class DinosaurSpec extends ObjectBehavior
      {
-         $this->getSpecification()->shouldReturn('The Unknown non-carnivorous dinosaur is 0 meters long');
+         $this->getDescription()->shouldReturn('The Unknown non-carnivorous dinosaur is 0 meters long');
      }
 +
-+    function it_should_return_full_specification_for_tyrannosaurus()
++    function it_should_return_full_description_for_tyrannosaurus()
 +    {
 +        $this->beConstructedWith('Tyrannosaurus', true);
 +        $this->setLength(12);
 +
-+        $this->getSpecification()->shouldReturn('The Tyrannosaurus carnivorous dinosaur is 12 meters long');
++        $this->getDescription()->shouldReturn('The Tyrannosaurus carnivorous dinosaur is 12 meters long');
 +    }
  }
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index 29f91cf..be22850 100644
+index fedf7f0..3978cba 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
 @@ -6,6 +6,11 @@ class Dinosaur

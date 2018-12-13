@@ -1,10 +1,10 @@
 diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
-index dc5a76c..e1ea532 100644
+index 56e0eab..2686495 100644
 --- a/spec/Entity/DinosaurSpec.php
 +++ b/spec/Entity/DinosaurSpec.php
 @@ -66,4 +66,14 @@ class DinosaurSpec extends ObjectBehavior
  
-         $this->getSpecification()->shouldReturn('The Tyrannosaurus carnivorous dinosaur is 12 meters long');
+         $this->getDescription()->shouldReturn('The Tyrannosaurus carnivorous dinosaur is 12 meters long');
      }
 +
 +    function it_should_grow_a_large_velociraptor()
@@ -18,7 +18,7 @@ index dc5a76c..e1ea532 100644
 +    }
  }
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index 06715ea..f679e53 100644
+index a09a180..df7ea88 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
 @@ -23,6 +23,11 @@ class Dinosaur

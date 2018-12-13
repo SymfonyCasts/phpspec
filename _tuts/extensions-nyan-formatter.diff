@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index b76d3b8..bf7b321 100644
+index 3de5b25..9fa3610 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -3,7 +3,8 @@
+@@ -2,7 +2,8 @@
      "license": "proprietary",
      "type": "project",
      "require-dev": {
@@ -13,7 +13,7 @@ index b76d3b8..bf7b321 100644
      "autoload": {
          "psr-4": {
 diff --git a/composer.lock b/composer.lock
-index 4251092..6e1b523 100644
+index 99a8139..4d66395 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -84,7 +84,7 @@ index 4251092..6e1b523 100644
          {
              "name": "phpspec/php-diff",
              "version": "v1.1.0",
-@@ -1086,11 +1138,120 @@
+@@ -1159,11 +1211,120 @@
                  "validate"
              ],
              "time": "2018-01-29T19:49:41+00:00"
@@ -207,11 +207,11 @@ index 4251092..6e1b523 100644
      "prefer-lowest": false,
      "platform": [],
 diff --git a/phpspec.yml b/phpspec.yml
-index c96890c..947a14f 100644
+index c410a06..9004fc8 100644
 --- a/phpspec.yml
 +++ b/phpspec.yml
 @@ -7,3 +7,6 @@ matchers:
-     - spec\Matchers\BeGreaterMatcher
+     - spec\Matcher\BeGreaterMatcher
  
  formatter.name: pretty
 +
