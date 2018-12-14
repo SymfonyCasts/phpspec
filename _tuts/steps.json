@@ -271,13 +271,48 @@
             "description": null
         },
         {
-            "id": "test-doubles-mocks-and-spies-example",
-            "name": "Test doubles: mocks and spies example",
+            "id": "test-doubles-mocks-and-spies-enclosurebuilderservicespec",
+            "name": "Test doubles: mocks and spies EnclosureBuilderServiceSpec",
             "description": null
         },
         {
-            "id": "test-doubles-mocks-and-spies-code",
-            "name": "Test doubles: mocks and spies code",
+            "id": "test-doubles-basic-buildenclosure-example",
+            "name": "Test doubles: basic buildEnclosure example",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-basic-code",
+            "name": "Test doubles: add basic code",
+            "description": null
+        },
+        {
+            "id": "test-doubles-dinosaurfactory-mock",
+            "name": "Test doubles: DinosaurFactory mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-change-from-mock-to-spy",
+            "name": "Test doubles: Change from mock to spy",
+            "description": null
+        },
+        {
+            "id": "test-doubles-use-let",
+            "name": "Test doubles: use let()",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-entitymanagerinterface-example",
+            "name": "Test doubles: add EntityManagerInterface example",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-entitymanager-code",
+            "name": "Test doubles: add EntityManager code",
+            "description": null
+        },
+        {
+            "id": "test-doubles-delete-me",
+            "name": "Test doubles: delete me",
             "description": null
         },
         {
@@ -301,5 +336,5 @@
             "description": null
         }
     ],
-    "sha": "8d6f924a990003f060161f733e3e17a89eb8efa4"
+    "sha": "6f02499565cb4df6a57f82f761988703483caba8"
 }

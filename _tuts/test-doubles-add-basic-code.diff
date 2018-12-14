@@ -1,0 +1,37 @@
+diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
+index daf4979..376565c 100644
+--- a/src/Service/EnclosureBuilderService.php
++++ b/src/Service/EnclosureBuilderService.php
+@@ -2,10 +2,30 @@
+ 
+ namespace App\Service;
+ 
++use App\Entity\Enclosure;
++use App\Entity\Security;
++
+ class EnclosureBuilderService
+ {
+-    public function buildEnclosure($argument1, $argument2)
++    public function buildEnclosure(
++        int $numberOfSecuritySystems = 1,
++        int $numberOfDinosaurs = 3
++    ): Enclosure
+     {
+-        // TODO: write logic here
++        $enclosure = new Enclosure();
++
++        $this->addSecuritySystems($numberOfSecuritySystems, $enclosure);
++
++        return $enclosure;
++    }
++
++    private function addSecuritySystems(int $numberOfSecuritySystems, Enclosure $enclosure)
++    {
++        for ($i = 0; $i < $numberOfSecuritySystems; $i++) {
++            $securityName = array_rand(['Fence', 'Electric fence', 'Guard tower']);
++            $security = new Security($securityName, true, $enclosure);
++
++            $enclosure->addSecurity($security);
++        }
+     }
+ }

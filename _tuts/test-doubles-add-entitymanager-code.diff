@@ -1,0 +1,28 @@
+diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
+index e0674b0..99161cb 100644
+--- a/src/Service/EnclosureBuilderService.php
++++ b/src/Service/EnclosureBuilderService.php
+@@ -10,9 +10,12 @@ class EnclosureBuilderService
+ {
+     private $dinosaurFactory;
+ 
+-    public function __construct(DinosaurFactory $dinosaurFactory)
++    private $entityManager;
++
++    public function __construct(DinosaurFactory $dinosaurFactory, EntityManagerInterface $entityManager)
+     {
+         $this->dinosaurFactory = $dinosaurFactory;
++        $this->entityManager = $entityManager;
+     }
+ 
+     public function buildEnclosure(
+@@ -25,6 +28,9 @@ class EnclosureBuilderService
+         $this->addSecuritySystems($numberOfSecuritySystems, $enclosure);
+         $this->addDinosaurs($numberOfDinosaurs, $enclosure);
+ 
++        $this->entityManager->persist($enclosure);
++        $this->entityManager->flush();
++
+         return $enclosure;
+     }
+ 

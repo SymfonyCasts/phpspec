@@ -1,0 +1,66 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index 4d200ce..2a7114b 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -2,6 +2,7 @@
+ 
+ namespace spec\App\Service;
+ 
++use App\Entity\Enclosure;
+ use App\Service\EnclosureBuilderService;
+ use PhpSpec\ObjectBehavior;
+ 
+@@ -11,4 +12,12 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+     {
+         $this->shouldHaveType(EnclosureBuilderService::class);
+     }
++
++    function it_builds_enclosure_with_dinosaurs()
++    {
++        $enclosure = $this->buildEnclosure(1, 2);
++
++        $enclosure->shouldBeAnInstanceOf(Enclosure::class);
++        $enclosure->getIsSecurityActive()->shouldReturn(true);
++    }
+ }
+diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
+index aa0292c..9e9bc50 100644
+--- a/src/Entity/Enclosure.php
++++ b/src/Entity/Enclosure.php
+@@ -47,12 +47,7 @@ class Enclosure
+         $this->securities[] = $security;
+     }
+ 
+-    private function canAddDinosaur(Dinosaur $dinosaur): bool
+-    {
+-        return count($this->dinosaurs) === 0 || $dinosaur->hasSameDietAs($this->dinosaurs[0]);
+-    }
+-
+-    private function getIsSecurityActive(): bool
++    public function getIsSecurityActive(): bool
+     {
+         foreach ($this->securities as $security) {
+             if ($security->getIsActive()) {
+@@ -62,4 +57,9 @@ class Enclosure
+ 
+         return false;
+     }
++
++    private function canAddDinosaur(Dinosaur $dinosaur): bool
++    {
++        return count($this->dinosaurs) === 0 || $dinosaur->hasSameDietAs($this->dinosaurs[0]);
++    }
+ }
+diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
+index 4367eb4..daf4979 100644
+--- a/src/Service/EnclosureBuilderService.php
++++ b/src/Service/EnclosureBuilderService.php
+@@ -4,4 +4,8 @@ namespace App\Service;
+ 
+ class EnclosureBuilderService
+ {
++    public function buildEnclosure($argument1, $argument2)
++    {
++        // TODO: write logic here
++    }
+ }
