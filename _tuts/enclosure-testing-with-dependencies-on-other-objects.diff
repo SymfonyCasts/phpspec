@@ -24,7 +24,7 @@ index c9d980b..5fb69ca 100644
 +    }
  }
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index a6b7f40..11e6cd0 100644
+index b15f784..d5014d9 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -11,4 +11,9 @@ class Enclosure
@@ -32,8 +32,8 @@ index a6b7f40..11e6cd0 100644
          return $this->dinosaurs;
      }
 +
-+    public function addDinosaur(Dinosaur $dinosaur)
++    public function addDinosaur($argument1)
 +    {
-+        $this->dinosaurs[] = $dinosaur;
++        // TODO: write logic here
 +    }
  }

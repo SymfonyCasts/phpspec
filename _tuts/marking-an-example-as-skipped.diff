@@ -1,5 +1,5 @@
 diff --git a/spec/Factory/DinosaurFactorySpec.php b/spec/Factory/DinosaurFactorySpec.php
-index e9bcd24..a324444 100644
+index ac2935e..2d687d7 100644
 --- a/spec/Factory/DinosaurFactorySpec.php
 +++ b/spec/Factory/DinosaurFactorySpec.php
 @@ -4,6 +4,7 @@ namespace spec\App\Factory;
@@ -11,7 +11,7 @@ index e9bcd24..a324444 100644
  use Prophecy\Argument;
  
 @@ -27,4 +28,13 @@ class DinosaurFactorySpec extends ObjectBehavior
-     function it_grows_a_triceraptors()
+     function it_grows_a_triceratops()
      {
      }
 +

@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index 453338a..a6b7f40 100644
+index 453338a..b15f784 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -4,8 +4,11 @@ namespace App\Entity;
@@ -7,10 +7,10 @@ index 453338a..a6b7f40 100644
  class Enclosure
  {
 -    public function getDinosaurs()
-+    /** @var Dinosaur[]|iterable */
++    /** @var Dinosaur[] */
 +    private $dinosaurs = [];
 +
-+    public function getDinosaurs(): iterable
++    public function getDinosaurs(): array
      {
 -        // TODO: write logic here
 +        return $this->dinosaurs;

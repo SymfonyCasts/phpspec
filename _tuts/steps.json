@@ -86,6 +86,16 @@
             "description": null
         },
         {
+            "id": "config-pretty-formatter",
+            "name": "Config: pretty formatter",
+            "description": null
+        },
+        {
+            "id": "config-nyan",
+            "name": "Config: Nyan",
+            "description": null
+        },
+        {
             "id": "explaining-object-behavior-dump-this",
             "name": "Explaining object behavior: dump $this",
             "description": null
@@ -121,6 +131,11 @@
             "description": null
         },
         {
+            "id": "setget-testing-add-return-type",
+            "name": "SetGet testing: add return type",
+            "description": null
+        },
+        {
             "id": "setget-testing-add-additional-description-example",
             "name": "SetGet testing: add additional description example",
             "description": null
@@ -128,6 +143,11 @@
         {
             "id": "setget-testing-add-description-code",
             "name": "SetGet testing: add description code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-fix-typo",
+            "name": "SetGet testing: fix typo",
             "description": null
         },
         {
@@ -143,6 +163,16 @@
         {
             "id": "setget-testing-indirect-add-factory-example",
             "name": "SetGet testing: indirect - add factory example",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-example-for-growvelociraptor",
+            "name": "SetGet testing: indirect example for growVelociraptor",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-finish-example",
+            "name": "SetGet testing: indirect finish example",
             "description": null
         },
         {
@@ -186,6 +216,11 @@
             "description": null
         },
         {
+            "id": "enclosure-testing-with-dependencies-finish-method",
+            "name": "Enclosure: testing with dependencies finish method",
+            "description": null
+        },
+        {
             "id": "exceptions-example-with-exception",
             "name": "Exceptions: example with exception",
             "description": null
@@ -193,6 +228,16 @@
         {
             "id": "exceptions-code-throwing-an-exception",
             "name": "Exceptions: code throwing an exception",
+            "description": null
+        },
+        {
+            "id": "exceptions-code-throwing-an-exception-finish-iscarnivorous",
+            "name": "Exceptions: code throwing an exception finish isCarnivorous()",
+            "description": null
+        },
+        {
+            "id": "exceptions-code-throwing-an-exception-add-hassamedietas",
+            "name": "Exceptions: code throwing an exception add hasSameDietAs()",
             "description": null
         },
         {
@@ -236,13 +281,13 @@
             "description": null
         },
         {
-            "id": "configuration",
-            "name": "Configuration",
+            "id": "configuration-delete-me",
+            "name": "Configuration: delete me",
             "description": null
         },
         {
-            "id": "extensions-nyan-formatter",
-            "name": "Extensions: nyan formatter",
+            "id": "configuration-delete-me-2",
+            "name": "Configuration: delete me 2",
             "description": null
         },
         {
@@ -256,5 +301,5 @@
             "description": null
         }
     ],
-    "sha": "45c5179076598f8c09ef9b11c337f74a2d9e5f37"
+    "sha": "8d6f924a990003f060161f733e3e17a89eb8efa4"
 }

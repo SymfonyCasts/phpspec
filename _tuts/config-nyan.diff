@@ -13,7 +13,7 @@ index 3de5b25..9fa3610 100644
      "autoload": {
          "psr-4": {
 diff --git a/composer.lock b/composer.lock
-index 99a8139..4d66395 100644
+index 99a8139..492e9a0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -21,7 +21,7 @@ index 99a8139..4d66395 100644
          "This file is @generated automatically"
      ],
 -    "content-hash": "8c69ee97829c7d188d1edef2abadede1",
-+    "content-hash": "ae633edab5ee0b8645a8ba90dcc80af9",
++    "content-hash": "c4e407ca92383ed5edc2c8d78c2fb1b8",
      "packages": [],
      "packages-dev": [
          {
@@ -207,13 +207,15 @@ index 99a8139..4d66395 100644
      "prefer-lowest": false,
      "platform": [],
 diff --git a/phpspec.yml b/phpspec.yml
-index c410a06..9004fc8 100644
+index c410a06..3e19633 100644
 --- a/phpspec.yml
 +++ b/phpspec.yml
-@@ -7,3 +7,6 @@ matchers:
+@@ -6,4 +6,7 @@ suites:
+ matchers:
      - spec\Matcher\BeGreaterMatcher
  
- formatter.name: pretty
+-formatter.name: pretty
++formatter.name: nyan.dino
 +
 +extensions:
 +    PhpSpec\NyanFormattersExtension\Extension: ~

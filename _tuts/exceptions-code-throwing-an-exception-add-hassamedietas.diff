@@ -1,0 +1,41 @@
+diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
+index d1b7b33..99a7e22 100644
+--- a/spec/Entity/DinosaurSpec.php
++++ b/spec/Entity/DinosaurSpec.php
+@@ -88,4 +88,9 @@ class DinosaurSpec extends ObjectBehavior
+ 
+         $this->shouldBeCarnivorous();
+     }
++
++    function it_should_allow_to_check_if_two_dinosaurs_have_same_diet()
++    {
++        $this->shouldHaveSameDietAs(new Dinosaur());
++    }
+ }
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index 318c0d7..75b91d2 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -53,4 +53,9 @@ class Dinosaur
+     {
+         return $this->isCarnivorous;
+     }
++
++    public function hasSameDietAs(Dinosaur $dinosaur): bool
++    {
++        return $dinosaur->isCarnivorous() === $this->isCarnivorous();
++    }
+ }
+diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
+index f5c063a..e1160e5 100644
+--- a/src/Entity/Enclosure.php
++++ b/src/Entity/Enclosure.php
+@@ -25,7 +25,6 @@ class Enclosure
+ 
+     private function canAddDinosaur(Dinosaur $dinosaur): bool
+     {
+-        return count($this->dinosaurs) === 0 ||
+-            ($this->dinosaurs[0]->isCarnivorous() === $dinosaur->isCarnivorous());
++        return count($this->dinosaurs) === 0 || $dinosaur->hasSameDietAs($this->dinosaurs[0]);
+     }
+ }

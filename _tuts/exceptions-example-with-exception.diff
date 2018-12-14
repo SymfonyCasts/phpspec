@@ -1,5 +1,5 @@
 diff --git a/spec/Entity/EnclosureSpec.php b/spec/Entity/EnclosureSpec.php
-index 5fb69ca..1deba25 100644
+index 5fb69ca..ffab569 100644
 --- a/spec/Entity/EnclosureSpec.php
 +++ b/spec/Entity/EnclosureSpec.php
 @@ -4,6 +4,7 @@ namespace spec\App\Entity;
@@ -17,7 +17,7 @@ index 5fb69ca..1deba25 100644
 +
 +    function it_should_not_allow_to_add_carnivorous_dinosaurs_to_non_carnivorous_enclosure()
 +    {
-+        $this->addDinosaur(new Dinosaur());
++        $this->addDinosaur(new Dinosaur('veggie-eater', false));
 +
 +        $this
 +            ->shouldThrow(NotABuffetException::class)

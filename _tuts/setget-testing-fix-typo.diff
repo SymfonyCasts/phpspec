@@ -1,0 +1,13 @@
+diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
+index b77ed05..e996262 100644
+--- a/src/Entity/Dinosaur.php
++++ b/src/Entity/Dinosaur.php
+@@ -29,7 +29,7 @@ class Dinosaur
+     public function getDescription(): string
+     {
+         return sprintf(
+-            'The %s %scarnivorous dinsaur is %d meters long',
++            'The %s %scarnivorous dinosaur is %d meters long',
+             $this->genus,
+             $this->isCarnivorous ? '' : 'non-',
+             $this->length

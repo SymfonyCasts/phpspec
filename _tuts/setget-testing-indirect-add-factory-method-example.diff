@@ -18,10 +18,10 @@ index 56e0eab..2686495 100644
 +    }
  }
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index a09a180..df7ea88 100644
+index e996262..e810e16 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
-@@ -23,6 +23,11 @@ class Dinosaur
+@@ -16,6 +16,11 @@ class Dinosaur
          $this->isCarnivorous = $isCarnivorous;
      }
  

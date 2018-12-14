@@ -1,5 +1,5 @@
 diff --git a/spec/Entity/EnclosureSpec.php b/spec/Entity/EnclosureSpec.php
-index ba22f22..dba8163 100644
+index 192fae5..5d8647a 100644
 --- a/spec/Entity/EnclosureSpec.php
 +++ b/spec/Entity/EnclosureSpec.php
 @@ -50,4 +50,13 @@ class EnclosureSpec extends ObjectBehavior
@@ -12,7 +12,7 @@ index ba22f22..dba8163 100644
 +        $this->beConstructedWith(false, [new Dinosaur()]);
 +
 +        $this
-+            ->shouldThrow(\RuntimeException::class)
++            ->shouldThrow(DinosaursAreRunningRampantException::class)
 +            ->duringInstantiation();
 +    }
  }

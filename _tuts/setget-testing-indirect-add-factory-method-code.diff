@@ -1,8 +1,8 @@
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index df7ea88..3af6c0f 100644
+index e810e16..328ed00 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
-@@ -23,9 +23,12 @@ class Dinosaur
+@@ -16,9 +16,12 @@ class Dinosaur
          $this->isCarnivorous = $isCarnivorous;
      }
  
@@ -17,7 +17,7 @@ index df7ea88..3af6c0f 100644
      }
  
      public function getLength(): int
-@@ -47,4 +50,9 @@ class Dinosaur
+@@ -40,4 +43,9 @@ class Dinosaur
              $this->length
          );
      }

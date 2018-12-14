@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index 2264baa..4dc8069 100644
+index e1160e5..878347b 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -2,6 +2,7 @@
@@ -11,13 +11,13 @@ index 2264baa..4dc8069 100644
  
  class Enclosure
 @@ -9,6 +10,9 @@ class Enclosure
-     /** @var Dinosaur[]|iterable */
+     /** @var Dinosaur[] */
      private $dinosaurs = [];
  
-+    /** @var Security[]|iterable */
++    /** @var Security[] */
 +    private $securities = [];
 +
-     public function getDinosaurs(): iterable
+     public function getDinosaurs(): array
      {
          return $this->dinosaurs;
 @@ -16,6 +20,10 @@ class Enclosure
@@ -33,7 +33,7 @@ index 2264baa..4dc8069 100644
          }
 @@ -27,4 +35,15 @@ class Enclosure
      {
-         return \count($this->dinosaurs) === 0 || $this->dinosaurs[0]->hasSameDietAs($dinosaur);
+         return count($this->dinosaurs) === 0 || $dinosaur->hasSameDietAs($this->dinosaurs[0]);
      }
 +
 +    private function getIsSecurityActive(): bool
@@ -49,34 +49,24 @@ index 2264baa..4dc8069 100644
  }
 diff --git a/src/Entity/Security.php b/src/Entity/Security.php
 new file mode 100644
-index 0000000..7ee1a41
+index 0000000..0300199
 --- /dev/null
 +++ b/src/Entity/Security.php
-@@ -0,0 +1,34 @@
+@@ -0,0 +1,24 @@
 +<?php
 +
 +namespace App\Entity;
 +
 +class Security
 +{
-+    /**
-+     * @var string
-+     */
 +    private $name;
 +
-+    /**
-+     * @var bool
-+     */
 +    private $isActive;
 +
-+    /**
-+     * @var Enclosure
-+     */
 +    private $enclosure;
 +
 +    public function __construct(string $name, bool $isActive, Enclosure $enclosure)
 +    {
-+
 +        $this->name = $name;
 +        $this->isActive = $isActive;
 +        $this->enclosure = $enclosure;

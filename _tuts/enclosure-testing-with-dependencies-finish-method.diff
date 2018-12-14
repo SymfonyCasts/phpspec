@@ -1,0 +1,15 @@
+diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
+index d5014d9..38c7d7b 100644
+--- a/src/Entity/Enclosure.php
++++ b/src/Entity/Enclosure.php
+@@ -12,8 +12,8 @@ class Enclosure
+         return $this->dinosaurs;
+     }
+ 
+-    public function addDinosaur($argument1)
++    public function addDinosaur(Dinosaur $dinosaur)
+     {
+-        // TODO: write logic here
++        $this->dinosaurs[] = $dinosaur;
+     }
+ }

@@ -1,0 +1,28 @@
+diff --git a/spec/Factory/DinosaurFactorySpec.php b/spec/Factory/DinosaurFactorySpec.php
+index d4286d2..f71fa38 100644
+--- a/spec/Factory/DinosaurFactorySpec.php
++++ b/spec/Factory/DinosaurFactorySpec.php
+@@ -13,4 +13,10 @@ class DinosaurFactorySpec extends ObjectBehavior
+     {
+         $this->shouldHaveType(DinosaurFactory::class);
+     }
++
++    function it_grows_a_large_velociraptor()
++    {
++        $dinosaur = $this->growVelociraptor(5);
++        var_dump($dinosaur);
++    }
+ }
+diff --git a/src/Factory/DinosaurFactory.php b/src/Factory/DinosaurFactory.php
+index 34c6307..c125d1c 100644
+--- a/src/Factory/DinosaurFactory.php
++++ b/src/Factory/DinosaurFactory.php
+@@ -4,4 +4,8 @@ namespace App\Factory;
+ 
+ class DinosaurFactory
+ {
++    public function growVelociraptor($argument1)
++    {
++        // TODO: write logic here
++    }
+ }

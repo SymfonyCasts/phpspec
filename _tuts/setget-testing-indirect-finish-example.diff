@@ -1,0 +1,16 @@
+diff --git a/spec/Factory/DinosaurFactorySpec.php b/spec/Factory/DinosaurFactorySpec.php
+index f71fa38..2314c58 100644
+--- a/spec/Factory/DinosaurFactorySpec.php
++++ b/spec/Factory/DinosaurFactorySpec.php
+@@ -17,6 +17,10 @@ class DinosaurFactorySpec extends ObjectBehavior
+     function it_grows_a_large_velociraptor()
+     {
+         $dinosaur = $this->growVelociraptor(5);
+-        var_dump($dinosaur);
++
++        $dinosaur->shouldBeAnInstanceOf(Dinosaur::class);
++        $dinosaur->getGenus()->shouldBeString();
++        $dinosaur->getGenus()->shouldBe('Velociraptor');
++        $dinosaur->getLength()->shouldBe(5);
+     }
+ }

@@ -1,9 +1,9 @@
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index 1b880eb..b13bc92 100644
+index 2459d33..aa0292c 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
-@@ -13,11 +13,21 @@ class Enclosure
-     /** @var Security[]|iterable */
+@@ -13,11 +13,15 @@ class Enclosure
+     /** @var Security[] */
      private $securities = [];
  
 -    public function __construct(bool $withBasicSecurity = false)
@@ -13,15 +13,9 @@ index 1b880eb..b13bc92 100644
              $this->addSecurity(new Security('Fence', true, $this));
          }
 +
-+        if (\count($initialDinosaurs) > 0) {
-+            if (!$withBasicSecurity) {
-+                throw new \RuntimeException('Inspector said: No fence, no dinosaurs Mister Fancy Pants Park Manager');
-+            }
-+
-+            foreach ($initialDinosaurs as $dinosaur) {
-+                $this->addDinosaur($dinosaur);
-+            }
++        foreach ($initialDinosaurs as $dinosaur) {
++            $this->addDinosaur($dinosaur);
 +        }
      }
  
-     public function getDinosaurs(): iterable
+     public function getDinosaurs(): array

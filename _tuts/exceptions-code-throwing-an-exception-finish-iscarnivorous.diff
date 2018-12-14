@@ -1,12 +1,12 @@
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index 00cca76..b7abcf7 100644
+index 751d2cc..318c0d7 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
-@@ -18,6 +18,6 @@ class Dinosaur
+@@ -51,6 +51,6 @@ class Dinosaur
  
-     public function getDescription()
+     public function isCarnivorous()
      {
 -        // TODO: write logic here
-+        return 'The Unknown non-carnivorous dinosaur is 0 meters long';
++        return $this->isCarnivorous;
      }
  }

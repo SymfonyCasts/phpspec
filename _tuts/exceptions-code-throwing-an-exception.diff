@@ -1,8 +1,8 @@
 diff --git a/spec/Entity/DinosaurSpec.php b/spec/Entity/DinosaurSpec.php
-index 2686495..99a7e22 100644
+index 2686495..d1b7b33 100644
 --- a/spec/Entity/DinosaurSpec.php
 +++ b/spec/Entity/DinosaurSpec.php
-@@ -76,4 +76,21 @@ class DinosaurSpec extends ObjectBehavior
+@@ -76,4 +76,16 @@ class DinosaurSpec extends ObjectBehavior
          $this->getGenus()->shouldBe('Velociraptor');
          $this->getLength()->shouldBe(5);
      }
@@ -18,33 +18,23 @@ index 2686495..99a7e22 100644
 +
 +        $this->shouldBeCarnivorous();
 +    }
-+
-+    function it_should_allow_to_check_if_two_dinosaurs_have_same_diet()
-+    {
-+        $this->shouldHaveSameDietAs(new Dinosaur());
-+    }
  }
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index 3af6c0f..1498539 100644
+index 328ed00..751d2cc 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
-@@ -55,4 +55,14 @@ class Dinosaur
+@@ -48,4 +48,9 @@ class Dinosaur
      {
          return $this->genus;
      }
 +
-+    public function isCarnivorous(): bool
++    public function isCarnivorous()
 +    {
-+        return $this->isCarnivorous;
-+    }
-+
-+    public function hasSameDietAs(Dinosaur $dinosaur): bool
-+    {
-+        return $this->isCarnivorous() === $dinosaur->isCarnivorous();
++        // TODO: write logic here
 +    }
  }
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index 11e6cd0..2264baa 100644
+index 38c7d7b..f5c063a 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -2,6 +2,8 @@
@@ -55,8 +45,8 @@ index 11e6cd0..2264baa 100644
 +
  class Enclosure
  {
-     /** @var Dinosaur[]|iterable */
-@@ -14,6 +16,15 @@ class Enclosure
+     /** @var Dinosaur[] */
+@@ -14,6 +16,16 @@ class Enclosure
  
      public function addDinosaur(Dinosaur $dinosaur)
      {
@@ -69,6 +59,7 @@ index 11e6cd0..2264baa 100644
 +
 +    private function canAddDinosaur(Dinosaur $dinosaur): bool
 +    {
-+        return \count($this->dinosaurs) === 0 || $this->dinosaurs[0]->hasSameDietAs($dinosaur);
++        return count($this->dinosaurs) === 0 ||
++            ($this->dinosaurs[0]->isCarnivorous() === $dinosaur->isCarnivorous());
 +    }
  }
