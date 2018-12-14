@@ -311,21 +311,6 @@
             "description": null
         },
         {
-            "id": "test-doubles-delete-me",
-            "name": "Test doubles: delete me",
-            "description": null
-        },
-        {
-            "id": "configuration-delete-me",
-            "name": "Configuration: delete me",
-            "description": null
-        },
-        {
-            "id": "configuration-delete-me-2",
-            "name": "Configuration: delete me 2",
-            "description": null
-        },
-        {
             "id": "ci-initial-config",
             "name": "CI: initial config",
             "description": null
