@@ -1,1 +1,15 @@
-chapters: []
+chapters:
+  - install
+  - specification
+  - matchers
+  - inline-matcher
+  - custom-matcher
+  - unit-integration-functional
+  - object-behavior-magic
+  - object-construction
+  - factory-class
+  - no-mocking
+  - object-matcher
+  - exception-message
+  - audio-addition
+  - test-doubles
