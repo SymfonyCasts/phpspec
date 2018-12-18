@@ -1,0 +1,38 @@
+diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
+index b8c0398..9ff7f81 100644
+--- a/src/Service/EnclosureBuilderService.php
++++ b/src/Service/EnclosureBuilderService.php
+@@ -8,8 +8,11 @@ use App\Factory\DinosaurFactory;
+ 
+ class EnclosureBuilderService
+ {
++    private $dinosaurFactory;
++
+     public function __construct(DinosaurFactory $dinosaurFactory)
+     {
++        $this->dinosaurFactory = $dinosaurFactory;
+     }
+ 
+     public function buildEnclosure(
+@@ -20,6 +23,7 @@ class EnclosureBuilderService
+         $enclosure = new Enclosure();
+ 
+         $this->addSecuritySystems($numberOfSecuritySystems, $enclosure);
++        $this->addDinosaurs($numberOfDinosaurs, $enclosure);
+ 
+         return $enclosure;
+     }
+@@ -33,4 +37,13 @@ class EnclosureBuilderService
+             $enclosure->addSecurity($security);
+         }
+     }
++
++    private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
++    {
++        for ($i = 0; $i < $numberOfDinosaurs; $i++) {
++            $enclosure->addDinosaur(
++                $this->dinosaurFactory->growVelociraptor(5)
++            );
++        }
++    }
+ }

@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index 2459d33..aa0292c 100644
+index dc29be6..21966c6 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -13,11 +13,15 @@ class Enclosure

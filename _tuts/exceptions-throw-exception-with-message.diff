@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index e1160e5..878347b 100644
+index e1160e5..283bd80 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -2,6 +2,7 @@
@@ -24,7 +24,7 @@ index e1160e5..878347b 100644
  
      public function addDinosaur(Dinosaur $dinosaur)
      {
-+        if (!$this->getIsSecurityActive()) {
++        if (!$this->isSecurityActive()) {
 +            throw new DinosaursAreRunningRampantException('Are you craaazy?!?');
 +        }
 +
@@ -36,7 +36,7 @@ index e1160e5..878347b 100644
          return count($this->dinosaurs) === 0 || $dinosaur->hasSameDietAs($this->dinosaurs[0]);
      }
 +
-+    private function getIsSecurityActive(): bool
++    private function isSecurityActive(): bool
 +    {
 +        foreach ($this->securities as $security) {
 +            if ($security->getIsActive()) {

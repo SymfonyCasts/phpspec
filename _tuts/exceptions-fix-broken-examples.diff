@@ -30,7 +30,7 @@ index cf5795b..192fae5 100644
              ->shouldThrow(new DinosaursAreRunningRampantException('Are you craaazy?!?'))
              ->duringAddDinosaur(new Dinosaur('Velociraptor', true));
 diff --git a/src/Entity/Enclosure.php b/src/Entity/Enclosure.php
-index 878347b..2459d33 100644
+index 283bd80..dc29be6 100644
 --- a/src/Entity/Enclosure.php
 +++ b/src/Entity/Enclosure.php
 @@ -13,6 +13,13 @@ class Enclosure

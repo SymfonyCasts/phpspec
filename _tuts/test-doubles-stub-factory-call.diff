@@ -1,0 +1,29 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index 1735064..080fd5e 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -2,6 +2,7 @@
+ 
+ namespace spec\App\Service;
+ 
++use App\Entity\Dinosaur;
+ use App\Entity\Enclosure;
+ use App\Factory\DinosaurFactory;
+ use App\Service\EnclosureBuilderService;
+@@ -17,10 +18,16 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+     function it_builds_enclosure_with_dinosaurs(DinosaurFactory $dinosaurFactory)
+     {
+         $this->beConstructedWith($dinosaurFactory);
++        $dino1 = new Dinosaur('Stegosaurus', false);
++        $dino1->setLength(6);
++        $dinosaurFactory->growVelociraptor(5)->willReturn(
++            $dino1
++        );
+ 
+         $enclosure = $this->buildEnclosure(1, 2);
+ 
+         $enclosure->shouldBeAnInstanceOf(Enclosure::class);
+         $enclosure->isSecurityActive()->shouldReturn(true);
++        var_dump($enclosure->getDinosaurs());
+     }
+ }

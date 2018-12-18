@@ -1,0 +1,19 @@
+diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
+index dbfdf2b..b8c0398 100644
+--- a/src/Service/EnclosureBuilderService.php
++++ b/src/Service/EnclosureBuilderService.php
+@@ -4,12 +4,12 @@ namespace App\Service;
+ 
+ use App\Entity\Enclosure;
+ use App\Entity\Security;
++use App\Factory\DinosaurFactory;
+ 
+ class EnclosureBuilderService
+ {
+-    public function __construct($argument1)
++    public function __construct(DinosaurFactory $dinosaurFactory)
+     {
+-        // TODO: write logic here
+     }
+ 
+     public function buildEnclosure(

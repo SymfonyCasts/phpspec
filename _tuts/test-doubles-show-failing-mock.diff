@@ -1,0 +1,13 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index d02496e..8370706 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -28,7 +28,7 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+             $dino2
+         );
+         $dinosaurFactory->growVelociraptor(Argument::type('integer'))
+-            ->shouldBeCalledTimes(2);
++            ->shouldBeCalledTimes(3);
+ 
+         $enclosure = $this->buildEnclosure(1, 2);
+ 

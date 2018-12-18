@@ -1,9 +1,9 @@
 diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
-index 40c9cf0..b15a105 100644
+index b8f1d5c..5e6503e 100644
 --- a/spec/Service/EnclosureBuilderServiceSpec.php
 +++ b/spec/Service/EnclosureBuilderServiceSpec.php
-@@ -27,12 +27,15 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
-         $dinosaurFactory->growVelociraptor(Argument::any())->willReturn(
+@@ -26,7 +26,7 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+         $dinosaurFactory->growVelociraptor(Argument::type('integer'))->willReturn(
              $dino1,
              $dino2
 -        )->shouldBeCalledTimes(2);
@@ -11,9 +11,10 @@ index 40c9cf0..b15a105 100644
  
          $enclosure = $this->buildEnclosure(1, 2);
  
-         $enclosure->shouldBeAnInstanceOf(Enclosure::class);
-         $enclosure->getIsSecurityActive()->shouldReturn(true);
-         $enclosure->getDinosaurs()[0]->getLength()->shouldReturn(4);
+@@ -34,5 +34,8 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+         $enclosure->isSecurityActive()->shouldReturn(true);
+         $enclosure->getDinosaurs()[0]->shouldBe($dino1);
+         $enclosure->getDinosaurs()[1]->shouldBe($dino2);
 +
 +        $dinosaurFactory->growVelociraptor(Argument::any())
 +            ->shouldHaveBeenCalledTimes(2);

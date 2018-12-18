@@ -1,0 +1,13 @@
+diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
+index 9ff7f81..251b35a 100644
+--- a/src/Service/EnclosureBuilderService.php
++++ b/src/Service/EnclosureBuilderService.php
+@@ -42,7 +42,7 @@ class EnclosureBuilderService
+     {
+         for ($i = 0; $i < $numberOfDinosaurs; $i++) {
+             $enclosure->addDinosaur(
+-                $this->dinosaurFactory->growVelociraptor(5)
++                $this->dinosaurFactory->growVelociraptor(5 + $i)
+             );
+         }
+     }

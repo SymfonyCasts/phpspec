@@ -1,0 +1,21 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index cd0c8d2..225e99a 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -7,6 +7,7 @@ use App\Entity\Enclosure;
+ use App\Factory\DinosaurFactory;
+ use App\Service\EnclosureBuilderService;
+ use PhpSpec\ObjectBehavior;
++use Prophecy\Argument;
+ 
+ class EnclosureBuilderServiceSpec extends ObjectBehavior
+ {
+@@ -22,7 +23,7 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+         $dino1->setLength(6);
+         $dino2 = new Dinosaur('Baby Stegosaurus', false);
+         $dino2->setLength(2);
+-        $dinosaurFactory->growVelociraptor(5)->willReturn(
++        $dinosaurFactory->growVelociraptor(Argument::any())->willReturn(
+             $dino1,
+             $dino2
+         );

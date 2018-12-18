@@ -1,10 +1,13 @@
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index 751d2cc..318c0d7 100644
+index 751d2cc..f63a18e 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
-@@ -51,6 +51,6 @@ class Dinosaur
+@@ -49,8 +49,8 @@ class Dinosaur
+         return $this->genus;
+     }
  
-     public function isCarnivorous()
+-    public function isCarnivorous()
++    public function isCarnivorous(): bool
      {
 -        // TODO: write logic here
 +        return $this->isCarnivorous;

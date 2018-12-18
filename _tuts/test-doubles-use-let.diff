@@ -1,5 +1,5 @@
 diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
-index b15a105..78c3809 100644
+index 5e6503e..4afb940 100644
 --- a/spec/Service/EnclosureBuilderServiceSpec.php
 +++ b/spec/Service/EnclosureBuilderServiceSpec.php
 @@ -11,6 +11,11 @@ use Prophecy\Argument;
@@ -14,12 +14,11 @@ index b15a105..78c3809 100644
      function it_is_initializable()
      {
          $this->shouldHaveType(EnclosureBuilderService::class);
-@@ -18,8 +23,6 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+@@ -18,7 +23,6 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
  
      function it_builds_enclosure_with_dinosaurs(DinosaurFactory $dinosaurFactory)
      {
 -        $this->beConstructedWith($dinosaurFactory);
--
-         $dino1 = new Dinosaur('Velociraptor', true);
-         $dino1->setLength(4);
-         $dino2 = new Dinosaur('Velociraptor', true);
+         $dino1 = new Dinosaur('Stegosaurus', false);
+         $dino1->setLength(6);
+         $dino2 = new Dinosaur('Baby Stegosaurus', false);

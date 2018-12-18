@@ -1,0 +1,13 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index 225e99a..fe4b18c 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -23,7 +23,7 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+         $dino1->setLength(6);
+         $dino2 = new Dinosaur('Baby Stegosaurus', false);
+         $dino2->setLength(2);
+-        $dinosaurFactory->growVelociraptor(Argument::any())->willReturn(
++        $dinosaurFactory->growVelociraptor(Argument::type('integer'))->willReturn(
+             $dino1,
+             $dino2
+         );

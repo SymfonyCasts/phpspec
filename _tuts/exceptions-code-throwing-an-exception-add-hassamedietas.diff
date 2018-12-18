@@ -13,7 +13,7 @@ index d1b7b33..99a7e22 100644
 +    }
  }
 diff --git a/src/Entity/Dinosaur.php b/src/Entity/Dinosaur.php
-index 318c0d7..75b91d2 100644
+index f63a18e..3c31212 100644
 --- a/src/Entity/Dinosaur.php
 +++ b/src/Entity/Dinosaur.php
 @@ -53,4 +53,9 @@ class Dinosaur

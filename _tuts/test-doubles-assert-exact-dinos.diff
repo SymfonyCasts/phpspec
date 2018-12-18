@@ -1,0 +1,13 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index 080fd5e..1900467 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -28,6 +28,7 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+ 
+         $enclosure->shouldBeAnInstanceOf(Enclosure::class);
+         $enclosure->isSecurityActive()->shouldReturn(true);
+-        var_dump($enclosure->getDinosaurs());
++        $enclosure->getDinosaurs()[0]->shouldBe($dino1);
++        $enclosure->getDinosaurs()[1]->shouldBe($dino1);
+     }
+ }

@@ -116,6 +116,11 @@
             "description": null
         },
         {
+            "id": "explaining-object-behavior-dump-this-getlength",
+            "name": "Explaining object behavior: dump $this->getLength()",
+            "description": null
+        },
+        {
             "id": "explaining-object-behavior-class-code-removal",
             "name": "Explaining object behavior class code removal",
             "description": null
@@ -271,6 +276,11 @@
             "description": null
         },
         {
+            "id": "test-doubles-stub-return-value",
+            "name": "Test doubles: stub return value",
+            "description": null
+        },
+        {
             "id": "test-doubles-mocks-and-spies-enclosurebuilderservicespec",
             "name": "Test doubles: mocks and spies EnclosureBuilderServiceSpec",
             "description": null
@@ -288,6 +298,81 @@
         {
             "id": "test-doubles-dinosaurfactory-mock",
             "name": "Test doubles: DinosaurFactory mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-code-constructor",
+            "name": "Test doubles: code constructor",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-factory-call",
+            "name": "Test doubles: stub factory call",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-code-in-factory-usage",
+            "name": "Test doubles: stub - code in factory usage",
+            "description": null
+        },
+        {
+            "id": "test-doubles-assert-exact-dinos",
+            "name": "Test doubles: assert exact dinos",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-2nd-call",
+            "name": "Test doubles: stub 2nd call",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-does-not-match-args",
+            "name": "Test doubles: stub does not match args",
+            "description": null
+        },
+        {
+            "id": "test-doubles-argument-any",
+            "name": "Test doubles: Argument::any()",
+            "description": null
+        },
+        {
+            "id": "test-doubles-argument-type-integer",
+            "name": "Test doubles: Argument::type('integer')",
+            "description": null
+        },
+        {
+            "id": "test-doubles-try-type-string",
+            "name": "Test doubles: try type('string')",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-method-twice",
+            "name": "Test doubles: stub method twice",
+            "description": null
+        },
+        {
+            "id": "test-doubles-change-order-of-stubbed-methods",
+            "name": "Test doubles: change order of stubbed methods",
+            "description": null
+        },
+        {
+            "id": "test-doubles-change-back-to-one-stub",
+            "name": "Test doubles: change back to one stub",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-mock-times-called",
+            "name": "Test doubles: add mock: times called",
+            "description": null
+        },
+        {
+            "id": "test-doubles-show-failing-mock",
+            "name": "Test doubles: show failing mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-chain-mock-to-stub",
+            "name": "Test doubles: chain mock to stub",
             "description": null
         },
         {
@@ -321,5 +406,5 @@
             "description": null
         }
     ],
-    "sha": "6f02499565cb4df6a57f82f761988703483caba8"
+    "sha": "c06d96b5cf2a9745fbe33dc49141b09850dd167d"
 }

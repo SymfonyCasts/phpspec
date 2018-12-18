@@ -1,0 +1,25 @@
+diff --git a/spec/Service/EnclosureBuilderServiceSpec.php b/spec/Service/EnclosureBuilderServiceSpec.php
+index 1900467..cd0c8d2 100644
+--- a/spec/Service/EnclosureBuilderServiceSpec.php
++++ b/spec/Service/EnclosureBuilderServiceSpec.php
+@@ -20,8 +20,11 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+         $this->beConstructedWith($dinosaurFactory);
+         $dino1 = new Dinosaur('Stegosaurus', false);
+         $dino1->setLength(6);
++        $dino2 = new Dinosaur('Baby Stegosaurus', false);
++        $dino2->setLength(2);
+         $dinosaurFactory->growVelociraptor(5)->willReturn(
+-            $dino1
++            $dino1,
++            $dino2
+         );
+ 
+         $enclosure = $this->buildEnclosure(1, 2);
+@@ -29,6 +32,6 @@ class EnclosureBuilderServiceSpec extends ObjectBehavior
+         $enclosure->shouldBeAnInstanceOf(Enclosure::class);
+         $enclosure->isSecurityActive()->shouldReturn(true);
+         $enclosure->getDinosaurs()[0]->shouldBe($dino1);
+-        $enclosure->getDinosaurs()[1]->shouldBe($dino1);
++        $enclosure->getDinosaurs()[1]->shouldBe($dino2);
+     }
+ }
