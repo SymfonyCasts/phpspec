@@ -136,11 +136,6 @@
             "description": null
         },
         {
-            "id": "setget-testing-add-return-type",
-            "name": "SetGet testing: add return type",
-            "description": null
-        },
-        {
             "id": "setget-testing-add-additional-description-example",
             "name": "SetGet testing: add additional description example",
             "description": null
@@ -406,5 +401,5 @@
             "description": null
         }
     ],
-    "sha": "c06d96b5cf2a9745fbe33dc49141b09850dd167d"
+    "sha": "700630109fe24749341a5ad59bd5e2042fa68c6c"
 }
