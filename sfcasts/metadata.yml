@@ -12,3 +12,7 @@ chapters:
   - object-matcher
   - exception-message
   - test-doubles
+  - stubs
+  - arguments
+  - mocks-spies
+  - let-setup
