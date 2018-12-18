@@ -11,5 +11,4 @@ chapters:
   - no-mocking
   - object-matcher
   - exception-message
-  - audio-addition
   - test-doubles
