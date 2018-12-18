@@ -136,11 +136,6 @@
             "description": null
         },
         {
-            "id": "setget-testing-add-return-type",
-            "name": "SetGet testing: add return type",
-            "description": null
-        },
-        {
             "id": "setget-testing-add-additional-description-example",
             "name": "SetGet testing: add additional description example",
             "description": null
@@ -393,11 +388,6 @@
         {
             "id": "test-doubles-add-entitymanager-code",
             "name": "Test doubles: add EntityManager code",
-            "description": null
-        },
-        {
-            "id": "test-doubles-delete-me",
-            "name": "Test doubles: delete me",
             "description": null
         },
         {
