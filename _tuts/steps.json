@@ -396,6 +396,11 @@
             "description": null
         },
         {
+            "id": "test-doubles-delete-me",
+            "name": "Test doubles: delete me",
+            "description": null
+        },
+        {
             "id": "ci-initial-config",
             "name": "CI: initial config",
             "description": null
@@ -406,5 +411,5 @@
             "description": null
         }
     ],
-    "sha": "c06d96b5cf2a9745fbe33dc49141b09850dd167d"
+    "sha": "700630109fe24749341a5ad59bd5e2042fa68c6c"
 }
