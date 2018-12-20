@@ -1,77 +1,101 @@
-# Install
+# Installing phpspec
 
-Coming soon...
+Yo friends! Oh, SO glad you've made it for our phpspec tutorial! You will *not*
+regret it. Thing number one to know about phpspec is: it's... just... fun!
 
-That'd people. Welcome to a super fun tutorial we're doing on `phpspec`. So what is
-`phpspec`? It's a unit testing tool, just like `phpunit` weight. That's not totally
-right. If you've gone through our `phpunit` tutorial, then you know that is a
-perfectly fine tool for unit testing your code. So why `phpspec` event? `phpspec`
-is according to its authors, not really a testing tool. It's a tool that helps you
-design your code.
+Ok, but what *is* phpspec? It's a unit testing tool... exactly like `phpunit`.
+Wait... that's not totally right. If you watched our [PHPUnit tutorial](https://symfonycasts.com/screencast/phpunit),
+then you know that PHPUnit is a perfectly fine tool for unit testing your code. So...
+why are we even talking about phpspec?
 
-It helps you build well organized, meaningful code and yes, by doing that you're
-going to get tests, but that's really a byproduct. Features back is about design and
-it's about making the design process and the testing process really, really fun. So
-how does `phpspec` fit into `phpunit`? Do you? Did you use one or the other? And what
-about something like `behat` that does functional tests? What? We're going to talk about
-all that later, but each of those tools has its own place and you can use all of them
-in your own project. The one thing about peace respect is that it's only used for
-unit testing, so you won't see anything in this tutorial, but integration testing or
-functional testing and things that we do talk about in the `phpunit` tutorial. All
-right, so to get started, as always, definitely
+Here's the truth: yes, phpspec *is* a tool for unit testing your code. But, that's
+*not* its main job. Nope, it's a tool for helping you *design* your code in a
+well-organized, meaningful and maintainable way. You probably already think about
+the design and user experience of your front-end. But, have you ever thought about
+the design and experience of your PHP classes?
 
-download the course code from this page and when you unzip it, you'll find a `start/`
-directory that has the code that you see here, but actually if there is nothing here
-to see, we have basically an empty `composer.json` File and this tutorial
-directory contained some code that we'll use later, but that's just going to be
-ignored for now. So we have an entirely empty project and that's because `phpspec` is
-truly framework agnostic. Now we're going to use a structure. We're going to build
-our classes and our namespaces and a structure that's familiar to Symfony, but it
-really makes no difference at all. So step one of course is going to be
+That's phpspec's job. And yes, as a nice by-product, you *will* get unit tests. And
+as a *nicer* by-product, you will also *enjoy* the process - coding with phpspec
+is fun. Oh, and later - we'll talk about how phpspec & PHPUnit fit together - like
+should we use *both* in the same app? Short answer: yes!
 
-```terminal-silent
+## Starting Point: Empty Project!
+
+Ok, let's go! Just like in our PHPUnit tutorial, we're going to design & build a
+dinosaur park - complete with T-Rex, stegosaurus, enclosures for our dinosaurs *and*,
+with any lucky, some security systems that - thanks to our tests - won't fail as
+soon as a storm rolls in or a developer leaves early for lunch.
+
+To make sure our dinosaurs don't *once* again rule the Earth, you should *totally*
+code along with me. Download the course code from this page. When you unzip it,
+you'll find a `start/` directory with the same code that you see here. But...
+well... what we have here is... nothing! Just an empty project with a `composer.json`
+file that also... has nothing important inside. This `tutorial` directory *does*
+have a few files that we'll use later - so make sure you have it.
+
+We're starting with an empty project because phpspec is *truly* a framework-agnostic
+library. But don't worry - if you're a Symfony user, we'll build a structure
+that will be very familiar to you - with the same directories and namespaces as
+a Symfony app.
+
+## Installing phpspec
+
+To get phpspec installed, open a terminal, move into the project, close Facebook,
+and run:
+
+```terminal
 composer require phpspec/phpspec --dev
 ```
 
-to get it installed as a dev dependency.
+And.... ding! Just like with PHPUnit, installing phpspec means that you get a new,
+shiny executable! Run:
 
-Just like with `phpunit`. The end result of this is that you have an executable
-
-```terminal-silent
-php vendor/bin/phpspec
+```terminal
+./vendor/bin/phpspec
 ```
 
-with recently actually two commands. `describe` and `run`, both of which
-we'll talk about very soon. Now to get pictures back working. You just need that tiny
-bit of configuration and actually the first bit of configuration we're going to do
-has nothing to do with PHP Spec in this project. We have no php classes yet, but we
-are eventually going to put our PHP classes into a `src/` directory just like a
-`Symfony` project and every class and there is going to start with an `App` namespace, so
-`composer.json`, in order for composer to be able to locate those files, we need
-to add a little bit of auto load code. This code that you normally get automatically
-if you start, for example, a new `Symfony` project, but I wanted to show how it's done
-by hand so that we can really truly see what's going on behind the scenes. So we're
-going to say that the `App\\` name is basically found in the `src/` directory. Just by
-doing that. Auto loading will now work on our project to make it take effect, running
+The `phpspec` executable really only has two commands: `describe` and `run`. And
+we'll talk about both of them very soon.
+
+## Configuration autoload in composer.json
+
+But first, we need just a *little* bit of configuration to get things working. The
+first piece of configuration... has *nothing* to do with phpspec at all! Our app
+has *no* PHP classes yet. But when we add some, I want to put them in the `src/`
+directory and prefix each namespace with `App`. That will be exactly like a Symfony
+project.
+
+Open `composer.json`. To make sure Composer's autoloader knows where our classes
+live, we need to add some config here. This is code that you *normally* get automatically
+when you start, for example, a new Symfony project. But I want to show how it's done
+by hand so that we can *truly* understand what's going on behind the scenes.
+
+Add `autoload`, then `psr-4`, then say that classes starting with `App\\` will live
+in the `src/` directory. To make Composer notice this change, find your terminal
+and run:
 
 ```terminal
 composer dump-autoload
 ```
 
-and now composers sees those rules. Again, that's not something you normally need to
-worry about because it's done for you, but this is something that you'll find in your
-project. Now, one of the really cool things about the `phpspec` is that it's going to
-generate code for us. And to do that it needs to know that our classes are going to
-live in the `src/` directory and that they are going to start with the `App` namespace
-so I configure out exactly which, um, the location of each class to help him with
-that, we need to create a `phpspec.yaml` file at the root of the project. And here we're
-just going to say `suites:` `default:`. So like most test tools are going to have multiple
-suites if you want. We'll just have one in this tutorial and I hear we're gonna say
-`namespace: App` because all of our classes are going to start with the `App` name
-namespace. That `psr4_prefix: App` general. It looks a little bit weird, but those
-are the two lines that are going to help it locate our classes that follow these
-autoloading rules and would that we're ready. Next, let's create our first
-specification. The file will use to describe what our code looks like. Oh, by the
-way, what we're going to be working on, of course, we're going to be able to building
-dinosaurs, enclosures and security because nothing needs security more than a
-dinosaur park.
+Autoloading... done!
+
+## Configuring phpspec
+
+Next, one of my *favorite* things about phpspec is that it generates code for you!
+But to do that, it *also* needs to know that our classes will live in the `src/`
+directory and that each namespace will start with `App`. Unfortunately, phpspec
+can't automatically get all this info from `composer.json`, but it's no problem.
+
+Create a `phpspec.yaml` file at the root of the project - `phpspec` automatically
+knows to look for this. Inside add `suites` then `default`. Like most testing tools,
+you can organize your tests into multiple groups, or "suites" if you want. In this
+tutorial, we'll stick to using the one, "default" suite.
+
+Under this, add `namespace: App` - because all of our classes will start with the
+`App` namespace - and `psr4_prefix: App`. Those two lines are enough to help
+phpspec know *where* to generate our files.
+
+And... team, we're ready to go! Next, let's create our first *specification*...
+ooOOOOooo. That's the file where we will *describe* how a single class should behave
+by writing *examples*. Woh.
