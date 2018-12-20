@@ -2,12 +2,87 @@
 
 Coming soon...
 
-One of the big goals of these specifications classes is for the language to be as natural as possible as if you're just describing and normal language how you want your class to work. This is both in the names of the example methods and also the language that we use down here like get length should return nyt now saying this Arrow get length should return. Zero is fine language, but let's pretend that it's more natural if we want to use slightly different language like function, so let's create. Instead of updating that existing, I'm to create a new example that uses different language so it should default to is zero length using custom matcher. See what I mean by that in a second. So let's say that. Well, the way I want to describe the length being empty is by saying this Arrow get length Arrow should return zero. Let's pretend that that is more natural for me and as you saw petri from did not auto complete that because that is not a built in matcher and so when we run it, it fails matcher, no returns, zero metro found.
+One of the big goals of these specifications classes is for the language to be as
+natural as possible as if you're just describing and normal language how you want
+your class to work. This is both in the names of the example methods and also the
+language that we use down here like `getLength()->shouldReturn(9)` now saying
+`$this->getlength()->shouldReturn(0)` is fine language, but let's pretend that it's more natural
+if we want to use slightly different language like function, so let's create. Instead
+of updating that existing, I'm to create a new example that uses different language
+so `it_should_default_to_zero_length_using_custom_matcher()`. See what I mean by that
+in a second. So let's say that. Well, the way I want to describe the length being
+empty is by saying `$this->getLength()->shouldReturnZero()`. Let's pretend that that is
+more natural for me and as you saw petri from did not auto complete that because that
+is not a built in matcher and so when we run it, it fails matcher, no returns, zero
+metro found.
 
-Okay? Talking to create our own custom matters, there are two ways, and we'll see both of them, but the simplest way is to create what's called an inline matcher, a match or that we can right right inside of this specification class, so it doesn't matter where, but I'll go to the top of the class I'm going to go to. I'm going to go to the code generate menu or command n Imac override a method called get matchers. Don't need to call the parent method because that's empty in here. We can return an array of custom mattress. Now since this one's called should return zero. The key we're actually going to use here is returned zero, so it's whatever you want your match to be minus the should or should not parked. So we'll say return zero, and then we set this to a function with one argument called subject. Now it's going to happen here is since we're calling get length and that's returning, let's say the number, hopefully the number zero. When we say, Oh, down here, get length. When we call it should return zero on that. What's actually going to be passed is this length here, so that's actually going to be the number that's passed as what's called these subject. So here we can say return subject equals equals equals zero because our matching needs to return true. If it does return zero false. If it doesn't return zero.
+Okay? Talking to create our own custom matters, there are two ways, and we'll see
+both of them, but the simplest way is to create what's called an inline matcher, a
+match or that we can right right inside of this specification class, so it doesn't
+matter where, but I'll go to the top of the class I'm going to go to. I'm going to go
+to the `Code -> Generate` menu or command n Imac override a method called `getMatchers()`.
+Don't need to call the parent method because that's empty in here. We can return an
+array of custom mattress. Now since this one's called `shouldReturnZero()`. The key
+we're actually going to use here is returned zero, so it's whatever you want your
+match to be minus the should or should not parked. So we'll say `returnZero`, and then
+we set this to a `function` with one argument called `$subject`. Now it's going to happen
+here is since we're calling get length and that's returning, let's say the number,
+hopefully the number zero. When we say, Oh, down here, `getLength()`. When we call it
+`shouldReturnZero()` on that. What's actually going to be passed is this `$length` here,
+so that's actually going to be the number that's passed as what's called these
+`$subject`. So here we can say `return $subject === 0` because our matching needs to
+return `true`. If it does return zero `false`. If it doesn't return zero.
 
 Alright, so
 
-check this out. That's where you run that test and this time it passes and we can also use these. Should not return. We can use should or should not for their built in metric should not of course fails. So we change that back to you should in temporarily I'm gonna go into my dinosaur and break our code by putting a length of 30 by default and rerun our SPEC. Okay, so two of our specifications fail. The second one here is the one that we're working on right now and it says integer 30, expected to return zero, but it is not. So a little bit of a weird language. Their pitchers back is trying to describe to us what happened, but it's not the best language, which is fine because we can control that if we want to. The way to do that is to throw a special failure exception message, so I want to refer back to this here a little bit and say something like, if subject does not equal zero, then we're going to throw a new failure exception and give that a better message. How about returned values should be zero got and then we'll print that value
+check this out. That's where you run that test
 
-and then at the bottom returned true to signal that everything was fine. Have a rerun that a much better return values should be zero. Got Thirty now, but back into our dentists a class, change that back to zero. Now when we run awesome, everything passes. By the way, with these custom matchers, you notice that sometimes when you have, when you call a customer, you actually pass in argument. In other times you don't. If we did have an argument that we pass to our new matcher should return, that would just be a second argument to the function and of course you can have a third if you have to. You're passing on two things. You'd add a third argument and so on and so forth, so you can make those as flexible as you want. All right. Next, let's create a slightly more interesting custom matcher and in one that can be reused between multiple specifications. The download downside to these inland matches is that this can only be used inside of dinosaur respect, so we can't use it throughout our whole project.
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+and this time it passes and we can
+also use these. Should not return. We can use should or should not for their built in
+metric should not of course fails. So we change that back to you should in
+temporarily I'm gonna go into my `Dinosaur` and break our code by putting a length of
+30 by default and rerun our SPEC.
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+Okay, so two of our specifications fail. The second
+one here is the one that we're working on right now and it says integer 30, expected
+to return zero, but it is not. So a little bit of a weird language. Their pitchers
+back is trying to describe to us what happened, but it's not the best language, which
+is fine because we can control that if we want to. The way to do that is to throw a
+special failure exception message, so I want to refer back to this here a little bit
+and say something like, `if ($subject !== 0)`, then we're going to
+`throw new FailureException()` and give that a better message. How about returned values
+should be zero got and then we'll print that value
+
+and then at the bottom `return true` to signal that everything was fine. Have a rerun
+that
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+a much better return values should be zero. Got Thirty now, but back into our
+dentists a class, change that back to zero. Now when we run
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+awesome, everything
+passes. By the way, with these custom matchers, you notice that sometimes when you
+have, when you call a customer, you actually pass in argument. In other times you
+don't. If we did have an argument that we pass to our new matcher should return, that
+would just be a second argument to the function and of course you can have a third if
+you have to. You're passing on two things. You'd add a third argument and so on and
+so forth, so you can make those as flexible as you want. All right. Next, let's
+create a slightly more interesting custom matcher and in one that can be reused
+between multiple specifications. The download downside to these inline matches is
+that this can only be used inside of dinosaur respect, so we can't use it throughout
+our whole project.
