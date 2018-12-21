@@ -1,104 +1,124 @@
-# Specification
+# Buzzwords! Specification & Examples
 
-Coming soon...
+So if phpspec is all about helping you design your classes - helping you ask: how
+do I want this class to look and behave? - how... does it actually do that? The idea
+is cool: instead of jumping straight into your code and hacking until something works...
+or you get sleepy... stop... step back... and instead, *first*, *describe* how
+you want your class to *behave*.
 
-So if `phpspec` is all about helping you design your classes, like thinking about
-how do I want this `class` to look and behave, how does it do that? Well, the idea is
-instead of just jumping into your code and creating methods and creating properties,
-you should step back first and actually describe how you want, how you want your
-class to behave. We do that by creating a class called a specification, which is a
-fancy word to say. We're going to have one `class` that actually where we describe how
-we want each `class` in our project to work
+We do that by creating a class called a... *specification*. That's a fancy... or
+maybe *boring* word that means that, before coding, we will *first* create a class
+where we simply *describe* how our future class will work and act.
 
-and we can generate that specification class or running
+## Generating the Specification
+
+Let's see this in action. Remember the two commands of the phpspec executable?
+The first is `describe` - run it with `-h`:
 
 ```terminal
 php vendor/bin/phpspec describe -h
 ```
 
- for someone to pass passes with a dash h so you can see the options.
-Basically we're going to pass. Describe them. We're going to pass it the name of the
-class that we want to describe. Notice here that um, because back slashes are escape
-characters we use forward slashes in the name of space just to avoid any problems or
-you can quote it down here. Alright. So in our project, the first thing we need for
-our dinosaur park is we need a dinosaur class, so I'm going to run
+I'm passing `-h` to see the help details. Basically, each time you want to create
+a new class, you should *first* use this command to create a corresponding
+*specification* class. Oh, notice that forward slashes are used for the namespaces,
+that's just to avoid escaping problems.
+
+Anyways, because we're building a dinosaur park, the *first* class we need is...
+`Dinosaur`! So let's run:
 
 ```terminal
 php vendor/bin/phpspec describe App/Entity/Dinosaur
 ```
 
-The namespace of this is not important. I'm mimicking something you would see if
-you're using doctrine inside of Symfony, but that's not important at all. Awesome.
-And this one new file `DinosaurSpec.php`. So let's go check that out. So as you can see,
-`phpspec` creates a `spec/` directory and it which basically will eventually match
-the directory structure of our `src/` directory. And is there. We've done sort of SPEC.
+I could have chosen any namespace starting with `App` - that's up to how you want
+to organize your code. But, if you're used to Doctrine in Symfony, this will feel
+familiar.
 
-Yeah.
+## What are Examples?
 
-Which has the same namespaces are our future dinosaur class because because we
-haven't even created this class yet except for a `spec` namespace. No. First Time you
-look at one of these SPEC classes, they look very strange and we're going to spend a
-lot of time talking about how they're set up. Remember, the point of this class is
-for us to describe the behavior of how we want our `Dinosaur` class to work and we're
-going to do that through things called examples, and what that literally means is
-every single function inside of here that starts with_or it's underscore, is going to
-be seen by phds back as an example, and a place where we show examples of how we want
-our dinosaur to work and it's already generated. This one example for us now what's
-truly strange but amazing about these classes is the base class `ObjectBehavior`
-because object allows us, gives us some magic honestly, and it allows us inside of
-our example functions to treat the `$this` variable as if it was a `Dinosaur` object.
-You're going to see this in a little bit. We're literally going to call methods on
-this that exist in our `Dinosaur` class.
+Ok! One new file: `DinosaurSpec.php`. Let's go check it out! Ok - so `phpspec` creates
+a `spec/` directory, which is meant to have the same file structure that our classes
+will eventually have in `src/`.
 
-We're literally going to write example code as if we were inside of the dinosaur
-class itself. You can see there's one example here. Also uses something called eight
-`matcher`. We're going to talk about these two as well. This is actually an assertion,
-so we're saying here is our `Dinosaur` object because that's what we need to pretend
-this is should have a type of `Dinosaur::class`. So should I. What type of
-`App\Entity\Dinosaur` course that class doesn't even exist yet,
+Open the new file. Ok... these spec classes look a little weird at first - and
+we're going to talk a *lot* about them. The *purpose* of this class is for us to
+describe the behavior of our future `Dinosaur` class. On a philosophical level,
+we do this by writing example code: using our `Dinosaur` class as if it already
+existed and was finished.
 
-but it will soon. So this is just a very simple smoke test. Now, what other weird
-thing about these uh, example functions as they break coding standards a bit. You
-notice there's no `public` in front of this and instead of using camel case, it uses
-this, the_of course, and then everything, everything after that uses underscores. And
-whole reason of that is just readability. We want these methods to read like a to be
-very easy to read so you can very quickly read the functions and figure out how your
-class is supposed to work. So this is a very, very simple specification which says
-nothing more than a Dinosaur object should be a `Dinosaur` object.
+On a more concrete level: we describe the behavior through *examples*. Every function
+in this class that starts with `it_` or `its_` will be read by phpspec as an "example".
+They are the *key* to phpspec, and also the most complex part.
 
-So we've already seen. So `phpspec` only has two commands. We've already seen.
-One of them `describe`, the other one is `run` once again past this eight dash h option
+There are *two* very important things to understand about the code inside these example
+methods. First, and this is *truly* magic, you're supposed to use the `$this` variable
+as *if* we were inside of the `Dinosuar` class itself. Literally: you treat `$this`
+like a `Dinosaur` object - showing *examples* of how you want it to work by calling
+methods on that class - like `$this->getLength()` if the `Dinosaur` class had a
+`getLength()` method.
 
-```terminal-silent
+## Hello Matchers
+
+In addition to using `$this` to call methods that exist - or *should* exist - inside
+`Dinosaur`, the *second* important thing to know is that you can *also* call a huge
+number of methods that start with `should` or `shouldNot`. These are called
+"matchers" - and they are the way you *assert* that things are working correctly
+in phpspec.
+
+In the one generated example function, because we're *pretending* to be inside
+the `Dinosaur` class, we pretend that `$this` is a `Dinosaur` object. When we call
+`->shouldHaveType(Dinosaur::class)`, this *asserts* that the object is an instance
+of that class... which, by the way, doesn't even exist yet! It's a pretty pointless
+test - but I usually keep it.
+
+Oh, and the *last* strange thing about this class is that... it violates coding
+standards! Did you notice the missing `public` before the functions? That's totally
+legal in php - methods are public by default. And the method names are written using
+snake-case instead of camel case. Both of these things are done on purpose for one
+important reason: readability. We're writing PHP - but this class is meant to be
+a human-readable description of our future `Dinosaur` class. And right now, our
+specification says nothing more than a `Dinosaur` object should be... a `Dinosaur`
+object.
+
+## Generating the Class with run
+
+Ready to execute the *other* phpspec command? It's called run - let's show the
+help details on this one too:
+
+```terminal
 php vendor/bin/phpspec run -h
 ```
 
-just so you can see that there are a number of options you can pass to it, but we're
-not going to talk about them right now. We're going to run run and what this is going
-to do is it's going to go look at all of our spec files, which is only just one. Go
-through all the example of codes and make sure that the objects behind them actually
-behave. How we're describing them might think that's crazy because we don't even have
-a `Dinosaur` class yet. There is nothing in our `src/` directory, so let's see what
-happens.
+This is the *main* command in phpspec. Its job is to look at all of our spec
+files - just one right now - and all of the *example* methods inside - and verify
+whether or not the actual class *behaves* like we've described with that example code.
+
+Now... you might think that's a bit crazy. After all, how can phpspec look to see
+if our `Dinosaur` class has the correct "behavior"? The `Dinosaur` class doesn't
+even exist yet! Heck, there's nothing in our `src/` directory at all! Well... let's
+see what happens:
+
+```terminal
+php vendor/bin/phpspec run
+```
+
+At first, it *does* fail because `App\Entity\Dinosaur` does not exist. That's
+expected. But check this out: it's asking: do you want me to create it for you?
+This is what makes `phpspec` so fun! When it sees that you've described some
+behavior that's missing, it can create it for you! Let's choose yes, of course!
+
+Cool! Go look - in `src/`... there it is! It doesn't *do* anything, but... actually...
+our new class *now* has the *behavior* described in our spec. To prove it, re-run
+phpspec:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-At first it does fails as class `App\Entity\Dinosaur` or does not exist.
-That's expected, but check this out. It's like, do you want me to create it for you?
-This is what makes `phpspec` so fun. If it sees that you've described some
-behavior that's missing, like the whole class is missing, it can create it for you,
-so let's choose. Yes, it created that class
+Woh! It works! That... does make sense. Even though we don't understand much
+about how the "examples" work yet, after generating the code, if you try to create
+an instance of a `Dinosaur` class..... you *do* get a `Dinosaur` object! Eureka!
 
-in `src/` and there it is. That's the only, we haven't described it to behavior on it
-yet, we've just described it. We need that class and now you can see that our specs
-pass. We run the run again.
-
-```terminal-silent
-php vendor/bin/phpspec run
-```
-
- It passes. All right, so next let's dive into the Spec
-last and actually start creating some more meaningful examples of how our classes
-work and see how the cycle works to get those to build that code with `phpspec`.
+Next: let's start creating some meaningful examples of how our class should behave
+and see how phpspec can help us build that.
