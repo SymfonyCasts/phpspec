@@ -5,13 +5,13 @@ Coming soon...
 We need to talk about just a little bit of theory and then I promise at the end we're
 going to do something fun.
 
-We need to talk about how peach respect fits into testing your application in
+We need to talk about how phpspec fits into testing your application in
 general. First of all, one of the things I like to remind people is that you're
 always testing. It's just a matter of manual versus automatic and in the world of
 automatic testing, there are three types, and this is something that we also talk
-about inner php unit tutorial. The first type is unit tests and that's when you're
-testing the code itself. PHP SPEC like you're calling literally calling methods like
-set Linkedin, get linkedin, and you're asserting the values. The key thing in unit
+about inner PHPunit tutorial. The first type is unit tests and that's when you're
+testing the code itself. phpspec like you're calling literally calling methods like
+`setLength()`, `getLength()`, and you're asserting the values. The key thing in unit
 tests is that you were, if your object has dependencies, like it depends on a
 database connection. Those dependencies are mocked. This is something that we're
 going to see later in this tutorial, so unit tests are the pure tests. The second
@@ -27,43 +27,43 @@ you were literally writing code that commands a browser to go to a page and clic
 link and fill out a form and assert something on the next page. Or if you're testing
 an API, you're literally writing code that makes API requests to your application and
 asserts the output, so you're basically using your application as an end user. Now,
-PHP unit can do all of the tests. They can do unit tests, integration tests, and
+PHPunit can do all of the tests. They can do unit tests, integration tests, and
 functional tests.
 
 Now too
 
-now be hat, which is another awesome library that we talk about in a different
-tutorial. It can only do functional tests in PHP SPEC can only do unit tests, so you
-might be wondering why don't we just use php unit for everything since it's clearly a
+now behat, which is another awesome library that we talk about in a different
+tutorial. It can only do functional tests in phpspec can only do unit tests, so you
+might be wondering why don't we just use PHPunit for everything since it's clearly a
 very flexible tool and the answer is that
 
-tools like be hat in PHP Spec, they do a much better job for their specific parts
-because be at in Peachtree Spec, help you focus not on just just writing tests and
-getting them to pass, but about focusing on quality, so be had a tool that helps you
+tools like behat in phpspec, they do a much better job for their specific parts
+because behat in phpspec, help you focus not on just just writing tests and
+getting them to pass, but about focusing on quality, so behat a tool that helps you
 focus on what you say, external quality. Basically making sure that the user
 experience, the experience every users is correct. When they click on links, they get
 the expected results and it makes you think about the experience for your users first
 and tests secondarily. That's the key difference between writing functional tests in
-beate versus PHP unit. Were you just more focused on the tests themselves? PGP SPEC
+behat versus PHPunit. Were you just more focused on the tests themselves? phpspec
 is the exact same way for unit tests. Instead of just like writing tests and getting
 them to pass PHP back and makes you think about the design of your classes first and
 then as a product you get unit tests in the background. So along the same lines,
-another thing you're going to hear a lot about is tdd test driven development versus
-bdd behavior driven development. Both of these are trying to accomplish the same
+another thing you're going to hear a lot about is TDD Test Driven Development versus
+BDD Behavior Driven Development. Both of these are trying to accomplish the same
 thing, which is that you have a high quality application that's covered with tests.
 However, the difference is the language and the focus. With test driven development,
 you are literally supposed to write the tests first, then write the code. With
 behavior driven development, the process is going to be the same,
 
 but instead of just thinking about the tests, you were going to think about how you
-want your application but designed. So PHP Spec is actually an example of behavior
+want your application but designed. So phpspec is actually an example of behavior
 driven development because we're thinking about the behavior of our app of our class,
 not the test, but how they should actually behave. And from that we get our tests. So
-in the bdd world, you'll hear even two types, which is story bdd, which is actually
-what beehag gives you and Spec Bdd, which is what you see in php Spec, so I'm telling
+in the BDD world, you'll hear even two types, which is story BDD, which is actually
+what behat gives you and Spec BDD, which is what you see in phpspec, so I'm telling
 you all this because it can be a little bit confusing with all these different moving
-pieces, but the end result is this tool like peachtree Spec doesn't technically give
-you anything that you can't do in php unit, but it changes your focus on the design
+pieces, but the end result is this tool like phpspec doesn't technically give
+you anything that you can't do in phpunit, but it changes your focus on the design
 of your classes instead of just writing the tasks, which can be not only a better
 experience as you read in the task, but I can give you better design.
 
@@ -91,26 +91,54 @@ Do whatever works best for you. In this tutorial, we're going to walk through ki
 the best way to do it, but ultimately just be pragmatic and do what works for you.
 All right. As promised before I move on, we're gonna do one fun thing which is
 actually looking at the different format which is formatting the output of peace,
-respect a little differently so we know we can run it with saying run. Awesome. You
-can also pass a format option which has a number of different values, but one of the
-best ones is pretty cool. Since these check marks are super hipster, let's make
-peace, respect. Use them always by going to our peach respect .yaml in st format or
-that name, colon pretty. As soon as we do that, we always get that pretty output,
+respect a little differently so we know we can run it with saying run. 
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+Awesome. You can also pass a format option which has a number of different values, 
+but one of the best ones is pretty cool. 
+
+```terminal-silent
+php vendor/bin/phpspec run --format=pretty
+```
+
+Since these check marks are super hipster, let's make
+peace, respect. Use them always by going to our `phpspec.yaml` and say
+`formatter.name: pretty`. As soon as we do that, 
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+we always get that pretty output,
 which is nice, but since this is a dinosaur tutorial, what I really need
 
 is a dinosaur telling me that my tests are passing. So Beatrice, Zach has a totally
-silly repository called Nyan formatters, which we are going to install a copy of the
-name of the library we're on composer require peach respect /nine formatters dash,
-dash colon, deb batchmaster mastache Dash Dev repository. It doesn't actually have a
-proper release yet that's compatible with the latest version of peace respect, which
+silly repository called `nyan-formatters`, which we are going to install a copy of the
+name of the library we're on 
+
+```terminal
+composer require phpspec/nyan-formatters:dev-master --dev
+```
+
+It doesn't actually have a
+proper release yet that's compatible with the latest version of phpspec, which
 is fine. It's just a nice little format or or waiting for that. We'll go over and
 copy this extensions code. So I mentioned earlier, extensions are the plugin system.
 In Php unit, they can give you matchers, they can give you custom formatters and the
-way that you activate them is in your peace. Respect. .yaml file we had. This
-extension is key and then the class name for the extension and that's enough to it.
+way that you activate them is in your `phpspec.yaml` file we had. This
+`extensions:` key and then the class name for the extension and that's enough to it.
 Flip back over. Okay, perfect. This finished installing and now this gives us a new
-formatter called Nyan, a couple of new farmers, but we use one called [inaudible] dot
-com. Susie do that, do the run command again in there. Is there a dinosaur and is
+formatter called Nyan, a couple of new farmers, but we use one called `nyan.dino`
+com. Susie do that, do the run command again in 
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+there. Is there a dinosaur and is
 there a test? Get a little longer. We'll enjoy it more because he's actually
 animated. Alright, so a little theory, a little silliness. Next, let's get back to
 work and talk about the very kind of magical object your class which lets us treat
