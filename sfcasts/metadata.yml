@@ -4,6 +4,7 @@ chapters:
   - matchers
   - inline-matcher
   - custom-matcher
+  - custom-matcher-implementation
   - unit-integration-functional
   - object-behavior-magic
   - object-construction

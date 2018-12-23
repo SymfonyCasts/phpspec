@@ -1,152 +1,108 @@
-# Custom Matcher
+# Registering & Autoloading a Custom Matcher
 
-Coming soon...
+The only downside to these inline matchers is that you can't reuse them across
+multiple spec files. Fortunately, phpspec is awesome and so - of course - it *does*
+have a way for you to create a matcher that can be used anywhere. And... what's
+even *better* is that there are a *lot* of create examples for us to learn from.
 
-The only downside to these inline matchers is you can't reuse them across multiple
-spec files, so PHP Spec of course has a way for you to create these matches in
-separate files and actually there's some really great examples out there.
+And here's one: go to https://github.com/karriereat/phpspec-matchers - I... probably
+butchered that username - sorry! Anyways, this library is cool - it's just a big
+collection of custom matchers! Well, technically it's a phpspec *extension*, which
+means it's a "plugin" for phpspec.
 
-For example,
+Unfortunately, this library does *not* work with the latest version on phpspec at
+this time. But... who cares!? It is *still* an awesome source of inspiration for
+custom matchers. Each of these classes represents one matcher.
 
-I don't know how to say this person's username, but here's a php spec master
-repository, which is literally just a bunch of measures that you can take inspiration
-from. This is technically a php extension, which is a PHP plugin. Unfortunately, this
-repository does not work with the latest version on phpspec of its time, but
-it still might be a great example of, um, of matters that you can look at and use
-inside of your project because right now we do need a great one more customer metric
-because we have a bug report. Of course, the best thing to do when you get a bug
-report is to write a test for it or in our case, to describe the correct behavior and
-then make sure it works that way. People have been reporting that want a dinosaur is
-a length of 15 that sometimes it shrinks. We've talked to our scientists and some
-shrinking is okay, but they should definitely not shrink below a length of 12. Turns
-out dinosaur sciences complicated plus get a new example of caught.
-`it_should_not_shrink()`. We'll set the length on our dinosaur to `15`. Notice I'm getting auto
-completion on that. Now that that method really exists and that will say
-`$this->getlength()`, but we don't know the exact value because it's okay if it shrinks a little bit.
-So I'm going to use a new matcha that does not exist called `->shouldBeGreaterThan(12)`
+## Describing a Potential Bug
 
-Now, of course, if we run this right now, it's going to fail. I pass.
+Here's our next goal: our scientists are starting to grow dinosaurs at our park,
+but they've reported a possible bug in the `Dinosaur` class! No problem! When you
+have a bug, the *best* thing to do is write a test for it: to describe the *correct*
+behavior so we can make sure our class has that.
 
-Okay.
+In this case, someone reported that, when a dinosaur is created with a length of
+15, sometimes it shrinks! We've talked to our scientists and they say that *some*
+shrinking is ok, but a dinosaur should definitely not shrink below a length of 12.
+Wow, it turns out that growing dinosaurs is complex!
 
-For this APP, it passes. Oh, because I have a typo. It can see the importance of
-having the_on there. Now run
+Let's translate this expected behavior into a new example function:
+`it_should_not_shrink()`. Set the length of the dinosaur to `15` - notice that
+I *do* get auto-completion now that the `setLength()` method exists.
+
+Then say, `$this->getlength()`... but... hmm. In this pretend example, the dinosaur
+is allowed to shrink *some* but not below 12. To reflect that, let's say:
+`->shouldBeGreaterThan(12)`
+
+As you probably saw, that is *not* a real matcher. So, the tests should fail. Try
+them:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
+They... pass? Hmm... ah! A typo! And this *proves* that each example *must* start
+with `it_` or `its_`. Try phpspec again:
 
-it perfect. It fails because the metro was not found.
-Now we know that we can just create an inline matcha for this, but this is sounds
-like actually a pretty useful mattress. So I'm going to create a new custom class so
-it doesn't matter where this goes, but in my spec directory I'm going to create a
-match your directory and inside there a new php class called `BeGreaterMatcher`. And
-the namespace for this should be `spec/` the directory path. So `spec/Matcher`,
+```terminal-silent
+php vendor/bin/phpspec run
+```
 
-I'm not gonna put any logic in here yet, but I first want to just make sure that PHP
-Spec sees our new matcher. Now the way to do that is in your `phpspec.yaml` file
-inside of there you can add a `matchers:` section. And then very simple, you just put a
-list of your mattress. So `- spec\Matcher\BeGreaterMatcher`. That's it. Alright. So
-what word yet? But let's try it for one it again. Oh, interesting. I get custom
-matcher `spec\Matcher\BeGreaterMatcher`. It does not exist. This is basically a class
-not found error by copy. The namespace. Yeah, that looks correct. So the question is
-what's the problem? Well, the problem is that in our `composer.json` File, we've
-configured composer to be able to auto load things from the source directory, but we
-haven't configured it to be able to auto things from our SPEC directory.
+*There* is the failure we expected.
 
-Now, phpspec doesn't need autoloading to exist in a in order to actually find
-the SPEC files, it finds and handles all the SPEC files itself, but if you want to
-put any other classes in there like a matcher, then you're going to need some auto
-rules to find those just fine because it's is very simple. We'll just copy that load,
-make a new one called `autoload-dev` because we only need these auto load rules
-while we're developing and will say that the `spec\\` namespace lives in the `spec/`
-directory and that's it. Move back over run
+## Creating our Matcher Class
+
+We already know that we could create an inline matcher. But... I kinda want to be
+able to re-use this in other spec classes. To do that, we'll create a matcher class.
+In the `spec/` directory, create a `Matcher` directory and then a new class:
+`BeGreaterMatcher`... though this class could live anywhere. The namespace should
+be `spec` then the directory path. So `spec\Matcher`.
+
+But, let's keep this class empty for now - I just want to make sure that phpspec
+can *see* our new matcher. How? Via its config! Open `phpspec.yaml`, add a `matchers:`
+section and then, very simply, list your matcher: `- spec\Matcher\BeGreaterMatcher`.
+
+That's it! It won't *fully* work yet of course... but let's see what happens. Run
+phpspec: 
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+Interesting:
+
+> Custom matcher `spec\Matcher\BeGreaterMatcher` does not exist.
+
+This is basically a "class not found" error. Copy the namespace. Yeah... that looks
+correct - I don't see any typos. So... what's the problem? Autoloading!
+
+## Autoloading the phpspec Directory
+
+Open the `composer.json` file. We configured composer to be able to autoload things
+from the `src/` directory, but we haven't configured it to be able to autoload
+things from the `spec/` directory. Now, phpspec *itself* does *not* need any
+autoloading to be setup to find the spec files - it handles all of that itself.
+But if you want to put any *other* classes in this directory - like a matcher -
+then we *do* need to set up autoloading.
+
+No problem: copy the `autoload` section, paste and change it to `autoload-dev`.
+Tell composer to expect the `spec\\` namespace to live in the `spec/` directory.
+
+To make Composer rebuild its autoloader, run:
 
 ```terminal
 composer dump-autoload
 ```
 
-so that it reads those rules. Now run it again.
+Cool! Let's try phpspec again:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-Perfect. This is a better thing. It's Caesar, be
-great, your matcher, but it says that it must implement a `Matcher` interface. Not
-surprising that we need to implement an interface to make this work and actually we
-can see a couple of great examples of this in your `vendor/phpspec/phpspec/src/PhpSpec`.
+*Much* better! It *does* see it, and now we get:
 
-Yeah.
+> Custom matcher spec\Matcher\BeGreaterMatcher must implement some Matcher interface.
 
-`Matcher/` directory. You can actually see all of the core matches in here, which is a
-great way to grab inspiration. For example, if you look in the `ThrowMatcher`. Yup.
-You can see it's implementing this `Matcher` interface.
-
-Yeah,
-
-but another example of it's a little bit simpler is actually the `IdentityMatcher` and
-does that instead of implementing the `Matcher` interface, that actually extends a
-`BasicMatcher` which handles a lot of the work for you and implements matcher and it
-does a lot of the low level details for you, so most of the time you want to extend
-this `BasicMatcher` because it makes your life a little bit easier. So let's close
-those files up, close off a few other files and then we'll make our
-`BeGreaterMatcher extend BasicMatcher`, mostly gonna. Make the class a `final`. There's no reason for
-that. Just kind of a a better practice these days and if you don't need a sub class
-one of your classes and then I'm going to go to the code, generate menu or command
-end, go to "Implement Methods" and implement all four of the methods that we need to
-implement. Perfect. Now the most important one here is `supports()`. Let's `var_dump()` the
-arguments here, `$name`, `$subject` and `$arguments`. Whenever a matcher is used inside of a
-specification, phpspec is going to iterate over all of the mattress and call
-`supports()` to figure out which of the matches to use.
-
-So now if we run this as you can see it dumping out actually every single time so it
-dumps out for `haveType`, `returnZero` and down here for `beGreaterThan`. That's the
-`$name`. The `$subject` is `15` because in our SPEC class, `getLength()` is returning 15 and
-then that's what's going to be passed to this matcher. And then finally for
-arguments, there's an `array` with only one thing in there which is 12 because
-we're passing 12 here as our arguments. So you can make this really in the supports
-method. All we need to do is make sure that the method name, the `$name` is `beGreaterThan`
-the lot of times when you know core, you'll see these be written a little bit
-more specifically. So in our case we could, for example, say that you can use
-`beGreater` or `beGreaterThan`. And then if you want, you can even make
-the specific types of the subject and arguments match. So we'll say and and his new
-new numeric subject. So if you pass a string it won't match this and we'll make sure
-that the arguments are exactly one, just one argument and that
-
-that one argument itself is numeric. So it shouldn't now match our matcher and if it
-does then it's going to call our matches function. Once `var_dump` this `$subject` in the
-`$arguments` one more time. This time we'll put a `die` statement so we can see it's
-called move back over and run it.
-
-```terminal-silent
-php vendor/bin/phpspec run
-```
-
-And yes, we've got it. With the 15 being passed as
-the subject and then the arguments being that array with that 12 inside of there and
-we now know there will be exactly one argument always because of our code down and
-supports very simply we can return subject are 15, should be greater than arguments,
-lasker brackets zero, and that's it for the matches part. Now if this fails where
-they're going to call, either get failure exception or get negative failure exception
-to get negative failure. Exception is if you use something like should not be greater
-
-for these, I'm going to just paste in the `FailureException`. We're going to
-`return new FailureException()`, which is the same type of thing that we were throwing from our
-inline matcher, which just has a custom message expected the subject regretted than
-the argument and for the negative one I'm going to copy that and it's going to be the
-exact same thing except it's going to be expected this to not be great event and that
-is a fully functional customer match which allows us to use very natural language
-inside of our space inside of our examples. All right, so let's run that one more
-time
-
-```terminal-silent
-php vendor/bin/phpspec run
-```
-
-and it passes. Next we need to talk a little bit about how peach respects fits
-into the entire world of testing. You need to do that before we dive further. For
-example, there is functional tests, integration tests, and unit tests, and also
-multiple tools like PHPunit and behat the handle those. So let's dive in and figure
-out exactly how this fits in.
+Apparently all matcher classes need to implement this interface. That makes sense!
+Let's do that next - and finish this matcher.

@@ -1,116 +1,136 @@
-# Matchers
+# Matchers (Assertions))
 
-Coming soon...
+We have an empty `Dinosaur` class. *Now* we need to start thinking about what we
+need this class to do - how we want it to behave! So, hmm... let's see. We definitely
+want to be able to set the length on a Dinosaur. And, unless we decide to make it
+a required argument to the constructor, the length should probably be 0 if we don't
+set it.
 
-Okay,
+## Our First Example
 
-let we have her empty `Dinosaur` class. We need to start thinking about how we want it
-to behave. So let's see. A dinosaur definitely needs a length and thinking about our
-object. If we're not going to make length, they required constructor argument. Then
-if we don't set the `$length`, it should probably be `0` until we set it. So right
-there I just described an example of how this our `Dinosaur` class work. So quite
-literally that's what we're going to put as a function. So we're going to say
-`function`. Start with it,_it, because that's what phpspec requires and it also
-helps it read like a nice sentence was they. `it_should_default_to_zero_length()`.
+So right there: I just described an example of how our `Dinosaur` class should work!
+Let's translate that into a phpspec example! Create a new function, start it with
+`it_` - because that's what phpspec requires... and also because that'll help us
+make really descriptive method names. How about: `it_should_default_to_zero_length()`.
 
-Okay,
+Inside, remember: the goal is to *pretend* like we're inside the `Dinosuar` class.
+Behind the scenes, when each example is executed, `phpspec` will instantiate a
+`Dinosaur` object behind the scenes and *we* can reference it via `$this`. That's
+*total* magic, and we'll look at how it works a bit later.
 
-and one side of here, as I mentioned `$this` is we went to think of `$this` as a `Dinosaur`
-object before each example is executed. Behind the scenes, `phpspec` will
-instantiate a `Dinosaur` object and then we can reference it by calling `$this`. Nope.
-Want to talk more later about how this magic works and how we can control the
-instantiation, but right now I just want you to think of this is a `Dinosaur` object.
-What we're going to do is just call them, call it real methods on it, so eventually
-on our `Dinosaur` class I think we should have a `getLength()` method, so we just call
-`$this->getLength()` as if that exists and then because I think that should equal
-to `0` because we haven't set it anywhere else. We'll use a matcher `->shouldReturn(0)`.
-And you noticed these matches here. We've had two things called the matchers
-that start with the word should matches in `phpspec` are basically the assert
-functions in PHPunit php unit have things like `assertEquals()`, `assertGreaterThan()`
-in `phpspec` you have the same thing. They just start with the word should.
-Unfortunately, PHPstorm has really good support for all of these match your
-functions and they always start with either `should*` or `shouldNot*`. So I'll put this
-one back too.
+Anyways, right now: just imagine that `$this` is is a `Dinosaur` object. To show
+an example of how the length should be 0 by default, we will *literally* write
+example code. I think our `Dinosaur` class will probably need a `getLength()` method
+to get the length. So let's write: `$this->getLength()` as if that already existed.
 
-`shouldReturn(0)` and that is a fully functional example.
+And because that should equal 0 - because we haven't set it anywhere - call a matcher
+function `->shouldReturn(0)`.
 
-Then Fun your browser and go to http://phpspec.net. You can click into the manual
-and go to the mattress section and I just want you to be aware that there is really
-big documentation and all the different matchers, so we're using something right now
-called the **Identity Matcher**, which actually you can say `shouldBe()`, `shouldBeEqualTo()`
-`shouldReturn()` or `shouldEqual()` and all of these are different ways just to do a
-comparison operator using `===`, which means they are equal in value and type.
-There's also a **Comparison Matcher** where you can say `shouldBeLike()` and that does `==`
-and there's many, many, many more and we'll talk about a lot of the most important
-ones a little bit later.
+## Matchers!
 
-Alright, so now that we have a new example, obviously this is not going to pass. We
-do not have a good length method on our `Dinosaur` class, but the cycle you're going to
-do is you're always going to describe it with an example and then go over here and
-we're going to run.
+How... weird, but cool is that! At any point in phpspec, you can say `->should`
+to call one of phpspec's *many* "matcher" functions. These are equivalent to the
+`assert()` functions in PHPUnit - the difference is purely style. Instead of saying
+`$this->assertEquals(0, $dinosuar->getLength())` like you would in PHPUnit, you
+say `$this->getLength()->shouldReturn(0)` - writing code that reads a lot more
+like a *description* of the behavior we want.
+
+Fortunately, even though phpspec is using some serious magic to make this all
+work, PhpStorm has really good support for auto-completing these matcher functions.
+Oh, and every matcher *always* starts with `should` or `shouldNot`.
+
+Find your browser and go to https://phpspec.net. Click into the manual and go to
+the matchers section. Check it out! phpspec has a *huge* amount of docs about all
+the different matchers. Right now, we're using one called the **Identity Matcher**,
+which allows you to use `shouldBe()`, `shouldBeEqualTo()` `shouldReturn()` or
+`shouldEqual()` - these are all different ways to do compare values using `===`.
+
+There's also a **Comparison Matcher** where you can say `shouldBeLike()` to compare
+two values using `==`. And there are many, many, many more - we'll talk about my
+favorite ones more as we go along.
+
+## Generating the Missing Method
+
+We *now* have one new example of how we want the `Dinosaur` class to work. Of course,
+it won't *pass* - we don't even have a `getLength()` method! But, before we jump
+in and start coding, let's run phpspec... just to see what happens:
+
+```terminal
+php vendor/bin/phpspec run
+```
+
+Yep... fails! The `getLength()` method is not found. Oh, but check it out! Just
+like before, it *realizes* that we're describing some new behavior that doesn't
+exist and asks us if we want it to do our job for us! Of course we do!
+
+Let's go check it out! Nice! Of course, unless your version of phpspec has become
+self-aware, it has *no* idea *what* to put inside the method.
+
+And so, after phpspec generated the code, it automatically re-ran itself, but the
+new example *still* fails:
+
+> it should default to zero length, expected integer `0` but got `null`,
+
+*This* is the phpspec flow! First, we describe some behavior with an example. Second,
+`phpspec` generates as much as it can. And third, we finally fill in the logic.
+
+## Filling in the Logic
+
+And actually, you're *supposed* to fill in the method with as *little* code as
+possible to get the test to pass - including just hardcoding a value if you can!
+We'll talk more about this later.
+
+For now, let's fill this in for real. So, we will probably need a `$length` property
+and it will need to default to 0. Inside the method, return `return $this->length`.
+Oh, and to be super-cool, add the `int` return type.
+
+Our class *should* now behave like our example expects. Let's see if phpspec agrees!
+Run it:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-It's not surprisingly, this fails because it says the `getLength()`
-method is not found, but check it out, just like before it realizes that we're
-describing some new behavior that doesn't exist in our demonstrate class, so asks us
-if we want to generate it. So let's say `yes` and I'll move over so we can look at our
-data server class and it did generate it. Of course it has no idea what logic to put
-inside so it just puts it to do. And then when `phpspec` tries to rerun our SPEC
-here, it says `it should default to zero length`. Expected integer `0` but got `null`,
-because of course our new generation method is not returning anything. So this is
-great. So our job is to describe it. `phpspec` generate as much as I can and now
-we just need to fill in the logic. So probably will want a `$length` property. It's
-going to default to `0`. We'll `return $this->length` and also because we're using PHP
-seven, we'll add a `: int` return type.
+Yes! It passes!
 
-Now if we go over and rerun `phpspec`,
+## Describing setLength()
 
-```terminal-silent
-php vendor/bin/phpspec run
-```
+But... well.. we're going to need a way to *set* the length. How do we want that
+to work? There's no right answer - it depends on your app. For example, you could
+make it a constructor argument. Or, it might make sense in your app to have a
+`setDetails()` method where you pass the length along with a few other things about
+your dinosaur. Or, you might need a simple `setLength()` method.
 
-it passes. So let's go a bit further. If
-we're going to have a length, we're going to need a way to set it. Now we could
-decide that we want to have the length as a constructor argument inside of dinosaur,
-and that's something we're going to talk about later. How to test with construct
-arguments, but right now I'm going to say that I want a `setLength()` method, so very
-simply we're just going to describe that `function it_should_allow_to_set_length()`,
-again, think of `$this` object as the `Dinosaur` object. How would you set the length
-on the Dinosaur object? Well, I would say `$this->setLength()` probably. We'll set it to
-`9`.
+Let's create an example showing `setLength()`: `function it_should_allow_to_set_length()`.
+Inside, pretending that `$this` is a `Dinosaur` object, let's show how this should
+work: call `$this->setLength()` and pass it, how about 9. After that, we should
+be able to call `$this->getLength()->shouldReturn(9)`.
 
-Yeah,
+Done! Oh, and I want you to notice one cool thing: we get autocomplete on the
+`getLength()` method! PhpStorm has *great* phpspec integration. We *don't* have
+auto-complete on `setLength()`, because that method doesn't exist yet.
 
-and then I should be able to say `$this->getLength()->shouldReturn(9)` just like that.
-You guys know the drill now, now that we've run the example. Oh, and one thing I want
-to highlight here
-
-is that you actually get autocomplete on the `getLength()` method because PHPstorm
-is smart enough to kind of work that magic for you and we still don't have it on a
-`setLength()` method. That method doesn't actually exist. So you guys know the cycle,
-we've written the example, now we're going to move over, we're going to try to run
-the code.
+Ok, example done. Let's see what phpspec thinks:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-It's going to fail because they set length methods not asks us if we want
-to generate it, `yes`, we do reruns the SPEC, but of course it fails because our set
-length method is not working correctly yet. Now move over and make this work exactly
-how we want it. So I'll change this to an `int $length`. Notice it and it realized we
-needed an argument. It didn't know what the type or name of the argument was, but it
-knows we need an argument and we'll say `$this->length = $length;`. All right, move over
-to try one more time
+Nice! It fails, asks us to regenerate the code, then fails again because our
+`setLength()` method is probably just blank. Let's move over and make this work
+exactly how we want it. Change the argument to `int $length`. Notice: it realized
+we needed an argument... but itt didn't know what the type or name of the argument
+should be. Inside, `$this->length = $length`.
+
+Let's try it!
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-and they pass. It is a very satisfying cycled to go with `phpspec`. So next, let's
-talk a little bit more about these matters and actually how we
-could create our own mattress to make the language as natural and fluid as possible
-in his classes.
+Yes! All green! This is test-driven-development the phpspec way. Oh, and yea, we'll
+talk more about TDD, BDD and what all those buzzwords mean in the context of phpspec
+a bit later.
+
+Next, let's create our own *custom* matcher to help us keep our examples as
+natural-sounding as possible.

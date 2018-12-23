@@ -1,88 +1,107 @@
-# Inline Matcher
+# Custom Inline Matcher
 
-Coming soon...
+One of the *main* goals of a specification class is for it to communicate the
+behavior of our class through as readable and natural language as possible. Before
+functioning as a test, it's meant to be *documentation*.
 
-One of the big goals of these specifications classes is for the language to be as
-natural as possible as if you're just describing and normal language how you want
-your class to work. This is both in the names of the example methods and also the
-language that we use down here like `getLength()->shouldReturn(9)` now saying
-`$this->getlength()->shouldReturn(0)` is fine language, but let's pretend that it's more natural
-if we want to use slightly different language like function, so let's create. Instead
-of updating that existing, I'm to create a new example that uses different language
-so `it_should_default_to_zero_length_using_custom_matcher()`. See what I mean by that
-in a second. So let's say that. Well, the way I want to describe the length being
-empty is by saying `$this->getLength()->shouldReturnZero()`. Let's pretend that that is
-more natural for me and as you saw petri from did not auto complete that because that
-is not a built in matcher and so when we run it, it fails matcher, no returns, zero
-metro found.
+To make it as *effective* as possible, both the names of the methods should be easy
+to read as well as the code. For example, saying `$this->getLength()->shouldReturn(9)`
+reads like a normal sentence.
 
-Okay? Talking to create our own custom matters, there are two ways, and we'll see
-both of them, but the simplest way is to create what's called an inline matcher, a
-match or that we can right right inside of this specification class, so it doesn't
-matter where, but I'll go to the top of the class I'm going to go to. I'm going to go
-to the `Code -> Generate` menu or command n Imac override a method called `getMatchers()`.
-Don't need to call the parent method because that's empty in here. We can return an
-array of custom mattress. Now since this one's called `shouldReturnZero()`. The key
-we're actually going to use here is returned zero, so it's whatever you want your
-match to be minus the should or should not parked. So we'll say `returnZero`, and then
-we set this to a `function` with one argument called `$subject`. Now it's going to happen
-here is since we're calling get length and that's returning, let's say the number,
-hopefully the number zero. When we say, Oh, down here, `getLength()`. When we call it
-`shouldReturnZero()` on that. What's actually going to be passed is this `$length` here,
-so that's actually going to be the number that's passed as what's called these
-`$subject`. So here we can say `return $subject === 0` because our matching needs to
-return `true`. If it does return zero `false`. If it doesn't return zero.
+But let's pretend for a minute that this language does *not* sound clear to us. In
+that case, we can invent our *own* language. Let me show you: create a new example
+function: `it_should_default_to_zero_length_using_custom_matcher()`.
 
-Alright, so
+Inside, let's show this same behavior, but in a different way - how about
+`$this->getLength()->shouldReturnZero()`.
 
-check this out. That's where you run that test
+That's great language! But, as you probably noticed, PhpStorm did *not* auto-complete
+this. That's because... I just made that language up! There is *no* built-in matcher
+that allows us to say `shouldReturnZero()`.
+
+Try it:
+
+```terminal
+./vendor/bin/phpspec run
+```
+
+Yep! No `returnZero` matcher found. But, if *this* is the language that is most natural
+to us, we *can* make this work - just create our own matcher.
+
+## Overriding getMatchers()
+
+The simplest way to create a custom matcher is to add it right into your spec class.
+At the top of your class... or really anywhere, go to the `Code -> Generate` menu -
+or Command+N on a Mac - and override a method called `getMatchers()`. We don't need
+to call the parent method because its empty.
+
+This method is kinda beautiful: just return an array where they *keys* are the custom
+matchers you want. Except, the *key* is *not* `shouldReturnZero()`. Nope, the name
+of your matcher is that string *without* the "should" or "shouldNot" part. In other
+words, add `returnZero` set to a function with one argument called `$subject`.
+
+## The Matcher Subject
+
+Here's how this works: in the example, we call `getLength()`, which we know returns
+an integer - hopefully zero. But thanks to the magic of phpspec, we can call
+`shouldReturnZero()` on this value. When we do that, phpspec will call our function
+and pass the *length* returned from `getLength()` as the `$subject`. Complete
+the matcher by saying `return $subject === 0`. Our matcher function should return
+`true` if the `$subject` looks valid, `false` otherwise.
+
+So... let's try this!
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-and this time it passes and we can
-also use these. Should not return. We can use should or should not for their built in
-metric should not of course fails. So we change that back to you should in
-temporarily I'm gonna go into my `Dinosaur` and break our code by putting a length of
-30 by default and rerun our SPEC.
+Yes! It passes. Oh, and we can automatically *also* say `shouldNotReturnZero()` if
+we want - every matcher is able to handle both `should` and `shouldNot`.
+
+## Better Error Message
+
+To make sure the matcher is *really* working, in `Dinosaur`, add a bug by changing
+the default length to 30. Now re-run phpspec:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-Okay, so two of our specifications fail. The second
-one here is the one that we're working on right now and it says integer 30, expected
-to return zero, but it is not. So a little bit of a weird language. Their pitchers
-back is trying to describe to us what happened, but it's not the best language, which
-is fine because we can control that if we want to. The way to do that is to throw a
-special failure exception message, so I want to refer back to this here a little bit
-and say something like, `if ($subject !== 0)`, then we're going to
-`throw new FailureException()` and give that a better message. How about returned values
-should be zero got and then we'll print that value
+Two examples fail - the one we're working on is the second one. Look at the error:
 
-and then at the bottom `return true` to signal that everything was fine. Have a rerun
-that
+> integer:30 expected to `returnZero()`, but it is not.
 
-```terminal-silent
-php vendor/bin/phpspec run
-```
+Wow. That's... kinda bad language on that error. phpspec is *trying* its best to
+tell us what went wrong in a way that makes sense... but it doesn't always work.
 
-a much better return values should be zero. Got Thirty now, but back into our
-dentists a class, change that back to zero. Now when we run
+No problem - we can control that error. Let's refactor that code a bit: if
+`$subject !== 0`, then, instead of returning false, throw a new
+`FailureException()` with a better message:
+
+> Returned value should be zero got "%s"
+
+and pass `$subject` for the wildcard.
+
+Then, at the bottom `return true` to signal that everything is fine. Try the
+tests again:
 
 ```terminal-silent
 php vendor/bin/phpspec run
 ```
 
-awesome, everything
-passes. By the way, with these custom matchers, you notice that sometimes when you
-have, when you call a customer, you actually pass in argument. In other times you
-don't. If we did have an argument that we pass to our new matcher should return, that
-would just be a second argument to the function and of course you can have a third if
-you have to. You're passing on two things. You'd add a third argument and so on and
-so forth, so you can make those as flexible as you want. All right. Next, let's
-create a slightly more interesting custom matcher and in one that can be reused
-between multiple specifications. The download downside to these inline matches is
-that this can only be used inside of dinosaur respect, so we can't use it throughout
-our whole project.
+Oh, *even* with my typo on the word "got", the error is *much* better. Let's go
+fix that bug - change 30 back to zero - and re-run phpspec:
+
+```terminal-silent
+php vendor/bin/phpspec run
+```
+
+Nice! Oh, by the way, *sometimes* when you call a matcher, you pass it an argument...
+and sometimes we don't. If we *did* pass an argument to the matcher function, it
+would passed to our callback as the second argument. And if you pass two arguments
+to the matcher, these become arguments two and three... and so on - you can make
+the matcher as complex as you need.
+
+As nice as creating an "inline" matcher like this is - it has one major downside:
+our `returnZero` matcher can't be re-used in any other spec classes. Next: let's
+create another custom matcher but make it able to be used in our entire app.
