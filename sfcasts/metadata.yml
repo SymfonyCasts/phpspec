@@ -8,6 +8,7 @@ chapters:
   - unit-integration-functional
   - red-green-refactor
   - object-behavior-magic
+  - subject-magic
   - object-construction
   - factory-class
   - no-mocking
