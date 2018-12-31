@@ -6,6 +6,7 @@ chapters:
   - custom-matcher
   - custom-matcher-implementation
   - unit-integration-functional
+  - red-green-refactor
   - object-behavior-magic
   - object-construction
   - factory-class
