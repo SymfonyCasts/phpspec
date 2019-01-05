@@ -50,7 +50,7 @@ php vendor/bin/phpspec run --format=pretty
 ```
 
 Emohis! Since these check marks are super hipster, let's make phpspec use this format
-by default. Open `phpspec.yaml` and add `formatter.name: pretty`. As soon as we do
+by default. Open `phpspec.yml` and add `formatter.name: pretty`. As soon as we do
 that, can remove the `format` option and *still* get those check marks.
 
 ```terminal-silent
@@ -77,7 +77,7 @@ it can give you custom matchers, custom formatters or even change how the genera
 code is rendered - like to add more type-hints for arguments. There's a whole page
 on phpspec's docs listing some of the most popular extensions.
 
-To activate an extension, open `phpspec.yaml`, add `extensions:` and then paste the
+To activate an extension, open `phpspec.yml`, add `extensions:` and then paste the
 extension class name. That's it. Let's go check on the terminal... yes! It's done!
 
 The purpose of *this* extension is to give us a few new formatters. One of them is

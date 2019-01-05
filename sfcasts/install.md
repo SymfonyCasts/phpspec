@@ -87,7 +87,7 @@ But to do that, it *also* needs to know that our classes will live in the `src/`
 directory and that each namespace will start with `App`. Unfortunately, phpspec
 can't automatically get all this info from `composer.json`, but it's no problem.
 
-Create a `phpspec.yaml` file at the root of the project - `phpspec` automatically
+Create a `phpspec.yml` file at the root of the project - `phpspec` automatically
 knows to look for this. Inside add `suites` then `default`. Like most testing tools,
 you can organize your tests into multiple groups, or "suites" if you want. In this
 tutorial, we'll stick to using the one, "default" suite.
