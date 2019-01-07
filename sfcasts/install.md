@@ -71,8 +71,11 @@ when you start, for example, a new Symfony project. But I want to show how it's 
 by hand so that we can *truly* understand what's going on behind the scenes.
 
 Add `autoload`, then `psr-4`, then say that classes starting with `App\\` will live
-in the `src/` directory. To make Composer notice this change, find your terminal
-and run:
+in the `src/` directory.
+
+[[[ code('5bb9540e49') ]]]
+
+To make Composer notice this change, find your terminal and run:
 
 ```terminal
 composer dump-autoload
@@ -92,9 +95,13 @@ knows to look for this. Inside add `suites` then `default`. Like most testing to
 you can organize your tests into multiple groups, or "suites" if you want. In this
 tutorial, we'll stick to using the one, "default" suite.
 
+[[[ code('cf87b0eecc') ]]]
+
 Under this, add `namespace: App` - because all of our classes will start with the
 `App` namespace - and `psr4_prefix: App`. Those two lines are enough to help
 phpspec know *where* to generate our files.
+
+[[[ code('cf50a86f52') ]]]
 
 And... team, we're ready to go! Next, let's create our first *specification*...
 ooOOOOooo. That's the file where we will *describe* how a single class should behave
