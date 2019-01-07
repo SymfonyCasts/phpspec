@@ -36,7 +36,7 @@ calls `supports()` to figure out *which* of the matchers to use.
 Let's see what happens! Run phpspec:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Yep! It's dumping out *every* time a matcher is used - once for `haveType`, `returnZero`
@@ -65,7 +65,7 @@ called like we expect.
 Move over and try phpspec again:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Yes! We *are* called with 15 as the `$subject` and the same `$arguments` array with
@@ -87,7 +87,7 @@ language inside of *any* of our spec files. Well, that *should* be true - if eve
 works! Let's try it:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 It passes! Next: it's time to talk about how phpspec fits into the entire world

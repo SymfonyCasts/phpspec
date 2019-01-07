@@ -61,7 +61,7 @@ this example already pass? Of course not! We don't even have a `getLength()` met
 yet! But, run phpspec anyways - and prepared to be... amazed:
 
 ```terminal
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Yes! I love failure! The `getLength()` method is not found. Oh, but check it out! Just
@@ -96,7 +96,7 @@ Our class *should* now behave like our example expects. Let's see if phpspec agr
 Run it:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Woohoo! It passes!
@@ -127,7 +127,7 @@ for `setLength()`, because that method doesn't exist yet.
 Let's see what phpspec thinks about our new example:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Awesome! It hates it! It fails, asks us if it can generate some code, then fails
@@ -138,7 +138,7 @@ to `int $length`. Inside, `$this->length = $length`.
 Try it again!
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Yes! All green! This is test-driven-development the phpspec way. Oh, and yea, we'll

@@ -41,7 +41,7 @@ exist yet. Just see how that looks in a second. Let's also just check that the l
 Perfect. So you guys know the drill after writing example, will you run? It's 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 of course it fails and of course phpspec is smart enough to say, Hey, it looks like
@@ -59,7 +59,7 @@ the `$length`, and finally `return $dinosaur` just like that. We have designed a
 created a new method so our tests should run, move over, run it again, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 and they
@@ -74,7 +74,7 @@ I'll also add the `string` return. Type on there
 are run it, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 it passes what's up with this factory idea, but make it even a little bit
@@ -88,7 +88,7 @@ is where you pass it. The name of the class that we want to create some
 `App/Factory/DinosaurFactory`. 
 
 ```terminal
-php vendor/bin/phpspec describe App/Factory/DinosaurFactory
+./vendor/bin/phpspec describe App/Factory/DinosaurFactory
 ```
 
 That namespace can be anything, but I'm saying I want you to
@@ -102,7 +102,7 @@ done this for factories should be an instance of itself, but the class doesn't
 actually exist yet, so let's create it by running run 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 will generate that for us. And now our specifications pass. So we're going to go through, 
@@ -124,7 +124,7 @@ another class that it returns. Let's go ahead and `var_dump()` that `$dinosaur` 
 we can see kind of how that works. And then we'll run the method. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 It of course asks
@@ -150,7 +150,7 @@ the method, but the method is empty right now. So this is the red part of the cy
 We've written an example. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 It is failing. So the next thing we need to do is make this
@@ -169,7 +169,7 @@ to make our code a little cleaner, I'll say `int length` and this is going to re
 Perfect.
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 And we run that green, red, red part of the cycles done. Green part of the cycle is
@@ -188,7 +188,7 @@ might know what's going to happen here. You might be able to spot the problem. O
 we run it. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Our refactoring was not innocent. We actually broke things. It says Return

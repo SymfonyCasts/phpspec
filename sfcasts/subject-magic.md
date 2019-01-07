@@ -11,7 +11,7 @@ This time `var_dump($this->getLength())`. Will this be the integer 15? Something
 else? Let's find out!
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Cool! It's an instance of a `Subject` object. Stop! We *know* that object! That
@@ -49,7 +49,7 @@ object and the `__call()` method, which forwards method calls.
 Let's remove our debug code, and make sure the tests are still passing:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Cool! Now, back to testing! Next: let's learn how to "describe" a special part of

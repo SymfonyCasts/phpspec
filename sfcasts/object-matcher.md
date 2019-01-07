@@ -42,7 +42,7 @@ and that's it.
 So let's try this. Go over run phpspec 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 and perfect. We can take steps to me
@@ -73,7 +73,7 @@ dinosaur. It can be added to the this enclosure
 so we can run this now, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 but we know it's not going to pass because we're calling an
@@ -104,7 +104,7 @@ We'll pass it `'Velociraptor'`. `true`. Then we can say `$this->shouldBeCarnivor
 Cool thing is what happens when we run this 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 gas. It actually says, look, he says,
@@ -114,7 +114,7 @@ dinosaurs.
 Why not run? Run?
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 As you can see, it actually fails. You can say it should be herbivore, but a fault
@@ -122,7 +122,7 @@ and it should allow you to check up dinosaurs. Carnivorous says method array to 
 found. Let's rerun that with verbose.
 
 ```terminal-silent
-php vendor/bin/phpspec run --verbose
+./vendor/bin/phpspec run --verbose
 ```
 
 No, that's not going to help. We're not gonna. Do that,
@@ -137,7 +137,7 @@ returning to `$this->isCarnivorous` and I'll add the `bool` return type on there
 All right, so let's go back Ron, 
 
 ```terminal-silent
-php vendor/bin/phpspec run --verbose
+./vendor/bin/phpspec run --verbose
 ```
 
 and now everything passes which includes both our
@@ -167,7 +167,7 @@ on my dinosaur, but I want to be able to say, `shouldBeCarnivorous()` and down h
 run your test, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 phpspec is going to tell you what method name you should have inside
@@ -180,7 +180,7 @@ The argument will be a data store object and we can return this arrow. You
 it, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 excellent it passes, and now that we're green, we can do a little bit of
@@ -190,7 +190,7 @@ rid of all this complicated stuff in the end and we can simply say,
 more time 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 and we've got it. Awesome example of several different classes working

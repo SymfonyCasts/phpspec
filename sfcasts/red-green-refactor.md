@@ -39,14 +39,14 @@ Ok, as promised, after *all* that theory, we're going to do something fun before
 we keep going. We already know how to run phpspec:
 
 ```terminal
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Awesome! You can *also* pass a `format` option. This accepts a number of different
 values, but one of the *best* is `pretty`:
 
 ```terminal-silent
-php vendor/bin/phpspec run --format=pretty
+./vendor/bin/phpspec run --format=pretty
 ```
 
 Emohis! Since these check marks are super hipster, let's make phpspec use this format
@@ -54,7 +54,7 @@ by default. Open `phpspec.yml` and add `formatter.name: pretty`. As soon as we d
 that, can remove the `format` option and *still* get those check marks.
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 ## The Nyan Cat Formatter
@@ -84,7 +84,7 @@ The purpose of *this* extension is to give us a few new formatters. One of them 
 called `nyan.dino`. Ah! Run phpspec again:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Hello Dino! Ok, ok - let's get back to *real* work. Next: let's demystify all the

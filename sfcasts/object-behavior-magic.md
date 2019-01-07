@@ -40,7 +40,7 @@ Let's actually see what some of this looks like in the wild. Close that class an
 in any of the examples, let's `var_dump($this)`. Ok, go run those tests!
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Interesting... As expected, `$this` is really an instance of `DinosaurSpec`. But
@@ -58,7 +58,7 @@ object. But, if you *did* need to get the *actual*, underlying `Dinosaur` object
 that's possible! Try `$this->getWrappedObject()`, then run the test again:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Cool! *That* gives us the *real* Dinosaur object. And it's length is *really*
@@ -72,7 +72,7 @@ on it that started with `should`, like `shouldHandle()`. Well... that won't work
 or `shouldNot`, this is not a method on the object, but a *matcher*. Check it out:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 There it is: "no handle matcher found". For this edge-case, you can use
@@ -80,7 +80,7 @@ There it is: "no handle matcher found". For this edge-case, you can use
 want. Try it now:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Nice! It fails... but with the *correct* failure: it sees that there is no

@@ -66,7 +66,7 @@ That's it! It won't *fully* work yet of course... but let's see what happens. Ru
 phpspec: 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Interesting:
@@ -97,7 +97,7 @@ composer dump-autoload
 Cool! Try phpspec again:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 *Much* better! It *does* see it, and now we get:

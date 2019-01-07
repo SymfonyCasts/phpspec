@@ -16,7 +16,7 @@ Let's see this in action. Remember the two commands of the phpspec executable?
 The first is `describe` - run it with `-h`:
 
 ```terminal
-php vendor/bin/phpspec describe -h
+./vendor/bin/phpspec describe -h
 ```
 
 I'm passing `-h` to see the help details. Basically, each time you want to create
@@ -28,7 +28,7 @@ Anyways, because we're building a dinosaur park, the *first* class we need is...
 `Dinosaur`! So let's run:
 
 ```terminal
-php vendor/bin/phpspec describe App/Entity/Dinosaur
+./vendor/bin/phpspec describe App/Entity/Dinosaur
 ```
 
 I could have chosen any namespace starting with `App` - that's up to how you want
@@ -87,7 +87,7 @@ Ready to execute the *other* phpspec command? It's called run - let's show the
 help details on this one too:
 
 ```terminal
-php vendor/bin/phpspec run -h
+./vendor/bin/phpspec run -h
 ```
 
 This is the *main* command in phpspec. Its job is to look at all of our spec
@@ -100,7 +100,7 @@ even exist yet! Heck, there's nothing in our `src/` directory at all! Well... le
 see what happens:
 
 ```terminal
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 At first, it *does* fail because `App\Entity\Dinosaur` does not exist. That's
@@ -113,7 +113,7 @@ our new class *now* has the *behavior* described in our spec. To prove it, re-ru
 phpspec:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Woh! It works! That... does make sense. Even though we don't understand much

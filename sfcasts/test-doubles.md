@@ -33,7 +33,7 @@ type hint to this method with the `Dinosaur` type event and then I'm just going 
 tests 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 and ah, interesting, sort of an object called a `Collaborator`, but what I really
@@ -62,7 +62,7 @@ the kind of risks and we could say it should have the same value as `$dinosaur`
 and now want to move over and run that. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 That actually passes. This system is called.
@@ -87,14 +87,14 @@ let's run phpspec describe and we'll say APP. How about service /enclosure
 builder service 
 
 ```terminal
-php vendor/bin/phpspec describe App/Service/EnclosureBuilderService
+./vendor/bin/phpspec describe App/Service/EnclosureBuilderService
 ``` 
 
 of course that creates the new spec class and thanks to that new
 inspect clap so we can immediately ron, vendor php, been peaches back, run 
 
 ```terminal
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 and it will generate that class for us. Now you have the new SPEC and we have the new
@@ -119,7 +119,7 @@ class and because it's public, I'm going to move it up a little bit just so my p
 methods are on top. Perfect. All right, let's move over. Run that. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 Of course it fails. Let's
@@ -146,7 +146,7 @@ asserting anything about that yet. We don't actually have any of coded that abou
 that in our example. But if run it now 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 it works

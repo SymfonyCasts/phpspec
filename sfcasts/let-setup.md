@@ -5,13 +5,13 @@ Coming soon...
 Alright, so with this example, executing really well,
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 let's go back and run all of the examples in the specifications. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
 ```
 
 Vasquez boom, surprise. The first one is initialized, was failing to few arguments to the
@@ -37,7 +37,7 @@ have to `$dinosaurFactory2`, and `$dinosaurFactory2` down here and it would matc
 by name. Point is this is enough 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 to get our test to pass. So let's do one last thing with our `EnclosureBuilderService`. 
@@ -73,7 +73,7 @@ behavior. This is purely something that we're using as a spy so that we can asse
 some expectation on it, so if we go over and run the test out, 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
 ```
 
 perfect, it fails. It says that no calls have been made that match `persist()` with 
@@ -86,13 +86,13 @@ property and set it, and then down here on the bottom,
 let's try that. Move over, run it 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
 ```
 
 and it passes and let's run all of our specs from the top 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 and it works. Guys, that's it. phpspec is not. There's not more super complex 

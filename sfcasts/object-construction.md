@@ -20,7 +20,7 @@ So that's the default description. If nothing is set, you guys know at this poin
 flow here is we've now written the tasks. It's probably failing. We run phpspec.
 
 ```terminal
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 It is failing. It offers to generate that a `getDescription()` method for you.
@@ -76,7 +76,7 @@ object and it instantiates with whatever your last beak instructed with was.
 All right, let's try this. Let's run it.
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 And Oh, this is really interesting. It says
@@ -112,7 +112,7 @@ course our test is still going to be failing because we have 70 hardcoded. If yo
 in your test now,
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 it's of course still going to be failing because we had the wrong
@@ -120,7 +120,7 @@ string. By the way, if you want a little bit more information because you can se
 truncates it, he can pass Dash, dash for verbose and there Yo,
 
 ```terminal-silent
-php vendor/bin/phpspec run --verbose
+./vendor/bin/phpspec run --verbose
 ```
 
 you get the full
@@ -133,13 +133,13 @@ here just to make this a little bit more realistic. Now I move over. Refresh.
 Awesome. You could see that it still fails.
 
 ```terminal-silent
-php vendor/bin/phpspec run --verbose
+./vendor/bin/phpspec run --verbose
 ```
 
 Let's move over and take off the verbose
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 and you see it still fails of course, but
@@ -149,7 +149,7 @@ going on up there. There's our type of right there. Go back Ria that. Oh, and a
 dinosaur. Rerun the test 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 and I'm still failing. Oh, because I actually have my
@@ -157,7 +157,7 @@ language wrong here. This is a problem in our SPEC class I'm getting. I've been 
 phpspec for too long. Chains. That should be two is and this time there we go. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Now it passes, so our code and our sped classes are keeping each other very tight.

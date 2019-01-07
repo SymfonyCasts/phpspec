@@ -25,13 +25,13 @@ them. Now I wouldn't say should be called two times. That becomes an expectation
 can run our task 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 and it passes. What does it look like to fail? I'll change it to three and 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 it fails expected exactly 3 calls matching the integer. There was two,
@@ -43,7 +43,7 @@ adding behavior and we're adding x an expectation that it should be called two t
 to run that. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 That works just fine. So when you add an expectation to your
@@ -61,7 +61,7 @@ different language. And in the, we do an afterwards, sometimes it feels better t
 people because um, it's where the rest of our asserts go. It's not fair on this. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 It passes, that's it. We can add a behavior to our arguments to our test doubles or we

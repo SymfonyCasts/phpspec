@@ -14,7 +14,7 @@ to describe this or implement it yet, so I'm just going to leave that method. Th
 Is this kind of a cool thing because if I run this now, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 it shows it as a pending
@@ -37,7 +37,7 @@ Since this is a just a made up class, we're not going to have that want to go ov
 and run it.
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
  
  You can see that as this time it has a one that skipped also. Alright, so
@@ -46,7 +46,7 @@ enclosure because of course we all know that if we just slept, the dinosaurs wer
 unfree bad things happen. So let's describe it a new. So we'll do 
 
 ```terminal
-php vendor/bin/phpspec describe App/Entity/Enclosure
+./vendor/bin/phpspec describe App/Entity/Enclosure
 ```
 
 The idea is that we put dinosaurs inside the enclosure and to start, I'll actually start
@@ -59,7 +59,7 @@ will say `$this->getDinosaurs()->shoudHaveCount(0)` Awesome. Good start. Now I c
 And run phpspec run
 
 ```terminal
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 `yes` to generate that class? Yes. To generate. To `getDinosaurs()`
@@ -79,7 +79,7 @@ more correctly now under our tests.
 Now, when you run the test, boy flubbed that up.
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 This time it passes just the one pending example still.
@@ -110,7 +110,7 @@ then we can say `$this->getDinosaurs()->shouldHaveCount(2)`. All right, so move 
 Run.
  
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
  
 That of course fails. We don't have an ad dinosaur method, so we'll generate it.
@@ -119,7 +119,7 @@ let's make this a `Dinosaur` type hint `$dinosaur` argument. And then the code i
 simple. Just add that to the dinosaurs `array`. Did we mess anything up? 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Definitely not

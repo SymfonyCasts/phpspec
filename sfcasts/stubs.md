@@ -39,7 +39,7 @@ should be instantiated or `EnclosureBuilderService`. You'd be instantiated with
 `DinosaurFactory`, so let's run phpspec. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 It sees that the `__constructor()` is not found, asks if you want to generate it. 
@@ -51,7 +51,7 @@ to be technical. In order to get a test to pass, we just needed to have a `__con
 that takes that argument. So when we run our tests now, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Yep. It passes. Well it
@@ -62,7 +62,7 @@ one test online 18, so to do that I'll run back, run, but then will point this a
 `EnclosureBuilderSpec` line 18. 
 
 ```terminal
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:18
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:18
 ```
 
 Cool. That passes. All right, so what do we
@@ -115,14 +115,14 @@ if this is called multiple times, we'll talk a little bit more about that later.
 now if we run this test, 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:18
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:18
 ```
 
 it actually doesn't work. That's because we are now online
 at 19 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 it still passes because we haven't added any assertions. But now look at this.
@@ -146,7 +146,7 @@ in the example we expected this to be called always with a length of `5`. Perfec
 Let's not move over. Run the test again,
  
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ``` 
  
 it still passes, but the key thing is check
@@ -165,7 +165,7 @@ thing because the dinosaur factories always returning that same object, so now m
 run and it
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 passes, and so this is the first great superpower of these dummy objects. By adding
@@ -183,7 +183,7 @@ That's it.
 Now, down here, the second object is going to be `$dino2` to move our. Run that 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 and

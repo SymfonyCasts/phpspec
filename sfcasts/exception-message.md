@@ -42,7 +42,7 @@ enclosure and start putting dinosaurs into it. Somehow security needs to be acti
 in some way. Whatever that means. So turn over here, run phpspec
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
  
 and awesome. That
@@ -86,7 +86,7 @@ So `if ($security->getIsActive())`, then `return true` and if none of them are a
 here, that actually means it's on line 41 of that. Want to rerun it?
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 It works. Sort of notice line 41 is gone. It looks like the line 41 is actually
@@ -136,7 +136,7 @@ new method. I'm wondering, instantiate this with `false`. I don't want any secur
 there. Now, if we run the test right now, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 it's going to ask us if we want to create
@@ -157,7 +157,7 @@ functions
 `$this->securities[] = $security`. Phew, okay, let's try that. Move over. Run phpspec 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 and ah, not
@@ -165,7 +165,7 @@ passing yet. It says class `App\Entity\Security`, not found. Let's see, what did
 mess up? It's not clear where that error is. So I'm gonna pass, `--verbose` 
 
 ```terminal-silent
-php vendor/bin/phpspec run --verbose
+./vendor/bin/phpspec run --verbose
 ``` 
 
 to get a bit more information and let's say it's coming on `Enclosure` line at 19. Ah Ha.
@@ -174,7 +174,7 @@ much alike that I moved it into the rights. Wrong spot. Can we go over and her a
 `Entity/` directory. Good job tests. We run those 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 in. Now they pass. So the big
@@ -200,7 +200,7 @@ We don't care about the message and as you can see here, it's suggested is
 we can say `duringInstantiation()`. And that's it. Now if you run this apps, 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 it will
@@ -217,7 +217,7 @@ good. The bug we're catching here is it would've been very easy for me just to s
 Let's move over. Run the test again. 
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ``` 
 
 Got It.

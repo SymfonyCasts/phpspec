@@ -51,7 +51,7 @@ the matcher by saying `return $subject === 0`. Our matcher function should retur
 So... let's try this! Go spec go!
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 It passes! Oh, and we can automatically *also* use `shouldNotReturnZero()`: every
@@ -63,7 +63,7 @@ To make sure the matcher is *really* working, in `Dinosaur`, add a bug by changi
 the default length to 30. Now re-run phpspec:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Two examples fail - we're working on the second example. Look at the error:
@@ -85,14 +85,14 @@ Then, at the bottom `return true` to signal that everything is fine. Try the
 tests again:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Oh, *even* with my typo on the word "got", the error is *much* better. Let's go
 fix that bug - change 30 back to zero - and re-run phpspec:
 
 ```terminal-silent
-php vendor/bin/phpspec run
+./vendor/bin/phpspec run
 ```
 
 Nice! Oh, by the way, *sometimes* when you call a matcher, you may need to pass it

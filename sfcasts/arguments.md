@@ -24,7 +24,7 @@ Yeah,
 it'll run our SPEC. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 It fails. Check this out. It says that unexpected method call on
@@ -44,7 +44,7 @@ one is to use a special `Argument` class from prophecy and pass it `any()` if yo
 run out and run it. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 It works. This says when `growVelociraptor()` is called with any
@@ -63,14 +63,14 @@ Integer, it will match this statement and it will return these values.
 So if we run that, 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 no surprise, that works as well, but if we change this to `string`
 and run it as 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 we get unexpected method, call five. We expect that a string. So when
@@ -97,14 +97,14 @@ to return `$dino2` does the order matter, like how does this work? Well, let's f
 out if we run it, 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 it fails. Expected `Dinosaur` but got `Dinosaur` that's not very
 helpful. So let's run it with `-v`. Ah,
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19 -v
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19 -v
 ```
 
 now you can see that online. Thirty eight. So on the first dinosaur we're checking it
@@ -120,7 +120,7 @@ as five, but it does match the second promise. So returns `$dino1`. In other wor
 again. I'll take the `-v` off 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 and this time it passes. It's a little bit hard to
@@ -128,7 +128,7 @@ wrap your mind around to prove it. We can actually reorder these two promises an
 it's going to work exactly the same. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 The order doesn't matter. Is that every single
@@ -141,7 +141,7 @@ the first time or returning `$dino2` the second time and we'll update our assert
 back to the original value down here. 
 
 ```terminal-silent
-php vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
 Perfect. So arguments are a great way for you
