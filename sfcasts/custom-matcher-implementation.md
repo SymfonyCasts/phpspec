@@ -1,8 +1,8 @@
 # Coding up the Custom Matcher
 
-Apparently, a custom matcher has just one rule: it must implement this `Matcher`
-interface. Cool! To see what these classes normally look like, we can cheat by
-looking at the core matchers themselves!
+According to this friendly error, a custom matcher has one important rule: it must
+implement this `Matcher` interface. Cool! To see what these classes normally look
+like, let's cheat and dig into some of the core matchers themselves!
 
 ## Peeking at the Core Matchers
 
@@ -16,22 +16,21 @@ Oh - instead of implementing the `Matcher` interface directly, this extends a
 low-level work. Most of the time, you'll probably want to extend this class - it just
 makes life easier.
 
-Let's get to work! I'll close a few other files. Then, make our `BeGreaterMatcher`
+Let's go! I'll close a few other files. Then, make our `BeGreaterMatcher`
 extend `BasicMatcher`. I'm also going to mark the class as `final`. There's no reason
-for this - it's just a general best-practice these days to mark a class as final
-unless you intend for it to be sub-classed. Though, marking a class as final can
-cause issues if you need to mock it. Either way - that's no important to get this
-all working.
+for that - it's just a general nice practice to mark a class as final unless you intend
+for it to be sub-classed. Though, marking a class as final can cause issues if you
+need to mock it. Either way - this is not important to get this all working.
 
-Next, go to the `Code -> Generate` menu or Command+N on a Mac, go to
-"Implement Methods" and implement all *four* methods that we need. Perfect!
+Next, go to the `Code -> Generate` menu or Command+N on a Mac, select
+"Implement Methods" and implement all *four* methods that we need.
 
 ## Implementing supports()
 
-The most important method is `supports()`. Let's `var_dump()` the arguments to see
-what we're working with: `$name`, `$subject` and `$arguments`. Whenever a matcher
-is used inside of a specification, phpspec loops over *all* of the matchers and
-calls `supports()` to figure out *which* of the matchers to use.
+The first important method is `supports()`. Let's `var_dump()` the arguments to see
+what we're working with: `$name`, `$subject` and `$arguments`. Whenever *any* matcher
+is used inside of a spec class, phpspec loops over *all* of the matcher classes and
+calls `supports()` to figure out *which* one to use.
 
 Let's see what happens! Run phpspec:
 
@@ -39,26 +38,27 @@ Let's see what happens! Run phpspec:
 ./vendor/bin/phpspec run
 ```
 
-Yep! It's dumping out *every* time a matcher is used - once for `haveType`, `returnZero`
+Yep! It's dumping out *every* time any matcher is used - once for `haveType`, `returnZero`
 and down here for `beGreaterThan`. That's the `$name` argument. The `$subject` is
-`15` because, in our spec class, `getLength()` is returning 15 - so *that* is what's
-passed to the matcher. Finally, `$arguments` is an `array` with just one entry:
+`15` because, in our spec class, `getLength()` returns 15 and we're calling
+the matcher on that value. Finally, `$arguments` is an `array` with just one entry:
 12 - because we're passing 12 as the *one* argument to the `shouldBeGreaterThan()`
 matcher.
 
-Our `supports()` method *really* only needs to check to make sure that the `$name`
-is equal to `beGreaterThan`, so phpspec knows that *we* handle that case. But, a lot
-of times, these are written to be a bit more flexible. For example, you could use
-`in_array()` to check that `$name` is one of `beGreater` or `beGreaterThan`. Then,
-if you want, you can even make sure the *types* of the subject and arguments match.
-We'll say that this matcher should only be used if `is_numeric($subject)` and if
-the `count($arguments)` is exactly one *and* if *that* argument is also numeric.
+The `supports()` method *really* only needs to check to make sure that the `$name`
+is equal to `beGreaterThan`: that's enough to tell phpspec that *we* handle that.
+But, a lot of times, these are written to be a bit more flexible. For example, you
+could use `in_array()` to check that `$name` is one of `beGreater` or `beGreaterThan`.
+Then, if you want, you can even make sure the *types* of the subject and arguments
+are what we expect. We'll say that this matcher should only be used if
+`is_numeric($subject)` and if `count($arguments)` is exactly one *and* if *that*
+argument is also numeric *and* if it's Halloween after midnight. Kidding.
 
 ## Implementing Matches
 
-Awesome! So, *when* `supports()` returns `true`, phpspec will *then* call the
-`match()` function on top. Our job *here* is to return `true` of everything looks
-good, or false otherwise - just like our inline matcher. Let's `var_dump` the
+So, *when* `supports()` returns `true`, phpspec will *then* call the
+`match()` function on top. Our job *here* is to return `true` if everything looks
+good, or false otherwise - just like the inline matcher. Let's `var_dump` the
 `$subject` and `$arguments` one more time with a `die` statement - to make sure it's
 called like we expect.
 
@@ -82,15 +82,14 @@ same type of object that we're throwing from our inline matcher.
 
 For the other method, copy this, paste, and just tweak the language a little bit.
 
-We *now* have a fully-functional custom matcher that allows to use this new, natural,
-language inside of *any* of our spec files. Well, that *should* be true - if everything
-works! Let's try it:
+We *now* have a fully-functional custom matcher that allows us to use this new, natural,
+language inside of *any* spec file. Well... assuming it works - try it out:
 
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
 
-It passes! Next: it's time to talk about how phpspec fits into the entire world
+All green! Next: it's time to talk about how phpspec fits into the entire world
 of testing. For example, there are functional tests, integration tests, and unit
-tests... and also multiple tools like PHPUnit and Behat. Let's put this all into
-perspective.
+tests... and multiple tools like PHPUnit and Behat. Let's dive into this big mess
+of tools and buzzwords.
