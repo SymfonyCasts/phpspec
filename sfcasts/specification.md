@@ -47,6 +47,8 @@ describe the behavior of our future `Dinosaur` class. On a philosophical level,
 we do this by writing example code: using our `Dinosaur` class as if it already
 existed and was finished.
 
+[[[ code('e3f016019b') ]]]
+
 On a more concrete level: we describe the behavior through *examples*. Every function
 in this class that starts with `it_` or `its_` will be read by phpspec as an "example".
 They are the *key* to phpspec, and also the most complex part.
@@ -107,6 +109,8 @@ At first, it *does* fail because `App\Entity\Dinosaur` does not exist. That's
 expected. But check this out: it's asking: do you want me to create it for you?
 This is what makes `phpspec` so fun! When it sees that you've described some
 behavior that's missing, it can create it for you! Let's choose yes, of course!
+
+[[[ code('fe9f12a0c8') ]]]
 
 Cool! Go look - in `src/`... there it is! It doesn't *do* anything, but... actually...
 our new class *now* has the *behavior* described in our spec. To prove it, re-run
