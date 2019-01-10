@@ -15,6 +15,8 @@ function: `it_should_default_to_zero_length_using_custom_matcher()`.
 Inside, let's show this same behavior, but in a different way - how about
 `$this->getLength()->shouldReturnZero()`.
 
+[[[ code('acd6d5c6fb') ]]]
+
 That's great language! But, as you probably noticed, PhpStorm did *not* auto-complete
 that matcher function. That's because... I just made that up! There is *no* built-in
 matcher that allows us to say `shouldReturnZero()`.
@@ -39,6 +41,8 @@ custom matchers you want. Except, the *key* is *not* `shouldReturnZero()`. Nope,
 the name of the matcher is that string *without* the "should" or "shouldNot" part.
 In other words, add `returnZero` set to a function with one argument called `$subject`.
 
+[[[ code('8e8c2c4115') ]]]
+
 ## The Matcher Subject
 
 Here's how this works: in the example, we call `getLength()`, which we know returns
@@ -47,6 +51,8 @@ an integer - hopefully zero. But thanks to the magic of phpspec, we can call
 and pass the *length* returned from `getLength()` as the `$subject`. Complete
 the matcher by saying `return $subject === 0`. Our matcher function should return
 `true` if the `$subject` looks valid, `false` otherwise.
+
+[[[ code('7c47abf163') ]]]
 
 So... let's try this! Go spec go!
 
@@ -60,7 +66,11 @@ matcher is able to handle both `should` and `shouldNot`.
 ## Better Error Message
 
 To make sure the matcher is *really* working, in `Dinosaur`, add a bug by changing
-the default length to 30. Now re-run phpspec:
+the default length to 30.
+
+[[[ code('153a4cc63e') ]]]
+
+Now re-run phpspec:
 
 ```terminal-silent
 ./vendor/bin/phpspec run
@@ -81,8 +91,11 @@ No problem: we can control that error. Let's refactor that code a bit: if
 
 and pass `$subject` for the wildcard.
 
-Then, at the bottom `return true` to signal that everything is fine. Try the
-tests again:
+Then, at the bottom `return true` to signal that everything is fine.
+
+[[[ code('9bccaf10cd') ]]]
+
+Try the tests again:
 
 ```terminal-silent
 ./vendor/bin/phpspec run
@@ -90,6 +103,8 @@ tests again:
 
 Oh, *even* with my typo on the word "got", the error is *much* better. Let's go
 fix that bug - change 30 back to zero - and re-run phpspec:
+
+[[[ code('74ed026f38') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
