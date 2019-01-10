@@ -10,6 +10,8 @@ chapters:
   - object-behavior-magic
   - subject-magic
   - object-construction
+  - implementing-debugging
+  - factory-method
   - factory-class
   - no-mocking
   - object-matcher
