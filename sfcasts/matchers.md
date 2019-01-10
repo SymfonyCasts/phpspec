@@ -15,6 +15,8 @@ Create a new function, start it with `it_` - because that's what phpspec require
 and also because that helps us create descriptive & readable method names. How about:
 `it_should_default_to_zero_length()`.
 
+[[[ code('01385a9fd6') ]]]
+
 Inside, remember: the goal is to *pretend* like we're inside the `Dinosuar` class.
 When each example is executed, `phpspec` will instantiate a `Dinosaur` object behind
 the scenes and we can reference it via `$this`. That's *total* and absolute magic...
@@ -28,6 +30,8 @@ existed.
 
 And because we want our Dinosaur's length to default to 0, call a matcher function
 to assert that: `->shouldReturn(0)`.
+
+[[[ code('46b9e2b0d0') ]]]
 
 ## Matchers!
 
@@ -72,6 +76,8 @@ Let's go check it out! Not bad! It generates the method but, unless your version
 of phpspec has become self-aware - in which case... let me know what version you're
 using - it has *no* idea what to put *inside* the method.
 
+[[[ code('83bb2d8ee2') ]]]
+
 And so, after phpspec generated the code, it automatically re-ran itself, but the
 new example *still* fails:
 
@@ -91,6 +97,8 @@ can have a different length, we will probably need a `$length` property. And, ah
 yes, it needs to default to 0 - that's something we decided during the "spec" or
 "description" process. Inside the method, `return $this->length`.
 Oh, and to be super-cool, add the `int` return type. Viva return types!
+
+[[[ code('eefb797f2a') ]]]
 
 Our class *should* now behave like our example expects. Let's see if phpspec agrees!
 Run it:
@@ -119,6 +127,8 @@ Inside, pretending that `$this` is a `Dinosaur` object, let's show how this shou
 work: call `$this->setLength()` and pass it, how about 9. After that, we should
 be able to call `$this->getLength()->shouldReturn(9)`.
 
+[[[ code('88197c8d98') ]]]
+
 Done! Oh, and I want you to notice one cool thing: we now get autocomplete on the
 `getLength()` method! PhpStorm has *great* phpspec integration and knows that we're
 allowed to use `$this` like a `Dinosaur` object. We *don't* have auto-completion
@@ -134,6 +144,8 @@ Awesome! It hates it! It fails, asks us if it can generate some code, then fails
 again because that generated `setLength()` method is just blank. Go find the new
 method. Hey! It even noticed that this method should have one argument. Change it
 to `int $length`. Inside, `$this->length = $length`.
+
+[[[ code('c2d152c4df') ]]]
 
 Try it again!
 
