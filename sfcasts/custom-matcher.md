@@ -34,6 +34,8 @@ Then say, `$this->getlength()`... but... hmm. In this pretend example, the dinos
 is allowed to shrink *some* but not below 12. To reflect that, let's say:
 `->shouldBeGreaterThan(12)`
 
+[[[ code('1f5deeca81') ]]]
+
 As you probably saw, that is *not* a real matcher. So, the tests should fail. Try
 them:
 
@@ -58,9 +60,13 @@ In the `spec/` directory, create a `Matcher` directory and then a new class:
 `BeGreaterMatcher`... though this class could live anywhere. The namespace should
 be `spec` then the directory path. So `spec\Matcher`.
 
+[[[ code('96e725d15c') ]]]
+
 But, let's keep this class empty for now: I just want to make sure that phpspec
 can *see* our new matcher. How? Via its config! Open `phpspec.yml`, add a `matchers:`
 section and then, very simply, list your matcher: `- spec\Matcher\BeGreaterMatcher`.
+
+[[[ code('9579a7b89f') ]]]
 
 That's it! It won't *fully* work yet of course... but let's see what happens. Run
 phpspec: 
@@ -87,6 +93,8 @@ to put any *other*, non-spec, classes in this directory - like a matcher - then 
 
 No problem: copy the `autoload` section, paste and change it to `autoload-dev`.
 Tell composer to expect the `spec\\` namespace to live in the `spec/` directory.
+
+[[[ code('c7b3f0cfad') ]]]
 
 To make Composer rebuild its autoloader, run:
 
