@@ -55,8 +55,11 @@ values, but one of the *best* is `pretty`:
 ```
 
 Emojis! Since these check marks are super hipster, let's make phpspec use this format
-by default. Open `phpspec.yml` and add `formatter.name: pretty`. As soon as we do
-that, we can remove the `format` option and *still* get those check marks.
+by default. Open `phpspec.yml` and add `formatter.name: pretty`. 
+
+[[[ code('b8843f44f6') ]]]
+
+As soon as we do that, we can remove the `format` option and *still* get those check marks.
 
 ```terminal-silent
 ./vendor/bin/phpspec run
