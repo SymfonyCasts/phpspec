@@ -88,8 +88,12 @@ on phpspec's docs listing some of the most popular extensions.
 To activate an extension, open `phpspec.yml`, add `extensions:` and then paste the
 extension class name. That's it. Let's go check on the terminal... yes! It's done!
 
+[[[ code('1683e93e31') ]]]
+
 The purpose of *this* extension is to give us a few new formatters. One of them is
 called `nyan.dino`. Ok! Run phpspec again:
+
+[[[ code('aa551d92cc') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
