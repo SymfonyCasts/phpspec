@@ -38,6 +38,8 @@ like `__get()` and `__set()` to forward setting properties and other stuff.
 Let's see what some of this looks like in the wild. Close that class and, in any
 of the examples, `var_dump($this)`. Go tests go!
 
+[[[ code('19db1d1830') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
@@ -55,6 +57,8 @@ For the most part, we pretend like we're interacting directly with a `Dinosaur`
 object. But, if you *did* need to get the *actual*, underlying `Dinosaur` object,
 that's possible! Try `$this->getWrappedObject()`, then run the test again:
 
+[[[ code('6dcee88fca') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
@@ -69,6 +73,8 @@ on it that started with `should`, like `shouldHandle()`. Well... that won't work
 phpspec thinks that when we call anything starting with `should` or `shouldNot`,
 that we're trying to execute a *matcher* - not a method. Check it out:
 
+[[[ code('ae6f6d32ec') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
@@ -76,6 +82,8 @@ that we're trying to execute a *matcher* - not a method. Check it out:
 There it is: "no handle matcher found". For this edge-case, you can use
 `$this->callOnWrappedObject()` with `shouldHandle` and an array of arguments you
 want. Try it now:
+
+[[[ code('baef66ade5') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
