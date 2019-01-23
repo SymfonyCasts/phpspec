@@ -31,6 +31,8 @@ to create a `Dinosaur` object with no information. If you do, the type should be
 
 Default `$genus` to `Unknown` and `$isCarnivorous` to `false`.
 
+[[[ code('af50014748') ]]]
+
 ## Using --verbose
 
 The `getDescription()` method is still wrong. But, we *did* just get a step closer,
@@ -52,6 +54,8 @@ Back in `Dinosaur`, let's finish the `getDescription()` method. Wrap the string 
 `sprintf()` then add a few wildcards: one for the genus, one for the `non-`
 part and one for the length. Fill these in with `$this->genus`, a ternary to print
 either nothing, or `non-`, and then `$this->length`.
+
+[[[ code('5996435953') ]]]
 
 Oh, and let's make a typo to spice things up! Then, move over, take off the `--verbose`
 option and run spec:
@@ -76,6 +80,8 @@ Much better - the typo is super obvious now. Fix that, then try it again:
 Ah! It *still* fails! Whoops - I made a mistake in the spec file - but it's obvious.
 I've been using phpspec for *so* long that I can't avoid saying "should" in everything
 I type. Change `should be` to `is`: that's the language we want.
+
+[[[ code('55a9ca7201') ]]]
 
 Try it one more time:
 

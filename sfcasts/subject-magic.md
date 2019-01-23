@@ -7,8 +7,11 @@ call `getLength()` on the `Dinosaur` object and *that* will return the integer 1
 So then... what absolute madness is allowing us to call a method on that?!
 Let's find out!
 
-This time `var_dump($this->getLength())`. Will this be the integer 15? An object?
-An emoji? Let's find out!
+This time `var_dump($this->getLength())`. 
+
+[[[ code('067c4ad1af') ]]]
+
+Will this be the integer 15? An object? An emoji? Let's find out!
 
 ```terminal-silent
 ./vendor/bin/phpspec run

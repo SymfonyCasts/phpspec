@@ -11,6 +11,8 @@ that `shouldReturn()`:
 
 > The Unknown non-carnivorous dinosaur is 0 meters long
 
+[[[ code('c0c4319575') ]]]
+
 Our `Dinosaur` doesn't even *have* any properties on it related to what "type" of
 `Dinosaur` it is, or whether it's carnivorous or non-carnivorous - but those are
 details for future Ryan to worry about. Let's live in the now! Run the test:
@@ -30,6 +32,8 @@ to make this test green with as *little* work as possible. Challenge accepted! L
 copy this string, go into `Dinosaur`, find the new method, and - yes, I *am* about
 to do this - return that hardcoded string! We are *awesome* at programming! For
 extra credit, let's add a return type.
+
+[[[ code('e9d9b24c63') ]]]
 
 Yes, I *do* realize how silly this is. And no, I don't do this when I'm coding for
 real. But, there's something... beautiful about hardcoding this value: it's a reminder
@@ -65,16 +69,22 @@ Let's create an example: `it_should_return_full_description_for_tyrannosaurus()`
 We know that phpspec handles instantiating a new `Dinosaur` object for us so that
 when we call `getDescription()`, it eventually calls that method on the real object.
 
+[[[ code('4affda9383') ]]]
+
 That's cool, but what's *cooler* is that we can control *how* it's instantiated.
 To do that, say `$this->beConstructedWith()` and - quite literally - pass the arguments
 here that we want to pass to the new `Dinosaur` object. Hmm, I think the first argument
 should be the dinosaur type - tyrannosaurus - and the second a boolean for whether
 or not it's carnivorous. Definitely `true`.
 
+[[[ code('0725b3504c') ]]]
+
 Now... keep going like normal! Let's set a length - `$this->setLength(12)` - and
 then assert that `$this->getDescription()->shouldReturn()` the string
 
 > The Tyrannosaurus carnivorous dinosaur should be 12 meters long
+
+[[[ code('59005846b3') ]]]
 
 Perfect! And thanks to *this* new example... our hardcoded return statement? Yea...
 that ain't gonna work anymore.
