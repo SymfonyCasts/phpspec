@@ -1,6 +1,4 @@
-# Object Matcher
-
-Coming soon...
+# The ObjectMatcher
 
 Sometimes your knee, your code and needs to throw exceptions. In fact, sometimes it's
 super important that the right exception gets thrown into the right time. I have a
