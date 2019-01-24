@@ -18,11 +18,15 @@ when it creates the `Dinosaur`. But... in this case, we *don't* want phpspec to
 create the `Dinosaur` object on its own. Nope! We instead want phpspec to call our
 new static method and *that* will instantiate and return the `Dinosaur`.
 
+[[[ code('68f4c5c215') ]]]
+
 No problem: instead of `beConstructedWith()`, call
 `$this->beConstructedThrough('growVelociraptor')` - that will be the name of the
 new method. The second argument is the array of arguments for the method. What
 arguments should the `growVelociraptor` have? Hmm, probably just one right now:
 the length. So, `array(5)`. If you need a second argument, just add another item.
+
+[[[ code('e34e8e4e83') ]]]
 
 Ok cool! *Now* this function will work like *any* other example - except that
 `$this` will be the `Dinosaur` object that's returned from `growVelociraptor`. Well,
@@ -32,12 +36,16 @@ actually, we should make sure it *is* a `Dinosaur`:
 exists. In this case, we know *exactly* that
 `$this->getGenus()->shouldBe('Velociraptor')`.
 
+[[[ code('fa5c2aba04') ]]]
+
 Wait, but why did I use `shouldBe()` here when we've been using `shouldReturn()`
 until now? No reason - they're identical: use whatever feels good.
 
 Oh, and see how PhpStorm is highlighting `getGenus()`? That's because that method
 doesn't exist yet. We just "discovered" that we need this method. Cool! Let's
 add one more check: `$this->getLength()->shouldBe(5)`. 
+
+[[[ code('67ff0cade9') ]]]
 
 You know the drill: after writing the example, run phpspec:
 
@@ -52,10 +60,14 @@ new function. phpspec knows this should return a `Dinosaur` object... but it's
 not sure how. But hey! It *did*, once again, put this method in *just* the right
 place: below the constructor but above the public functions.
 
+[[[ code('e46ffe5d18') ]]]
+
 Change the argument to `int $length`, advertise that this will return an instance
 of `self`, and create that with `$dinosaur = new static()` passing `Velociraptor`
 and `true` for the `isCarnivorous` argument. Then, `$dinosaur->setLength($length)`,
 `return $dinosaur`.
+
+[[[ code('ce126406c8') ]]]
 
 That felt good! Let's make sure the example passes:
 
@@ -76,6 +88,8 @@ should write example code that doesn't use it. If you *do* use it, you need it!
 
 So, yes phpspec, please generate that for me. Find the new method,
 `return $this->genus` and add the `string` return type. Try the tests again:
+
+[[[ code('b0282f9ea1') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
