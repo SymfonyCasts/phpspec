@@ -14,7 +14,8 @@ chapters:
   - factory-method
   - factory-class
   - no-mocking
-  - object-matcher
+  - expect-exception
+  - object-state-matcher
   - exception-message
   - test-doubles
   - stubs
