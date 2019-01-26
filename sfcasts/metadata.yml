@@ -17,6 +17,7 @@ chapters:
   - expect-exception
   - object-state-matcher
   - exception-message
+  - enclosure-existing-tests
   - test-doubles
   - stubs
   - arguments
