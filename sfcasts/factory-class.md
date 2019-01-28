@@ -28,6 +28,8 @@ Like last time, we get one *super* basic example for free - asserting that
 `$this` should be an instance of `DinosaurFactory`. That's... kinda silly... but
 it's enough to force some code generation! Go run phpspec:
 
+[[[ code('8a81994c2b') ]]]
+
 ```terminal
 ./vendor/bin/phpspec run
 ```
@@ -42,11 +44,15 @@ but I want to follow the red, green, refactor cycle. So first, describe that
 functionality with a new example: `function it_grows_a_large_velociraptor()`.
 Then, call the method: `$dinosaur = $this->growVelociraptor(5)`.
 
+[[[ code('d82b5daa60') ]]]
+
 ## The Magic Behind phpspec's Subject
 
 Eventually, after coding all of this up, we know that the `$dinosaur` variable *should*
 be a `Dinosaur` object. But we *also* know that phpspec adds a lot of magic. Check
 this out: `var_dump($dinosaur)`. Now, run phpspec:
+
+[[[ code('c2c07d1f11') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
@@ -70,6 +76,8 @@ variable in `DinosaurSpec`. In fact, let's steal four lines of code from here.
 Paste these into the new example and change all of the `$this` to `$dinosaur`.
 Re-type the "r" in `Dinosaur` and hit tab so PhpStorm adds its `use` statement.
 
+[[[ code('056e7d23ef') ]]]
+
 Ok! The `growVelociraptor()` method is still empty, but let's see what phpspec
 thinks!
 
@@ -84,6 +92,8 @@ or at least without over-engineering it. We can cheat: copy the code from the
 old `growVelociraptor()` method. I'll keep this method here just as an example.
 Back in `DinosaurFactory`, paste, change the `new static` to `new Dinosaur`, change
 the argument to `int $length` and give this a `Dinosaur` return type.
+
+[[[ code('d2f2fecc59') ]]]
 
 Try it out:
 
@@ -100,10 +110,14 @@ logic into a new `private` function called `createDinosaur()`. Give this 3 argum
 `string $genus`, `bool $isCarnivorous` and `int $length`. Copy the first two lines
 above and make each part dynamic.
 
+[[[ code('d300b82b44') ]]]
+
 Finally, the first method can be simplified to:
 `return $this->createDinosaur()`, passing `Velociraptor`, `true`, and `$length`.
 We *could* have wrote the code this way initially. But now we can refactor confidently
 because our tests will *prove* we didn't mess anything up:
+
+[[[ code('c9ab4fc9ad') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
@@ -116,6 +130,8 @@ Oh. Except... I messed something up:
 
 Duh! I forgot my `return` statement! And I should have added a return type too.
 Try it again:
+
+[[[ code('cdee5e459c') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run
