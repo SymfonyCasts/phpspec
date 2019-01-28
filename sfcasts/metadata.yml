@@ -19,6 +19,8 @@ chapters:
   - exception-message
   - enclosure-existing-tests
   - test-doubles
+  - enclosure-builder
+  - dummies
   - stubs
   - arguments
   - mocks-spies
