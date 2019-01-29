@@ -1,4 +1,4 @@
-# Epecting Exceptions
+# Expecting Exceptions
 
 Sometimes your code will throw an exception... it's just how things are. Actually,
 *sometimes* it's super important that the *right* exception *is* thrown at the
