@@ -12,6 +12,8 @@ is, the very important, `NotABuffetException`. You see, we've had this problem
 where sometimes we accidentally put a veggiesaurus inside an `Enclosure` with
 a carnivorous dinosaur. And, well, the results have been... messy.
 
+[[[ code('a6715e3e64') ]]]
+
 To make sure we stop doing that, we need to throw this exception if we try to mix
 carnivorous and non-carnivorous dinosaurs into the same Enclosure. And this is
 *such* an important thing, we need to make sure there is a test to *ensure*
@@ -23,6 +25,8 @@ Open up `EnclousreSpec`: because we want the exception to be thrown when the `ad
 method is called. Let's say:
 `function it_should_not_allow_to_add_carnivorous_dinosaurs_to_non_carnivorous_enclosure()`.
 
+[[[ code('abe8e186f5') ]]]
+
 Wow! That's a long name - but... ok! It's a great description for this example.
 
 Here's the plan: we're going to add one dinosaur that's a veggie dinosaur and
@@ -30,12 +34,16 @@ then add a another dinosaur that's carnivorous. And *that* should trigger
 the exception. Start with `$this->addDinosaur(new Dinosaur())` and make this a
 veggie eater by passing `false` as the second argument.
 
+[[[ code('495e1383a4') ]]]
+
 Now, here is the important part: *before* we call `addDinosaur()`, again, we need
 to tell phpspec to *expect* that there should be an exception. And it's probably
 no surprise that the *language* to do this is *really* natural: `$this->shouldThrow()`
 `NotABuffetException::class`, `->during()`, and then we tell phpspec exactly what
 method should trigger this: `addDinosaur` with an array of the arguments, and we
 only have one: `new Dinosaur()`, `Velociraptor` and `true` for the carnivorous argument.
+
+[[[ code('d5dd78ccaa') ]]]
 
 That's it! Let's try it out:
 
@@ -51,6 +59,8 @@ Time for us to get to work! In `addDinosaur()`, we need to determine whether or
 not we're allowed to add this `Dinosaur`. Let's call a new function:
 `if (!$this->canAddDinosaur())` - we'll create that method in a minute - then
 `throw new NotABuffetException()`.
+
+[[[ code('a47466c52c') ]]]
 
 Now I can click back on `canAddDinosaur`, press Alt + Enter and click "Add Method"
 to create a new `private` method at the bottom. Oh, and I'm just creating this as a
@@ -75,6 +85,8 @@ get the new feature working. Before we do that, let's finish the `canAddDinosaur
 method: you should be able to add the dinosaur if the first dinosaur `->isCarnivorous()`
 value equals `$dinosaur->isCarnivorous()`. *If* they are compatible, this dinosaur
 *can* be added to the enclosure... without being eaten... hopefully.
+
+[[[ code('7a62a12247') ]]]
 
 We know we're not done yet, but in the spirit of "doing as little work as possible
 and letting phpspec tell us what to do next", let's run it now:
