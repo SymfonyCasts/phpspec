@@ -14,6 +14,8 @@ I'm *not* actually ready to describe this or implement it yet... I don't know...
 maybe there's a big storm coming and I need to get off the island on the last boat
 or something. So, just leave it blank and run phpspec:
 
+[[[ code('f994b3b1ad') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
@@ -31,9 +33,13 @@ a `new SkippingException` that says:
 
 > Someone needs to look over dino puppies
 
+[[[ code('0c259bdcb2') ]]]
+
 So, no `Nanny` class? Skip the example. If we *do* have it, it will run like
 normal: `$this->growVelociraptor(1)` and, how about,
 `->shouldBeAnInstanceOf(Dinosaur::class)`.
+
+[[[ code('87e9a47bec') ]]]
 
 Since that's just a made-up class, when we run phpspec:
 
@@ -64,6 +70,8 @@ automatically had a dinosaur hiding inside: `it_should_have_no_dinosaurs_by_defa
 And, because we will probably need a way to ask what dinosaurs are inside, let's
 say: `$this->getDinosaurs()->shoudHaveCount(0)`.
 
+[[[ code('136b27f8bb') ]]]
+
 Ok, good start! Head back over to your terminal and run things:
 
 ```terminal
@@ -76,12 +84,16 @@ method inside of it.
 Thanks to that, not *only* do we have the new `Enclosure` class, but it already
 has its first method!
 
+[[[ code('f55b61981c') ]]]
+
 ## Basic Enclosure Implementation
 
 To get started, we probably need a `$dinosaurs` property, which will hold an array
 of `Dinosaur` objects. Add an array return type to the method and return
 `$this->dinosaurs`. Oh, and let's initialize the property to an empty array - that's
 exactly the behavior we're describing.
+
+[[[ code('6ddd4f2266') ]]]
 
 We *could* have just returned a hardcoded empty array... because that *is* the minimum
 code we need to get the test to pass. But as you get more comfortable with phpspec,
@@ -103,6 +115,8 @@ to add dinosaurs to it. Let's describe that!
 `function it_should_be_able_to_add_dinosaurs()`. And because we'll most likely be
 adding Dinosaurs one-by-one as they're born, I think an `addDinosaur()` method will
 be quite perfect: `$this->addDinosaur()` and pass that a `Dinosaur` object.
+
+[[[ code('051fdc02b2') ]]]
 
 ## Mock the Dinosaur Object?
 
@@ -135,6 +149,8 @@ mock things in phpspec soon.
 Let's copy this line so we can add two dinosaurs. And then say
 `$this->getDinosaurs()->shouldHaveCount(2)`.
 
+[[[ code('1b9a74b034') ]]]
+
 Ok, let's try it!
  
 ```terminal-silent
@@ -144,6 +160,8 @@ Ok, let's try it!
 Woo! Sweet phpspec failure - let it generate the new method. Then, flip back and
 find that new method. Change the argument to `Dinosaur $dinosaur`. And inside
 the method, `$this->dinosaurs[] = $dinosaur`.
+
+[[[ code('e0ac7571bc') ]]]
 
 Did we mess anything up? Find out:
 
