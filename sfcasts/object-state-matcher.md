@@ -11,6 +11,8 @@ to the *language* I'm about to use. Behind the scenes, because we haven't contro
 the constructor arguments, we know that phpspec will create a `Dinosaur()` without
 *any* constructor arguments. So I'm going to say `$this->shouldNotBeCarnivorous()`.
 
+[[[ code('985aaf2dde') ]]]
+
 That is *not* a built-in matcher... right? I mean, that's *super* specific language,
 and PhpStorm definitely did *not* autocomplete that for me. Well... surprise! That
 *is* a real matcher! Say hello to the `ObjectStateMatcher`! It's dynamic: whenever
@@ -25,6 +27,8 @@ Let's write one more example before we see this. How about:
 us to control the `$isCarnivorous` value via the *second* argument. So, we'll
 pass `'Velociraptor'` and `true`. Then we can say `$this->shouldBeCarnivorous()`.
 That's the same thing as above, but without the "not".
+
+[[[ code('6379910855') ]]]
 
 Let's check it out!
 
@@ -53,6 +57,8 @@ Choose yes to generate it. phpspec re-runs and *does* fail - something about the
 method is empty! Go find it, then return `$this->isCarnivorous` and add the `bool`
 return type.
 
+[[[ code('09ee54a1fe') ]]]
+
 Find your terminal and run phpspec!
 
 ```terminal-silent
@@ -75,6 +81,8 @@ So, it might be nice to have a method on the `Dinosaur` class called
 So... cool! Let's add an example for this:
 `it_should_allow_to_check_if_two_dinosaurs_have_same_diet`. And, check out the
 language `$this->shouldHaveSameDietAs(new Dinosaur())`.
+
+[[[ code('f8672b9b0c') ]]]
 
 Two important things here. First, the `$this` object will be a `Dinosaur` object
 that's created with no constructor args - so it will be a veggiesaurus. And so,
@@ -106,6 +114,8 @@ There it is! `hasSameDietAs()`. Generate that, then go find it. This method will
 return a `bool`, the argument will be a `Dinosaur` object and we can
 `return $dinosaur->isCarnivorous() === $this->isCarnivorous()`.
 
+[[[ code('2058c47d89') ]]]
+
 Let's try it!
 
 ```terminal-silent
@@ -115,6 +125,8 @@ Let's try it!
 We are green! Let's take that as a sign that it's safe to do a bit of refactoring
 inside `Enclosure`. Remove all this complicated stuff and, at the end, just say:
 `|| $dinosaur->hasSameDietAs($this->dinosaurs[0])`.
+
+[[[ code('effdc24cd7') ]]]
 
 Run phpspec one more time:
 
