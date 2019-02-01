@@ -1,8 +1,11 @@
 # Describing for Exception Messages
 
 In the `Exception/` directory that we copied a few minutes ago, there's another
-exception class: the `DinosaursAreRunningRampantException`. Here's the
-problem we're facing: we have these enclosures, but... they don't have any
+exception class: the `DinosaursAreRunningRampantException`. 
+
+[[[ code('1ad9080a83') ]]]
+
+Here's the problem we're facing: we have these enclosures, but... they don't have any
 security - no electric fences, no guard towers, nothing! We need to add that capability
 to enclosures *and* throw this new exception *if* we try to add a `Dinosaur` to
 an `Enclosure` that has no active security. Because... honestly... we're having a
@@ -14,6 +17,8 @@ In `EnclosureSpec`, let's create a new example to describe this:
 temporarily ignore *all* the other examples that we've been working on so far, because
 this example is going to temporarily break... all of them.
 
+[[[ code('cfe467f295') ]]]
+
 First... how does "security" for our enclosures need to be designed? Is it a boolean
 property on Enclosure so we can just turn security on or off? Something more complex?
 Actually, right now, it doesn't matter! 
@@ -24,6 +29,8 @@ that by saying `$this->shouldThrow()`. And this time, instead of passing the cla
 name of the exception that should be thrown, I'll say
 `new DinosaursAreRunningRampantException()` and pass this a message: `Are you craaazy?!?`.
 
+[[[ code('9882db2062') ]]]
+
 Why am I doing this differently than before? It's really up to you: you can pass
 the class name to `shouldThrow()` if you *only* need to make sure the exception is
 an instance of that class *or* if you want to make sure that the message is also
@@ -31,6 +38,8 @@ correct, you can create the exception object with the message you expect.
 
 Next, the exception should be thrown `->duringAddDinosaur(new Dinosaur())` with
 `Velociraptor` and `true`.
+
+[[[ code('e681b94564') ]]]
 
 Oh, and this language is *also* a bit different than before. Earlier, we used
 `during()` and passed `addDinosaur` as an argument to that method. That's fine,
@@ -66,6 +75,8 @@ Back in the `tutorial/` directory, check out the `Entity/` directory. See that
 `Security` class? Copy that and put into our `src/Entity/` folder. *Not* `spec/Entity`,
 I'm *totally* messing this up right now... and will pay for it later.
 
+[[[ code('c6ab3b48a7') ]]]
+
 And, yes, yes, we're going to cheat a bit: we're going to skip the spec process
 for the `Security` class and start with something I've already created.
 
@@ -81,6 +92,8 @@ Ok... cool! To hold the securities, let's create a `$securities` property and se
 it to an empty array. This will be an array of `Security` objects, so let's document
 that.
 
+[[[ code('b437cc001f') ]]]
+
 Now, this is interesting. If we're adding a `securities` property, shouldn't we
 describe this more directly with some examples that show... I don't know... some
 `addSecurity()` or `getSecurities()` methods? Well... maybe? Maybe because... we
@@ -94,6 +107,8 @@ Anyways, down in `addDinosaur()`, let's call another new method
 `new DinosaursAreRunningRampantException()` and pass it the same message that we
 described in our example - because we're testing for this *exact* string.
 
+[[[ code('241bc8297a') ]]]
+
 In reality, this is a bit silly. In real life, I probably wouldn't care enough to
 test for that exact message - the class is enough.
 
@@ -103,6 +118,8 @@ the `$securities` with `$this->securities as $security`. If at least *one* `Secu
 object attached to this enclosure is active, then our enclosure is secure.
 So `if ($security->getIsActive())`, then `return true`. And if *none* of them are
 active, `return false`.
+
+[[[ code('19f6f1f115') ]]]
 
 Okay, that should work! Move back to the terminal. Oh, see this 41? That means
 the example lives on line 41 of the spec class. Re-run phpspec:
