@@ -37,7 +37,7 @@ Oh... interesting! It's some sort of a `Collaborator` object. But what I *really
 want you to see is that, inside of it, is something called an `ObjectProphecy`. Woh,
 cool name.
 
-Technically speaking, phpspec's doesn't have its own mocking system - it uses a
+Technically speaking, phpspec doesn't have its own mocking system - it uses a
 totally independent library called prophecy. Well, the truth is that the phpspec
 team made and maintains both libraries - but prophecy *is* its own library, and
 can even be used in PHPUnit.
@@ -52,7 +52,7 @@ that.
 
 So... what can we do with this `$dinosaur` mock? Well, you could take *full*
 control over the return value of *any* of its methods. Or you can check to make
-sure that one of its methods were called. We have 100% control over how this object
+sure that one of its methods was called. We have 100% control over how this object
 behaves.
 
 For this example, we're testing that the `hasSameDietAs()` method behaves correctly.
@@ -62,8 +62,8 @@ false.
 
 Cool - let's tell our mock about this: `$dinosaur->isCarnivorous()->willReturn(false)`.
 I like that! It feels a *lot* like normal phpspec code! Except instead of
-`getGenus()->shouldBe()` to asserts a return value, we're instead *training* the
-mock: we're *teaching* it how it  should behave.
+`getGenus()->shouldBe()` to assert a return value, we're instead *training* the
+mock: we're *teaching* it how it should behave.
 
 *Now* we can say `$this->shouldHaveSameDietAs($dinosaur)` - remembering that
 `$this` will *not* be carnivorous, because it was constructed with no arguments.
@@ -85,7 +85,7 @@ When you hear these words, they're all basically referring to the same idea, tho
 that you can do with these objects.
 
 For example, when you want to control the return value of an object, then suddenly
-your this "fake" object is known as a stub. So, in our example, `$dinosaur` is
+this "fake" object is known as a stub. So, in our example, `$dinosaur` is
 technically a stub. Later, we're going to do things like assert that a certain
 method was called. Like, we could say: I want to assert that the `isCarnivorous()`
 method was called exactly one time. When we do *that*, the test double object
@@ -94,9 +94,9 @@ will be known as a spy or a mock.
 The point is: these terms are all different ways to describe the same idea of getting
 a fake object from phpspec and then either training it to have some sort of behavior
 or asserting that certain methods were called on it. To some people, this distinction
-is super important. For me, I can never remember the difference, and I don't care.
-Though, as we'll see later. prophecy's documentation uses these words a lot - so
-it's good to know a little bit about them.
+is super important. For me, I can never remember the difference, and I don't care
+that much. Though, as we'll see later, prophecy's documentation uses these words a
+lot - so it's good to know a little bit about them.
 
 But before we get there, let's add another service to our application - an
 `EnclosureBuilderService`. This will let us build enclosures faster and, more

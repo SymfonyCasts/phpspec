@@ -28,7 +28,7 @@ How about `function it_builds_enclosure_with_dinosaurs()`. Inside, let's see, I'
 like to be able to create a new `Enclosure` by saying `$enclosure = $this->buildEnclosure()`.
 We'll pass that the number of security systems we want - 1 - and the number of
 dinosaurs we want: 2. Then we can do some basic checks, like
-`$enclosure->shouldBeAnInstance()` to make sure an `Enclosure` is returned.
+`$enclosure->shouldBeAnInstanceOf()` to make sure an `Enclosure` is returned.
 
 Oh, and very important! I want to make sure the new `Enclosure` has *active* security:
 `$enclosure->isSecurityActive()`. Wait... but that's not auto-completing - I thought
