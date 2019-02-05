@@ -23,5 +23,7 @@ chapters:
   - dummies
   - stubs
   - arguments
+  - argument-matching
   - mocks-spies
+  - doubles-dummies-mocks-spies
   - let-setup

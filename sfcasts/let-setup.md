@@ -1,115 +1,137 @@
-# Let Setup
+# Let: The Setup Function
 
-Coming soon...
-
-Alright, so with this example, executing really well,
+This this example executing really well...
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
-let's go back and run all of the examples in the specifications. 
+let's go back and run *all* of the examples in this spec class.
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
 ```
 
-Vasquez boom, surprise. The first one is initialized, was failing to few arguments to the
-constructor zero past expected one. That makes sense because we have this 
-`beConstructedWith()` inside this example, but we don't have it here. Of course we could
-just duplicate it and add the same argument up here, but it does kind of make me
-think. Would it be nice if we could have a, a method that was called before each of
-our examples, a method that can do some sort of setup and of course the answer is
-that this is totally possible by creating a function called `let()`. `let()` will be called
-once before each example, so `let()` than `it_is_initializable()` will then `let()` again before
-our second example. Inside. That would be the exact same thing as our methods,
-meaning if we need a double, we can edit `$dinosaurFactory` argument. This allows us
-to move the this `beConstructedWith()` up to our `let()` so that it's run before each
-of these and the important thing here is that let will be called first. It will
-create a testable called `$dinosaurFactory`
+Ah, oh yea! `it_is_initializable()` is still failing: too few arguments to the
+constructor: zero passed, expected one. That makes sense: we added
+`$this->beConstructedWith()` to our `it_builds_enclosures_with_dinosaurs()` example,
+but not in the first example.
 
-and then down in our example, we need to make sure that we get that exact same
-`DinosaurFactory` because that's what we're going to add our behavior to. Way that's
-done is by the name of the argument. So the fact that this argument is called
-`$dinosaurFactory` here and this one's called `$dinosaurFactory` down there, it means that
-those will be the same object if we needed multiple audits, our factories, we get to
-have to `$dinosaurFactory2`, and `$dinosaurFactory2` down here and it would match up
-by name. Point is this is enough 
+The easiest solution is just to... ya know... duplicate it! But... it does kind
+of make me think: it would be nice if we could call a method *before* each example
+was executed - a method that could, sort of, setup some things. After all, we're
+going to need to call `$this->beConstructedWith()` in *every* single example function.
+
+## Hello let()
+
+Unfortunately... this is not possible... and the tutorial is now over. Kidding!
+This is totally possible by creating a function called `let()`. Yep! `let()` will
+be called once *before* each example function is executed. So, `let()` then
+`it_is_initializable()`, then `let()` again and `it_builds_enclosures_with_dinosaurs()`.
+
+Inside `let()`, we can do the *exact* same things as our normal methods... meaning,
+if we need a test double, we can add a `DinosaurFactory $dinosaurFactory` argument.
+And *this* allows us to move the `beConstructedWith()` call up to `let()`.
+
+Ok, let's look at this: `let()` will be called first, and will be passed the
+`$dinosaurFactory` test double. But then, down in the example, we need to make sure
+that we get that *exact* same `DinosaurFactory` test double because *that* is the
+object that we need to add behavior to.
+
+And that is *exactly* how this will work. But, it's not just because these are
+both `DinosaurFactory` objects. Nope. phpspec matches by the *argument* name:
+because the argument is called `$dinosaurFactory` in `let()` *and* because it
+has the same name below, phpspec knows to pass the *same* object... instead of creating
+a brand-new test double.
+
+So... unless we've mucked something up, this should make everything happy! Try it:
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
 
-to get our test to pass. So let's do one last thing with our `EnclosureBuilderService`. 
-One of the things I want my `EnclosureBuilderService` to do is save the enclosure builder 
-to the database after it finishes building it. Now, obviously we don't have a database 
-in this application, but we're going to write our example as if we have one. So if you 
-look in the `tutorial/` directory in the `Service/` directory, there is an 
-`EntityManagerInterface`. Copy that and put that into our `Service/` directory. 
-Now if you are a Symfony user that uses Doctrine and this is going to look familiar, 
-I do not recommend that you actually put an `EntityManagerInterface` into your application 
-like this. We're putting. We're using this as an example to pretend that like doctrine 
-is inside of our application. It has the exact same `persist()` and `flush()` methods on it. 
-That doctrines `EntityManagerInterface` has.
+Woohoo!
 
-We're doing this big so that now instead of our example, what I want to do is I want
-to make sure that `persist()` and `flush()` are called on our `EnclosureBuilder`. I want to
-make sure that we don't forget to save this to the database inside of building
-closure, so this means that our `EnclosureBuilderService` is going to have another
-dependency. It's going to have an `EntityManagerInterface` dependency and that's
-going to be passed as these second argument
+## Using Mocks/Spies to Guarantee Saving to the Database
 
-and then way down here I'm going to. We need to assert that `persist()` and `flush()` had been
-called on it, so we'll get that same test double here by saying 
-`EntityManagerInterface $entityManager` using these same argument name is above and down here. 
-It doesn't matter. I can either do it as a mock up here or I can do it as a spy in the
-bottom. I'll do it as a five. I'll say `$entityManager->persist()` in. This is going to
-be past our enclosure objects, so what we can do here is say `Argument::type()` and this
-is going to be an `Enclosure` type. We'll just make sure that it's actually past the
-right argument and then we'll say `shouldHaveBeenCalled()`. Then I'll do the same
-thing down here with `flush()` flush, doesn't take any arguments and we'll just make sure
-that it's been called and that's it. This time we're not con, not giving it any
-behavior. This is purely something that we're using as a spy so that we can assert
-some expectation on it, so if we go over and run the test out, 
+So let's do *one* last thing before you all go off and take over the world with
+your new phpspec knowledge. One of the things I want my `EnclosureBuilderService`
+to do is to *save* the new `EnclosureBuilder`  to the database after it finishes
+building it. Now, obviously, we don't have a database in this application... but
+we can fake it!
 
-```terminal-silent
-./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
-```
+Open up that `tutorial/` directory that you should have if you downloaded the
+course code. In the `Service/` directory there is an `EntityManagerInterface.php`
+file. Copy that and put it into your `Service/` directory.
 
-perfect, it fails. It says that no calls have been made that match `persist()` with 
-that type of argument, but expected at least one. So let's go now into our 
-`EnclosureBuilderService.php`.
+If you're a Doctrine user, this will look familiar. But, no, I'm not recommending
+that you actually create or move the `EntityManagerInterface` into your app like
+this. We're adding this interface as a convenient way to "pretend" like Doctrine
+exists in our app. This interface looks *just* like the one from Doctrine, with
+the same `persist()` and `flush()` methods.
 
-Well, at our `$entityManager` service argument, I'll hit Alt + Enter to to create that
-property and set it, and then down here on the bottom, 
-`$this->entityManager->persist($enclosure)`. `$this->entityManager->flush()`. Alright, 
-let's try that. Move over, run it 
+## Guaranteeing the Object is Saved
+
+Back in the example, I want to describe that `persist()` and `flush()` should be
+called on the `EntityManagerInterface` when we call `buildEnclosure()` - I want
+to guarantee that we didn't forget to save this to the database. And *that* means
+that our `EnclosureBuilderService` will have a second dependency. In `let()`, add
+a second argument: `EntityManagerInterface $entityManager`. Pass that as the second
+argument to `beConstructedWith()`.
+
+Then, down in the actual example, we want to assert that `persist()` and `flush()`
+have been called on it. We'll get that same test double here by *also* saying
+`EntityManagerInterface $entityManager` - using these same argument name as above.
+
+At this point, we can use the mock or spy functionality - it makes no difference
+at all. I'll do it as a spy. Start with `$entityManager->persist()`. This should
+be passed an `Enclosure` object. So let's say `Argument::type()` with `Enclosure::class`.
+Then, `->shouldHaveBeenCalled()`.
+
+Repeat this with `flush()`, except that `flush()` doesn't take any arguments.
+
+This time, we're not giving the test double *any* behavior - it's a *pure* spy.
+Try it:
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
 ```
 
-and it passes and let's run all of our specs from the top 
+Woo! It fails:
+
+> no calls have been made that match `persist()` with type Enclosure, but expected
+> at least one.
+
+Open `EnclosureBuilderService` and let's code that up. Start by adding the
+`EntityManagerInterface $entityManager` argument. I'll hit Alt + Enter to create
+that property and set it. Finally, at the bottom of the method,
+`$this->entityManager->persist($enclosure)` and `$this->entityManager->flush()`.
+
+This looks *great*. Run those tests *one* final time.
+
+```terminal-silent
+./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php
+```
+
+It passes! Try the entire test suite:
 
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
 
-and it works. Guys, that's it. phpspec is not. There's not more super complex 
-stuff to tell you. That's it. phpspec is really on the service, a very simple tool 
-for allowing you to write examples where you actually treat your object like the 
-actual object. What'd you have to get used to is kind of the magic behind the scenes, 
-but once you embrace the magic and use the, cogeneration is an amazing tool for 
-creating great unit tests, but primarily for helping a design really nice classes.
+It works too!
 
-Okay.
+Friends! That's it. phpspec is wonderful tool to help you write unit tests... but
+*really* focus on the design of your object. Yes, you *do* need to get used to
+a lot of the magic it does. But once you embrace the magic, the experience is
+*wonderful*... and the code generation isn't too bad either.
 
-Now the one word of warning I always like to give people is that just because you
-have a wonderful testing tool like phpspec doesn't mean you need to test every
-single thing. Uh, like in `DinosaurSpec`, we're doing a lot of testing on our getters
-and setters, so you can do that. That's up to you. But in my project I typically unit
-test classes and methods that have some real complexity and actually scare me. So
-using phpspec to test and design those classes in addition to other tools like
-a behat and phpspec PHPunit for integration tests, it gives you a great suite of
-tools to use for testing your application. I guys get out there, right some really
-fun phpspec specifications and examples and we'll talk to you next time. Bye.
+One word of warning that I always like to give people is that just because you
+have a wonderful testing tool like phpspec, it doesn't mean you need to test every
+single thing. For example, in `DinosaurSpec`, we're doing a lot of testing on the
+getter and setter methods. You *can* do that... but I think it's overkill. Think
+of testing less as an all or nothing, and more of a *priority* system: make it
+a high priority to test, or *describe* the classes that have a lot of complexity...
+or that scare you.
+
+Ok, get out there, describe some *great* classes, and we'll seeya next time!
