@@ -29,8 +29,12 @@ example that's current failing. Here's the idea: to add some basic security, say
 `$this->beConstructedWith(true)`. Yep, I want there to be a constructor arg that
 easily allows you to activate *some* type of security.
 
+[[[ code('f7d759a410') ]]]
+
 Let's also add this to the other example that's failing - it's around line 32. Paste!
 And for the newest example we've been working on, I'll instantiate with `false`.
+
+[[[ code('b6b4775e29') ]]]
 
 Ok, let's try the tests:
 
@@ -48,11 +52,15 @@ haven't created yet: `$this->addSecurity()` with `new Security()` passing that
 fence... or I guess "fency", whatever that is... `true` to make it active and `$this`
 because it will be attached to *this* `Enclosure.`
 
+[[[ code('241211b923') ]]]
+
 For the `addSecurity()` method, because we're not using this method anywhere outside
 of this class, we should technically create it as private. But, I already know that
 I *will* need to use it outside this class, so let's make it public:
 `public function addSecurity(Security $security)`. Inside,
 `$this->securities[] = $security`.
+
+[[[ code('347c28b0d4') ]]]
 
 Phew! Okay, find your terminal and let's try this!
 
@@ -96,6 +104,8 @@ Let's not make the same mistake: create a new example function:
 `it_should_fail_if_providing_initial_dinosaurs_without_security()`. Start with
 `$this->beConstructedWith(false)` and an array with one `new Dinosaur()`.
 
+[[[ code('234b8cab2a') ]]]
+
 Then, we just need to tell phpspec what method will cause the exception. So...
 wait! This is a bit different: the exception will be thrown during instantiation!
 Not when we call some other method.
@@ -103,6 +113,8 @@ Not when we call some other method.
 How can we tell phpspec about that? It's *almost* the same: `$this->shouldThrow()`
 with `DinosaursAreRunningRampantException::class` - I don't care about testing
 the exact message. Then, `->duringInstantiation()`.
+
+[[[ code('55e549d4f3') ]]]
 
 That's it. Let's make sure things are failing!
 
@@ -116,10 +128,14 @@ to the constructor. But, because that method already exists, phpspec is not *qui
 smart enough to automatically generate a second argument for us. Ok, then, I
 *guess* we'll do it by hand: add `array $initialDinosaurs = []`.
 
+[[[ code('4572fced7f') ]]]
+
 Next, foreach over `$initialDinosaurs as $dinosaurs` and say, 
 `this->addDinosaur($dinosaur)`. *That* was the mistake that *other* programmer made:
 I'm using `addDinosaur()` instead of just setting the `$dinosaurs` property directly
 because *that* method contains the security checks.
+
+[[[ code('bbc7ce5f25') ]]]
 
 So... that should be it! Let's try phpspec:
 

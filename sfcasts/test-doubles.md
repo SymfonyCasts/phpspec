@@ -29,6 +29,8 @@ Check this out: instead of creating a new `Dinosaur` object, add an *argument* t
 the example method with a `Dinosaur` type-hint. Let's `var_dump($dinosaur)` and
 then see what happens when we run phpspec:
 
+[[[ code('39ef3b2fe1') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpspec run
 ```
@@ -65,8 +67,12 @@ I like that! It feels a *lot* like normal phpspec code! Except instead of
 `getGenus()->shouldBe()` to assert a return value, we're instead *training* the
 mock: we're *teaching* it how it should behave.
 
+[[[ code('c6abe8de19') ]]]
+
 *Now* we can say `$this->shouldHaveSameDietAs($dinosaur)` - remembering that
 `$this` will *not* be carnivorous, because it was constructed with no arguments.
+
+[[[ code('5a88de5a27') ]]]
 
 Cool! So let's see what phpspec thinks:
 
