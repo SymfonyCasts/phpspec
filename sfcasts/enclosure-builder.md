@@ -18,6 +18,10 @@ generate the class immediately with:
 
 Booya!
 
+[[[ code('786a5bcd15') ]]]
+
+[[[ code('715e94670b') ]]]
+
 ## Describing the new Feature
 
 New plan time team! Let's add a method to the service where we can pass it
@@ -30,10 +34,14 @@ We'll pass that the number of security systems we want - 1 - and the number of
 dinosaurs we want: 2. Then we can do some basic checks, like
 `$enclosure->shouldBeAnInstanceOf()` to make sure an `Enclosure` is returned.
 
+[[[ code('0d3e2a30d2') ]]]
+
 Oh, and very important! I want to make sure the new `Enclosure` has *active* security:
 `$enclosure->isSecurityActive()`. Wait... but that's not auto-completing - I thought
 we added that method! Oh, it *does* exist, but it's private. We'll need to fix that
 in a minute. Anyways, use `$enclosure->isSecurityActive()->shouldReturn(true)`.
+
+[[[ code('1796e50af8') ]]]
 
 Simple enough! We're not asserting anything about the dinosaurs yet, but it's a
 good start. In `Enclosure`, make `isSecurityActive()` public: we've discovered
@@ -60,11 +68,15 @@ you if you want a default - and `int $numberOfDinosaurs = 3`. Then,
 `$enclosure = new Enclosure()` and we'll offload the real work to a private method:
 `$this->addSecuritySystems($numberOfSecuritySystems, $enclosure)`.
 
+[[[ code('9528c1dc16') ]]]
+
 At the bottom, return `$enclosure` - we'll worry about the dinosaurs in a minute.
 For the `addSecuritySystems()` method, I'm going to cheat and paste that in: you
 can find this function on the code block on this page. Make sure to re-type the
 `y` on `Security` and hit tab to auto-complete that and get the `use` statement
 on top.
+
+[[[ code('9715364e08') ]]]
 
 It's nothing special: it takes in the `$numberOfSecuritySystems`, does a `for` loop,
 chooses a random name and sets the "is active" flag to true.
