@@ -42,6 +42,8 @@ will create a "dummy" object: one of those many words to describe that this will
 be an object that looks and smells like `DinosaurFactory`... but isn't *actually*
 a `DinosaurFactory`. Pass *this* to `beConstructedWith()`.
 
+[[[ code('74b72b99a5') ]]]
+
 Cool! Let's not do *anything* else yet, just run phpspec and see what it thinks:
 
 ```terminal-silent
@@ -51,6 +53,8 @@ Cool! Let's not do *anything* else yet, just run phpspec and see what it thinks:
 Woohoo! It sees that the constructor is not found and asks if we want to generate
 it. Of course we do! Go check it out! Change the argument to
 `DinosaurFactory $dinosaurFactory` and then... do nothing... yet.
+
+[[[ code('cc00292731') ]]]
 
 Because... to be all "technical" about it, all we *actually* need to do to get the
 test to pass is have an `__construct()` method that takes one `DinosaurFactory`
