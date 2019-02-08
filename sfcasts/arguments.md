@@ -32,7 +32,7 @@ apply even *one* promise to *one* method on a dummy object, you must apply a pro
 to *every* single call.
 
 This can be a little tricky to understand at first. When we say
-`$dinosaur->growVelociprator(5)->willReturn()`, we're *really* saying:
+`$dinosaurFactory->growVelociprator(5)->willReturn()`, we're *really* saying:
 
 > Hey phpspec! When `growVelociraptor()` is called and passed *5* as an argument,
 > you should return `$dino1` and `$dino2`. If any other value is passed, this
@@ -44,7 +44,7 @@ you *must* define a promise... basically, you must tell phpspec what to do for
 *every* method call and *every* possible argument.
 
 In other words, the *simplest* way to fix this would be to add a promise for
-*every* argument that we'll pass - like `$dinosaur->growVelociraptor(6)->willReturn()`,
+*every* argument that we'll pass - like `$dinosaurFactory->growVelociraptor(6)->willReturn()`,
 then 7, 8, 9 - however many you need for that example. Whenever `growVelociraptor()`
 is called, prophecy goes down *all* of the promises for that method and finds the
 *one* that fits best. If none are found... but at least one is specified... error!
