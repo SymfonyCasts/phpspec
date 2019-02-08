@@ -1,4 +1,4 @@
-# Promises (controller return values) & Arguments
+# Promises (control return values) & Arguments
 
 In our spec, we said that, when we call `buildEnclosure()`, we expect *it* to
 call `growVelociraptor()` on `DinosaurFactory` and pass it the exact argument `5`.
