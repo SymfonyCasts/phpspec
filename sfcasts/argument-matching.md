@@ -8,6 +8,8 @@ Check it out: copy the beginning of the promise and paste it below. Replace the
 argument with 5. Then say `->willReturn($dino2)`. For the first promise, remove `$dino2`:
 this will now return `$dino1` *every* time its matched.
 
+[[[ code('b4bbf3fa7a') ]]]
+
 So... what do you think will happen now? Down here, I'm saying that when
 `growVelociraptor()` is called with exactly the number `5`, return `$dino2`.
 But up here I'm saying: if `growVelociraptor()` is called with *any* `integer`,
@@ -45,8 +47,11 @@ The second time, the argument is 6 and *only* matches the first promise. So,
 `$dino1` is returned.
 
 This means that `$dino2` is now the first item and `$dino1` is the second. How
-*cool* is that?! That's full, beautiful control. Let's take off the `-v` option
-and run the tests:
+*cool* is that?! That's full, beautiful control.
+
+[[[ code('36bfefb091') ]]]
+
+Let's take off the `-v` option and run the tests:
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
@@ -67,6 +72,8 @@ Let's change this back to just one promise: we don't really need to be this spec
 Delete the more specific call and make the other one return `$dino1` and then `$dino2`
 just like before. Also update the asserts to go back to the original way. Double-check
 that phpspec is happy:
+
+[[[ code('3e5722cb19') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
