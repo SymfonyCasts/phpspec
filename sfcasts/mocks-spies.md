@@ -56,7 +56,7 @@ Try it!
 ```
 
 Nice! It's sort of a low-level detail, but when we call
-`$dinosaur->growVelociraptor()`, that returns what's called a "method prophecy"
+`$dinosaurFactory->growVelociraptor()`, that returns what's called a "method prophecy"
 object... and we can then add "promises" to it - that's the `willReturn()` stuff -
 or *predictions* - that's the `shouldBeCalledTimes()` stuff. What's interesting
 is that, if you call a method on a stub two times and pass it the *same* exact
