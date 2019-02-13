@@ -22,6 +22,8 @@ make sure a method *was* called... or was called exactly *three* times... or was
 starts the same way: `$dinosaurFactory->growVelociraptor(Argument::type('integer'))`.
 But then, instead of `willReturn()`, use `shouldBeCalledTimes(2)`.
 
+[[[ code('b11fcb5e85') ]]]
+
 This feels familiar... because it's exactly like what we've been doing! It looks
 like a matcher! It's identical to `$this->shoudHaveType()`, for example.
 
@@ -48,6 +50,8 @@ the `$dinosaurFactory->growVelociraptor(Argument::type('integer'))` part when we
 need to control the return value *and* when we want to assert how many times it
 was called. We can totally remove that. Chain the `->shouldBeCalledTimes()` onto
 the end of the first call.
+
+[[[ code('de3b9457a9') ]]]
 
 Try it!
 
@@ -78,6 +82,8 @@ call `->shouldBeCalledTimes()` and *then* execute the code.
 remove the `->shouldBeCalledTimes()` line. Then, anywhere after we call
 `buildEnclosure()`, start with `$dinosaurFactory->growVelociraptor(Argument::any())`
 and then `->shouldHaveBeenCalledTimes(2)`.
+
+[[[ code('630e343671') ]]]
 
 This does the exact same thing... it's just a different style. Oh, and I used
 `Argument::any()` down here instead of `type()`, but not for any special reason:
