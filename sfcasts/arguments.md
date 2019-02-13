@@ -13,6 +13,8 @@ But... what if it weren't that simple? Go into the service. Making *every* dinos
 the same size isn't very realistic. No, let's make it more interesting - let's
 make the length `5 + $i`. So 5, then 6, 7 and so on.
 
+[[[ code('025878b317') ]]]
+
 What will phpspec think of this? Our example *still* says that we expect this method
 to *always* be called with the argument 5. Well... let's find out!
 
@@ -55,6 +57,8 @@ Of course... creating a promise for *every* possible argument  is... a bit nuts.
 So what's the *real* fix? Remove the specific argument 5 and replace it with a
 special `Argument` class from prophecy and pass it `any()`. Try phpspec again:
 
+[[[ code('0076ed3687') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
 ```
@@ -79,6 +83,8 @@ want `growVelociraptor()` to be called with *any* argument: it should be an
 integer at least! If you *really* want to make sure that's happening correctly, you
 can use `Argument::type()` and pass `integer`.
 
+[[[ code('859670f63f') ]]]
+
 This should work for us... so let's try it!
 
 ```terminal-silent
@@ -86,6 +92,8 @@ This should work for us... so let's try it!
 ```
 
 All green! But *now* change this to `string`. Try it again:
+
+[[[ code('006af4b509') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpspec run spec/Service/EnclosureBuilderServiceSpec.php:19
