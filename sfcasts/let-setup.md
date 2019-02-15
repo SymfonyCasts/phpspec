@@ -33,6 +33,8 @@ Inside `let()`, we can do the *exact* same things as our normal methods... meani
 if we need a test double, we can add a `DinosaurFactory $dinosaurFactory` argument.
 And *this* allows us to move the `beConstructedWith()` call up to `let()`.
 
+[[[ code('6295ce5fe8') ]]]
+
 Ok, let's look at this: `let()` will be called first, and will be passed the
 `$dinosaurFactory` test double. But then, down in the example, we need to make sure
 that we get that *exact* same `DinosaurFactory` test double object because *that*
@@ -64,6 +66,8 @@ Open up the `tutorial/` directory: you'll have it if you downloaded the course
 code. In the `Service/` directory there is an `EntityManagerInterface.php` file.
 Copy that and put it into your `Service/` directory.
 
+[[[ code('f85b1c8f3d') ]]]
+
 If you're a Doctrine user, this will look familiar. But, no, I'm not recommending
 that you actually create or move the `EntityManagerInterface` into your app like
 this. We're adding this interface as a convenient way to "pretend" like Doctrine
@@ -79,6 +83,8 @@ that our `EnclosureBuilderService` will have a second dependency. In `let()`, ad
 a second argument: `EntityManagerInterface $entityManager`. Pass that as the second
 argument to `beConstructedWith()`.
 
+[[[ code('60890f7e5d') ]]]
+
 Then, down in the actual example, we want to assert that `persist()` and `flush()`
 were called on it. Get that same test double here by *also* saying
 `EntityManagerInterface $entityManager`.
@@ -89,6 +95,8 @@ an `Enclosure` object. So let's say `Argument::type()` with `Enclosure::class`.
 Then, `->shouldHaveBeenCalled()`.
 
 Repeat this with `flush()`, except that `flush()` doesn't take any arguments.
+
+[[[ code('9b702cd836') ]]]
 
 This time, we're not giving the test double *any* behavior: it's a *pure* spy.
 Try it:
@@ -104,8 +112,14 @@ Woo! It fails:
 
 Open `EnclosureBuilderService` and let's code that up. Start by adding the
 `EntityManagerInterface $entityManager` argument. I'll hit Alt + Enter to create
-that property and set it. Finally, at the bottom of the method,
-`$this->entityManager->persist($enclosure)` and `$this->entityManager->flush()`.
+that property and set it.
+
+[[[ code('4050650b1b') ]]]
+
+Finally, at the bottom of the method, `$this->entityManager->persist($enclosure)`
+and `$this->entityManager->flush()`.
+
+[[[ code('9e2bf182c2') ]]]
 
 This *looks* great. But let's run phpspec *one* last time to be sure:
 
