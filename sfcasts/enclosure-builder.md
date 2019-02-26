@@ -76,7 +76,7 @@ can find this function on the code block on this page. Make sure to re-type the
 `y` on `Security` and hit tab to auto-complete that and get the `use` statement
 on top.
 
-[[[ code('9715364e08') ]]]
+[[[ code('5ebb0ff203') ]]]
 
 It's nothing special: it takes in the `$numberOfSecuritySystems`, does a `for` loop,
 chooses a random name and sets the "is active" flag to true.
