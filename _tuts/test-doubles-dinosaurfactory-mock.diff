@@ -23,7 +23,7 @@ index 515ee7e..1735064 100644
  
          $enclosure->shouldBeAnInstanceOf(Enclosure::class);
 diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
-index 376565c..dbfdf2b 100644
+index 10b400e..9924be0 100644
 --- a/src/Service/EnclosureBuilderService.php
 +++ b/src/Service/EnclosureBuilderService.php
 @@ -7,6 +7,11 @@ use App\Entity\Security;

@@ -1,5 +1,5 @@
 diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
-index 251b35a..2246cab 100644
+index c782610..0686888 100644
 --- a/src/Service/EnclosureBuilderService.php
 +++ b/src/Service/EnclosureBuilderService.php
 @@ -10,9 +10,12 @@ class EnclosureBuilderService

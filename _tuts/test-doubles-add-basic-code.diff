@@ -1,8 +1,8 @@
 diff --git a/src/Service/EnclosureBuilderService.php b/src/Service/EnclosureBuilderService.php
-index daf4979..376565c 100644
+index daf4979..10b400e 100644
 --- a/src/Service/EnclosureBuilderService.php
 +++ b/src/Service/EnclosureBuilderService.php
-@@ -2,10 +2,30 @@
+@@ -2,10 +2,31 @@
  
  namespace App\Service;
  
@@ -27,8 +27,9 @@ index daf4979..376565c 100644
 +
 +    private function addSecuritySystems(int $numberOfSecuritySystems, Enclosure $enclosure)
 +    {
++        $securityNames = ['Fence', 'Electric fence', 'Guard tower'];
 +        for ($i = 0; $i < $numberOfSecuritySystems; $i++) {
-+            $securityName = array_rand(['Fence', 'Electric fence', 'Guard tower']);
++            $securityName = $securityNames[array_rand($securityNames)];
 +            $security = new Security($securityName, true, $enclosure);
 +
 +            $enclosure->addSecurity($security);
