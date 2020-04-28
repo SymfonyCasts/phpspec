@@ -1,51 +1,49 @@
 diff --git a/composer.json b/composer.json
-index 3de5b25..9fa3610 100644
+index a5844ea..7ae8976 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -2,7 +2,8 @@
+@@ -2,6 +2,7 @@
      "license": "proprietary",
      "type": "project",
      "require-dev": {
--        "phpspec/phpspec": "^5.0"
-+        "phpspec/phpspec": "^5.0",
-+        "phpspec/nyan-formatters": "dev-master"
++        "phpspec/nyan-formatters": "2.0.2",
+         "phpspec/phpspec": "^6.0"
      },
      "autoload": {
-         "psr-4": {
 diff --git a/composer.lock b/composer.lock
-index 99a8139..492e9a0 100644
+index 2f0f108..a895c9f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "8c69ee97829c7d188d1edef2abadede1",
-+    "content-hash": "c4e407ca92383ed5edc2c8d78c2fb1b8",
+-    "content-hash": "7c6ad3c2f77beb4205ae0f2908a1a2ef",
++    "content-hash": "3012060980de4dd33b1c000d9651a002",
      "packages": [],
      "packages-dev": [
          {
-@@ -213,6 +213,58 @@
-             ],
-             "time": "2017-07-14T14:27:02+00:00"
+@@ -211,6 +211,58 @@
+             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
+             "time": "2020-02-18T18:59:58+00:00"
          },
 +        {
 +            "name": "phpspec/nyan-formatters",
-+            "version": "dev-master",
++            "version": "2.0.2",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/phpspec/nyan-formatters.git",
-+                "reference": "28f96f133d41b3368c4bdaad0f668d4af6a594e1"
++                "reference": "641fe7a210a8100d03f804a7cf5c4ea73c6c3ce2"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/phpspec/nyan-formatters/zipball/28f96f133d41b3368c4bdaad0f668d4af6a594e1",
-+                "reference": "28f96f133d41b3368c4bdaad0f668d4af6a594e1",
++                "url": "https://api.github.com/repos/phpspec/nyan-formatters/zipball/641fe7a210a8100d03f804a7cf5c4ea73c6c3ce2",
++                "reference": "641fe7a210a8100d03f804a7cf5c4ea73c6c3ce2",
 +                "shasum": ""
 +            },
 +            "require": {
 +                "php": ">=5.3.3",
-+                "phpspec/phpspec": "~3.0|~4.0|~5.0",
++                "phpspec/phpspec": "~3.0|~4.0|~5.0|~6.0",
 +                "whatthejeff/nyancat-scoreboard": "~1.1"
 +            },
 +            "type": "extension",
@@ -65,12 +63,12 @@ index 99a8139..492e9a0 100644
 +            ],
 +            "authors": [
 +                {
-+                    "name": "Jeff Welch",
-+                    "email": "whatthejeff@gmail.com"
-+                },
-+                {
 +                    "name": "Matthew Davis",
 +                    "email": "matt@mattdavis.co.uk"
++                },
++                {
++                    "name": "Jeff Welch",
++                    "email": "whatthejeff@gmail.com"
 +                }
 +            ],
 +            "description": "PHPSpec Nyan Formatter Extension",
@@ -79,15 +77,15 @@ index 99a8139..492e9a0 100644
 +                "nyan",
 +                "phpspec"
 +            ],
-+            "time": "2018-07-03T08:56:24+00:00"
++            "time": "2020-01-07T09:35:55+00:00"
 +        },
          {
              "name": "phpspec/php-diff",
              "version": "v1.1.0",
-@@ -1159,11 +1211,120 @@
+@@ -1372,6 +1424,113 @@
                  "validate"
              ],
-             "time": "2018-01-29T19:49:41+00:00"
+             "time": "2020-04-18T12:12:48+00:00"
 +        },
 +        {
 +            "name": "whatthejeff/fab",
@@ -198,14 +196,6 @@ index 99a8139..492e9a0 100644
          }
      ],
      "aliases": [],
-     "minimum-stability": "stable",
--    "stability-flags": [],
-+    "stability-flags": {
-+        "phpspec/nyan-formatters": 20
-+    },
-     "prefer-stable": false,
-     "prefer-lowest": false,
-     "platform": [],
 diff --git a/phpspec.yml b/phpspec.yml
 index c410a06..3e19633 100644
 --- a/phpspec.yml
