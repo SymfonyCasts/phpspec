@@ -1,4 +1,11 @@
 {
     "license": "proprietary",
-    "type": "project"
+    "type": "project",
+    "require": {
+    },
+    "config": {
+        "platform": {
+            "php": "7.1.3"
+        }
+    }
 }
