@@ -1,29 +1,30 @@
 diff --git a/composer.json b/composer.json
-index 94f9a16..239128c 100644
+index af62647..ec04394 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -1,4 +1,7 @@
+@@ -1,6 +1,9 @@
  {
      "license": "proprietary",
--    "type": "project"
-+    "type": "project",
+     "type": "project",
 +    "require-dev": {
-+        "phpspec/phpspec": "^6.0"
-+    }
- }
++        "phpspec/phpspec": "^6.0"    
++    },
+     "config": {
+         "platform": {
+             "php": "7.2.5"
 diff --git a/composer.lock b/composer.lock
 new file mode 100644
-index 0000000..2f0f108
+index 0000000..b06a127
 --- /dev/null
 +++ b/composer.lock
-@@ -0,0 +1,1384 @@
+@@ -0,0 +1,1388 @@
 +{
 +    "_readme": [
 +        "This file locks the dependencies of your project to a known state",
 +        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 +        "This file is @generated automatically"
 +    ],
-+    "content-hash": "7c6ad3c2f77beb4205ae0f2908a1a2ef",
++    "content-hash": "9e344cc9cf5184de9f7e41cc69fb3e06",
 +    "packages": [],
 +    "packages-dev": [
 +        {
@@ -1399,5 +1400,9 @@ index 0000000..2f0f108
 +    "prefer-stable": false,
 +    "prefer-lowest": false,
 +    "platform": [],
-+    "platform-dev": []
++    "platform-dev": [],
++    "platform-overrides": {
++        "php": "7.2.5"
++    },
++    "plugin-api-version": "1.1.0"
 +}
