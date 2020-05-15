@@ -1,6 +1,8 @@
 {
     "license": "proprietary",
     "type": "project",
+    "require-dev": {
+    },
     "config": {
         "platform": {
             "php": "7.2.5"
