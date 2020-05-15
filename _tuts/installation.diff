@@ -1,17 +1,15 @@
 diff --git a/composer.json b/composer.json
-index af62647..ec04394 100644
+index ddf9d11..ec04394 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -1,6 +1,9 @@
- {
+@@ -2,6 +2,7 @@
      "license": "proprietary",
      "type": "project",
-+    "require-dev": {
+     "require-dev": {
 +        "phpspec/phpspec": "^6.0"    
-+    },
+     },
      "config": {
          "platform": {
-             "php": "7.2.5"
 diff --git a/composer.lock b/composer.lock
 new file mode 100644
 index 0000000..b06a127
