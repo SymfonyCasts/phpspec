@@ -23,7 +23,7 @@ To do that, well... we need some way to add `Security` to an `Enclosure`! And, y
 know what? We should probably make it pretty easy to add security - maybe via a
 new constructor arg.
 
-Let me show you want I mean - in an example! Instead of creating a totally new
+Let me show you what I mean - in an example! Instead of creating a totally new
 example function for this, I'm going to need to use this new functionality in the
 example that's current failing. Here's the idea: to add some basic security, say
 `$this->beConstructedWith(true)`. Yep, I want there to be a constructor arg that
