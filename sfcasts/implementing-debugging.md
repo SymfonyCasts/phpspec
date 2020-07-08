@@ -3,7 +3,7 @@
 phpspec just generated the `__construct()` method for us. Thanks buddy! Go check
 it out! Two cool things here. First, in `Dinosaur`, yes, it *did* add the constructor
 method. As a bonus, it even put it in the right place: after the properties, but
-above all the other public functions. phpspe, are you trying to take my job?
+above all the other public functions. phpspec, are you trying to take my job?
 
 Second, when phpspec re-ran all of the examples, well... they're almost *all* failing
 now: too few arguments to `Dinosaur::__construct()`. And... that makes sense! We
