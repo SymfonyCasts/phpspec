@@ -55,7 +55,7 @@ They are the *key* to phpspec, and also the most complex part.
 
 There are *two* very important things to understand about the code inside these example
 methods. First, and this is *truly* magic, you're supposed to use the `$this` variable
-as *if* we were inside of the `Dinosuar` class itself. Literally: you treat `$this`
+as *if* we were inside of the `Dinosaur` class itself. Literally: you treat `$this`
 like a `Dinosaur` object - showing *examples* of how you want it to work by calling
 methods on that class - like `$this->getLength()` if the `Dinosaur` class had a
 `getLength()` method.
